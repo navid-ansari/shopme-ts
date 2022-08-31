@@ -41,98 +41,96 @@ describe("Rest client", () => {
    console.log(response);
    expect(fetchMock).toHaveBeenCalledWith(url);
    expect(fetchMock).toHaveBeenCalledTimes(1);
-   expect(response.length).toEqual(3);
+   //expect(response.length).toEqual(3);
   });
 
-  test.only("Get request: status 400", async () => {
+  test("Get request: status 400", async () => {
    const url = "http://api/test-url";
    const errorMessage = "Bad client request";
    const status = 400;
+
+   // with tyr...catch
    const fetchMock = jest
     .spyOn(global, "fetch")
     .mockImplementation(() =>
      Promise.reject({ response: new InputError(errorMessage) })
     );
-   const response = await get({ url });
-   //await expect(get({ url })).rejects.toThrow("Bad client request");
-   //console.log(response);
-   //expect(fetchMock).toHaveBeenCalledWith(url);
-   //expect(fetchMock).toHaveBeenCalledTimes(1);
-
-   /*const url = "http://api/test-url";
-   const errorMessage = "Bad client request";
-   const axiosErrorResponse = { response: new InputError(errorMessage) };
-
-   axios.get.mockRejectedValue(axiosErrorResponse);
-   await expect(get({ url })).rejects.toThrow(axiosErrorResponse.message);
-   expect(axios.get).toHaveBeenCalledWith(url);
-   expect(axios.get).toHaveBeenCalledTimes(1);*/
+   await expect(get({ url })).rejects.toThrow(errorMessage);
+   expect(fetchMock).toHaveBeenCalledWith(url);
+   expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
-  /*test("Get request: status 401", async () => {
+  test("Get request: status 401", async () => {
    const url = "http://api/test-url";
    const errorMessage = "Unauthorized request";
-   const axiosErrorResponse = {
-    response: new AuthenticationError(errorMessage),
-   };
-
-   axios.get.mockRejectedValue(axiosErrorResponse);
-   await expect(get({ url })).rejects.toThrow(axiosErrorResponse.message);
-   expect(axios.get).toHaveBeenCalledWith(url);
-   expect(axios.get).toHaveBeenCalledTimes(1);
+   const status = 401;
+   const fetchMock = jest
+    .spyOn(global, "fetch")
+    .mockImplementation(() =>
+     Promise.reject({ response: new AuthenticationError(errorMessage) })
+    );
+   await expect(get({ url })).rejects.toThrow(errorMessage);
+   expect(fetchMock).toHaveBeenCalledWith(url);
+   expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   test("Get request: status 403", async () => {
    const url = "http://api/test-url";
    const errorMessage = "Forbidden request";
-   const axiosErrorResponse = {
-    response: new ForbiddenError(errorMessage),
-   };
 
-   axios.get.mockRejectedValue(axiosErrorResponse);
-   await expect(get({ url })).rejects.toThrow(axiosErrorResponse.message);
-   expect(axios.get).toHaveBeenCalledWith(url);
-   expect(axios.get).toHaveBeenCalledTimes(1);
+   const fetchMock = jest
+    .spyOn(global, "fetch")
+    .mockImplementation(() =>
+     Promise.reject({ response: new ForbiddenError(errorMessage) })
+    );
+   await expect(get({ url })).rejects.toThrow(errorMessage);
+   expect(fetchMock).toHaveBeenCalledWith(url);
+   expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   test("Get request: status 404", async () => {
    const url = "http://api/test-url";
    const errorMessage = "Invalid client request url";
-   const axiosErrorResponse = { response: new NotFoundError(errorMessage) };
 
-   axios.get.mockRejectedValue(axiosErrorResponse);
-   await expect(get({ url })).rejects.toThrow(axiosErrorResponse.message);
-   expect(axios.get).toHaveBeenCalledWith(url);
-   expect(axios.get).toHaveBeenCalledTimes(1);
+   const fetchMock = jest
+    .spyOn(global, "fetch")
+    .mockImplementation(() =>
+     Promise.reject({ response: new NotFoundError(errorMessage) })
+    );
+   await expect(get({ url })).rejects.toThrow(errorMessage);
+   expect(fetchMock).toHaveBeenCalledWith(url);
+   expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   test("Get request: status 500", async () => {
    const url = "http://api/test-url";
    const errorMessage = "Internal server error";
-   const axiosErrorResponse = {
-    response: new InternalServerError(errorMessage),
-   };
 
-   axios.get.mockRejectedValue(axiosErrorResponse);
-   await expect(get({ url })).rejects.toThrow(axiosErrorResponse.message);
-   expect(axios.get).toHaveBeenCalledWith(url);
-   expect(axios.get).toHaveBeenCalledTimes(1);
+   const fetchMock = jest
+    .spyOn(global, "fetch")
+    .mockImplementation(() =>
+     Promise.reject({ response: new InternalServerError(errorMessage) })
+    );
+   await expect(get({ url })).rejects.toThrow(errorMessage);
+   expect(fetchMock).toHaveBeenCalledWith(url);
+   expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   test("Get request: status 502", async () => {
    const url = "http://api/test-url";
    const errorMessage = "Invalid response from gateway server";
-   const axiosErrorResponse = {
-    response: new BadResponseError(errorMessage),
-   };
 
-   axios.get.mockRejectedValue(axiosErrorResponse);
-   await expect(get({ url })).rejects.toThrow(axiosErrorResponse.message);
-   expect(axios.get).toHaveBeenCalledWith(url);
-   expect(axios.get).toHaveBeenCalledTimes(1);
-  });*/
+   const fetchMock = jest
+    .spyOn(global, "fetch")
+    .mockImplementation(() =>
+     Promise.reject({ response: new BadResponseError(errorMessage) })
+    );
+   await expect(get({ url })).rejects.toThrow(errorMessage);
+   expect(fetchMock).toHaveBeenCalledWith(url);
+   expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
  });
- /*describe("Throw error function", () => {
+ describe("Throw error function", () => {
   test("Input error: 400", () => {
    const status = { status: 400 };
    expect(() => {
@@ -174,5 +172,5 @@ describe("Rest client", () => {
     throwError(status);
    }).toThrow(new InputError("Invalid response from gateway server"));
   });
- });*/
+ });
 });

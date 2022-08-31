@@ -8,19 +8,29 @@ import {
 } from "./error-handler";
 
 export const get = async ({ url }: { url: string }) => {
- console.log("inside get client");
- const response = await fetch(url);
+ try {
+  const response = await fetch(url);
+  if (!response.ok) {
+   const json = response.json();
+   return json;
+  }
+ } catch (error: any) {
+  throwError({ status: error.response.status });
+ }
+ /*const response = await fetch(url);
+ console.log("response generated");
  console.log(response);
  if (!response.ok) {
-  console.log("inside rest error");
   throwError({ status: response.status });
- }
- const json = response.json();
- return json;
+ } else {
+  const json = response.json();
+  return json;
+ }*/
 };
 
 export const throwError = ({ status }: { status: number }) => {
  if (status === 400) {
+  console.log("inside input error");
   throw new InputError("Bad client request");
  } else if (status === 401) {
   throw new AuthenticationError("Unauthorized request");
