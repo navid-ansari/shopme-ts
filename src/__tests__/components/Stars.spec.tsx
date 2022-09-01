@@ -1,32 +1,32 @@
-import React from "react";
-import { MemoryRouter } from "react-router-dom";
-import { screen, fireEvent } from "@testing-library/react";
+import React from 'react'
+import { MemoryRouter } from 'react-router-dom'
+import { screen, fireEvent } from '@testing-library/react'
 
-import { renderComponent } from "../test-utils/component-renderer";
+import { renderComponent } from '../test-utils/component-renderer'
 
-import Stars from "../../components/Stars";
-import Star from "../../components/Star";
+import Stars from '../../components/Stars'
+import Star from '../../components/Star'
 
-describe("Stars component", () => {
- beforeAll(() => {});
- beforeEach(() => {});
- afterEach(() => {});
- afterAll(() => {});
- test("Should render component", async () => {
-  const rating = 3.9;
-  renderComponent(
-   <MemoryRouter>
-    <Stars rating={rating} />
-   </MemoryRouter>
-  );
-  expect(screen.getByTestId("stars")).not.toBeNull();
- });
+describe('Stars component', () => {
+  beforeAll(() => {})
+  beforeEach(() => {})
+  afterEach(() => {})
+  afterAll(() => {})
+  test('Should render component', async () => {
+    const rating = 3.9
+    renderComponent(
+      <MemoryRouter>
+        <Stars rating={rating} />
+      </MemoryRouter>
+    )
+    await expect(screen.getByTestId('stars')).not.toBeNull()
+  })
 
- test("should render stars", async () => {
-  const starsArray = [0, 1, 2, 3];
-  const starsElem = starsArray.map((star) => <Star key={star} />);
-  renderComponent(<MemoryRouter>{starsElem}</MemoryRouter>);
-  const stars = screen.queryAllByTestId("star");
-  expect(stars).toHaveLength(4);
- });
-});
+  test('should render stars', async () => {
+    const starsArray = [0, 1, 2, 3]
+    const starsElem = starsArray.map(star => <Star key={star} />)
+    renderComponent(<MemoryRouter>{starsElem}</MemoryRouter>)
+    const stars = screen.queryAllByTestId('star')
+    await expect(stars).toHaveLength(4)
+  })
+})

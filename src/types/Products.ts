@@ -1,3 +1,3 @@
-import { IProduct } from "./Product";
+import { IProduct } from './Product'
 
-export const Products: IProduct[] = [];
+export const Products: IProduct[] = []
