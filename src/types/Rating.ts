@@ -1,4 +1,4 @@
-export interface rating {
- rate: number;
- count: number;
+export type rating = {
+  rate: number
+  count: number
 }
