@@ -15,8 +15,6 @@ export const get = async ({ url }: { url: string }) => {
       return json
     }
   } catch (error: any) {
-    console.log('inside error block')
-    console.log(error)
     throwError({ status: error.response.status })
   }
   /*const response = await fetch(url);
@@ -31,7 +29,6 @@ export const get = async ({ url }: { url: string }) => {
 }
 
 export const throwError = ({ status }: { status: number }) => {
-  console.log('inside throw error: ' + status)
   if (status === 400) {
     throw new InputError('Bad client request')
   } else if (status === 401) {

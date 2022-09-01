@@ -65,7 +65,19 @@ const useProductActionHook = () => {
 
   const getProducts = async () => {
     const url = 'https://fakestoreapi.com/products'
-    try {
+    const data = await get({ url })
+    const modifiedProducts = data.map((product: IProduct) => {
+      return {
+        ...product,
+        isAddedToCart: false,
+        isFavorite: false
+      }
+    })
+
+    // dispatch data to store
+    dispatch(setProducts(modifiedProducts))
+    return modifiedProducts
+    /*try {
       const data = await get({ url })
       const modifiedProducts = data.map((product: IProduct) => {
         return {
@@ -78,10 +90,10 @@ const useProductActionHook = () => {
       dispatch(setProducts(modifiedProducts))
       return modifiedProducts
     } catch (error: any) {
-      console.log('api failed to fetch')
-      console.log(error)
-      throwError({ status: error.response.status })
-    }
+      console.log('inside hook error block')
+      console.log(error.status)
+      throwError({ status: error.status })
+    }*/
   }
 
   useEffect(() => {
