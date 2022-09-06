@@ -1,13 +1,16 @@
+import { IProduct } from '../../types/Product'
 import { ActionTypes } from '../constants/action-types'
 
-const defaultItem = (favorites: any, payload: any) => {
+const defaultItem = (favorites: IProduct[], payload: IProduct) => {
   return [payload, ...favorites]
 }
 
-const findItem = (favorites: any, payload: any) => {
-  const idx = favorites.findIndex((favorite: any) => favorite.id === payload.id)
+const findItem = (favorites: IProduct[], payload: IProduct) => {
+  const idx = favorites.findIndex(
+    (favorite: IProduct) => favorite.id === payload.id
+  )
   if (idx !== -1) {
-    return favorites.filter((favorite: any) => favorite.id !== payload.id)
+    return favorites.filter((favorite: IProduct) => favorite.id !== payload.id)
   } else {
     return [payload, ...favorites]
   }
@@ -15,7 +18,7 @@ const findItem = (favorites: any, payload: any) => {
 
 export const toggleFavoriteReducer = (
   state = [],
-  { type, payload }: { type: any; payload: any }
+  { type, payload }: { type: string; payload: IProduct }
 ) => {
   switch (type) {
     case ActionTypes.FAVOURITE_PRODUCTS:

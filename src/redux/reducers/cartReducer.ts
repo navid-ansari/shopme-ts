@@ -1,13 +1,14 @@
+import { IProduct } from '../../types/Product'
 import { ActionTypes } from '../constants/action-types'
 
-const defaultCart = (cartItems: any, payload: any) => {
+const defaultCart = (cartItems: IProduct[], payload: IProduct) => {
   return [payload, ...cartItems]
 }
 
-const toggleCart = (cartItems: any, payload: any) => {
-  const idx = cartItems.findIndex((item: any) => item.id === payload.id)
+const toggleCart = (cartItems: IProduct[], payload: IProduct) => {
+  const idx = cartItems.findIndex((item: IProduct) => item.id === payload.id)
   if (idx !== -1) {
-    return cartItems.filter((product: any) => product.id !== payload.id)
+    return cartItems.filter((product: IProduct) => product.id !== payload.id)
   } else {
     return [payload, ...cartItems]
   }
@@ -15,7 +16,7 @@ const toggleCart = (cartItems: any, payload: any) => {
 
 export const cartReducer = (
   state = [],
-  { type, payload }: { type: any; payload: any }
+  { type, payload }: { type: string; payload: IProduct }
 ) => {
   switch (type) {
     case ActionTypes.CART:

@@ -1,8 +1,9 @@
+import { IProduct } from '../../types/Product'
 import { ActionTypes } from '../constants/action-types'
 
 export const productReducer = (
   state = [],
-  { type, payload }: { type: any; payload: any }
+  { type, payload }: { type: string; payload: IProduct[] }
 ) => {
   switch (type) {
     case ActionTypes.SET_PRODUCTS:
@@ -14,7 +15,7 @@ export const productReducer = (
 
 export const selectedProductReducer = (
   state = {},
-  { type, payload }: { type: any; payload: any }
+  { type, payload }: { type: string; payload: IProduct[] }
 ) => {
   switch (type) {
     case ActionTypes.SELECTED_PRODUCT:

@@ -23,7 +23,7 @@ const useProductActionHook = () => {
   const toggleFavorite = async (product: IProduct) => {
     const findProduct = products.find(
       (item: IProduct) => item.id === product.id
-    )
+    ) as IProduct
     //console.log('toggle click')
     //console.log(findProduct)
     dispatch(toggleFavoriteProduct(findProduct))
@@ -46,7 +46,7 @@ const useProductActionHook = () => {
   const toggleCart = async (product: IProduct) => {
     const findProduct = products.find(
       (item: IProduct) => item.id === product.id
-    )
+    ) as IProduct
 
     await dispatch(cartAction(findProduct))
 

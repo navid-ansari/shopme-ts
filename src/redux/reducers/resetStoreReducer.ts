@@ -6,7 +6,10 @@ const INITIAL_STATE = {
   favorites: [],
   cart: []
 }
-export const cartReducer = (state = INITIAL_STATE, { type }: { type: any }) => {
+export const cartReducer = (
+  state = INITIAL_STATE,
+  { type }: { type: string }
+) => {
   switch (type) {
     case ActionTypes.RESET_STORE:
       return INITIAL_STATE
