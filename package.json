@@ -34,12 +34,12 @@
     "testMatch": [
       "**/__tests__/**/*.[jt]s?(x)",
       "**/?(*.)+(spec|test).[tj]s?(x)",
-      "<rootDir>/src/__tests__/(?!mocks)/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/src/__tests__/(?!mocks)*/**/*.{spec,test}.{js,jsx,ts,tsx}",
-      "<rootDir>/src/__tests__/(?!test-utils)/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/src/__tests__/(?!test-utils)*/**/*.{spec,test}.{js,jsx,ts,tsx}",
-      "<rootDir>/src/__tests__/(?!types)/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/src/__tests__/(?!types)*/**/*.{spec,test}.{js,jsx,ts,tsx}"
+      "**/__tests__/(?!mocks)/**/*.{js,jsx,ts,tsx}",
+      "**/__tests__/(?!mocks)*/**/*.{spec,test}.{js,jsx,ts,tsx}",
+      "**/__tests__/(?!test-utils)/**/*.{js,jsx,ts,tsx}",
+      "**/__tests__/(?!test-utils)*/**/*.{spec,test}.{js,jsx,ts,tsx}",
+      "**/__tests__/(?!types)/**/*.{js,jsx,ts,tsx}",
+      "**/__tests__/(?!types)*/**/*.{spec,test}.{js,jsx,ts,tsx}"
     ],
     "watchPathIgnorePatterns": [
       "/__tests__/test-utils",
