@@ -38,9 +38,12 @@ describe('Rest client', () => {
         .spyOn(global, 'fetch')
         .mockImplementation(() => Promise.resolve(mockResponse as Response))
       const response = await get({ url })
+      const data = await response?.json()
       expect(fetchMock).toHaveBeenCalledWith(url)
       expect(fetchMock).toHaveBeenCalledTimes(1)
-      //expect(response.length).toEqual(3);
+      expect(response?.ok).toBe(true)
+      expect(response?.status).toEqual(200)
+      expect(data.length).toEqual(3)
     })
 
     test('Get request: status 400', async () => {

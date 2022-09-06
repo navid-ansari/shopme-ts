@@ -14,6 +14,7 @@ import { NotFoundError } from '../utils/error-handler'
 import { get, throwError } from '../utils/rest-client'
 import { IStore } from '../types/Store'
 import { IProduct } from '../types/Product'
+import parseResponse from '../utils/parse-response'
 
 const useProductActionHook = () => {
   const products = useSelector((state: IStore) => state.products)
@@ -65,7 +66,8 @@ const useProductActionHook = () => {
 
   const getProducts = async () => {
     const url = 'https://fakestoreapi.com/products'
-    const data = await get({ url })
+    const response = await get({ url })
+    const data = await parseResponse(response)
     const modifiedProducts = data.map((product: IProduct) => {
       return {
         ...product,

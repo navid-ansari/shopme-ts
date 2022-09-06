@@ -3,11 +3,13 @@ import { createStore } from 'redux'
 import { rootReducer } from './reducers'
 import { useDispatch } from 'react-redux'
 import { resetStoreAction } from './actions/resetStoreAction'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const store = createStore(
   rootReducer,
-  {},
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  //{},
+  //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools()
 )
 
 export default store

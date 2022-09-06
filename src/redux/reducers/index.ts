@@ -21,7 +21,7 @@ const appReducer = combineReducers({
   cart: cartReducer
 })
 
-const rootReducer = (state, action) => {
+const rootReducer = (state: any, action: any) => {
   if (action.type === ActionTypes.RESET_STORE) {
     return appReducer(undefined, action)
   }

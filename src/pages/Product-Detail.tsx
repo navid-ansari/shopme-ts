@@ -14,7 +14,9 @@ import {
 import Detail from '../components/Detail'
 
 import { get } from '../utils/rest-client'
+import { axiosGet } from '../utils/axios-rest-client'
 import { IStore } from '../types/Store'
+import parseResponse from '../utils/parse-response'
 
 const ProductDetail = () => {
   const { productId } = useParams()
@@ -24,9 +26,12 @@ const ProductDetail = () => {
   useEffect(() => {
     const getProductDetail = async () => {
       const url = `https://fakestoreapi.com/products/${productId}`
-      const data = await get({ url })
-      dispatch(selectedProduct(data))
-      return data
+      const response: any = await axiosGet(url)
+      //console.log(response.data)
+      //const data = await parseResponse(await get({ url }))
+      //const data = await parseResponse(response)
+      dispatch(selectedProduct(response.data))
+      return response
     }
     //if (productId && productId !== '') {
     getProductDetail()

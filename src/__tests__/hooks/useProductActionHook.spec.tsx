@@ -145,8 +145,8 @@ describe('Product action hook', () => {
 
     expect(fetchMock).toBeCalledWith(url)
     expect(fetchMock).toBeCalledTimes(1)
-    expect(fetchMock).rejects.toThrow(new NotFoundError(errorMessage))
-    expect(fetchMock).rejects.toThrowError(errorMessage)
+    await expect(fetchMock).rejects.toThrow(new NotFoundError(errorMessage))
+    await expect(fetchMock).rejects.toThrowError(errorMessage)
   })
 
   test('failed to fetch products from api - mockRejectedValue: 404', async () => {
