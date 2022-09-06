@@ -11,15 +11,12 @@ export const get = async ({ url }: { url: string }) => {
   //console.log(url)
   try {
     const response = await fetch(url)
-    console.log('inside try')
-    console.log(response)
     if (response.ok) {
       /*const json = response.json()
       return json*/
       return response
     }
   } catch (error: any) {
-    console.log('inside error')
     throwError({ status: error.response.status })
   }
 
