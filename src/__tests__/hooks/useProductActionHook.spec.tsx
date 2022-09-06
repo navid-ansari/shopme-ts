@@ -116,7 +116,7 @@ describe('Product action hook', () => {
     expect(fetchMock).toHaveBeenCalledWith(url)
     expect(fetchMock).toHaveBeenCalledTimes(1)
   })
-  test('failed to fetch products from api: 404', async () => {
+  /*test('failed to fetch products from api: 404', async () => {
     const errorMessage = 'Invalid client request url'
     const fetchMock = await jest
       .spyOn(global, 'fetch')
@@ -147,7 +147,7 @@ describe('Product action hook', () => {
     expect(fetchMock).toBeCalledTimes(1)
     await expect(fetchMock).rejects.toThrow(new NotFoundError(errorMessage))
     await expect(fetchMock).rejects.toThrowError(errorMessage)
-  })
+  })*/
 
   test('failed to fetch products from api - mockRejectedValue: 404', async () => {
     const mocked = jest.mocked
