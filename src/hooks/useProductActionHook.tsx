@@ -24,8 +24,9 @@ const useProductActionHook = () => {
     const findProduct = products.find(
       (item: IProduct) => item.id === product.id
     )
-
-    await dispatch(toggleFavoriteProduct(findProduct))
+    //console.log('toggle click')
+    //console.log(findProduct)
+    dispatch(toggleFavoriteProduct(findProduct))
 
     if (findProduct) {
       const modifiedProducts = products.map((product: IProduct) => {
