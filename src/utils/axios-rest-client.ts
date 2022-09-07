@@ -10,13 +10,13 @@ import {
 } from './error-handler'
 
 export const axiosGet = async (url: string) => {
-  console.log(url)
+  //console.log(url)
   try {
     return await axios.get<any>(url)
     //return response
   } catch (error: any) {
     //if (axios.isAxiosError(error)) {
-    console.log('error message: ', error)
+    //console.log('error message: ', error)
     throwError({ status: error?.response?.status })
     //return error.message;
     //}

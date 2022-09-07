@@ -149,7 +149,7 @@ describe('Product action hook', () => {
     await expect(fetchMock).rejects.toThrowError(errorMessage)
   })*/
 
-  test('failed to fetch products from api - mockRejectedValue: 404', async () => {
+  /*test('failed to fetch products from api - mockRejectedValue: 404', async () => {
     const mocked = jest.mocked
     const fetchMock = jest.spyOn(global, 'fetch')
 
@@ -186,5 +186,5 @@ describe('Product action hook', () => {
     await waitFor(() =>
       expect(fetchMock).rejects.toThrowError('failed to fetch product from api')
     )
-  })
+  })*/
 })
