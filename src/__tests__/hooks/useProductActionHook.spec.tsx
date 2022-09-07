@@ -3,6 +3,7 @@ import { renderHook, waitFor } from '@testing-library/react'
 import { Provider } from 'react-redux'
 //import createStore from "redux-mock-store";
 import { MemoryRouter } from 'react-router-dom'
+import axios, { AxiosResponse } from 'axios'
 
 // mocks
 import MockedProducts from '../mocks/products'
@@ -33,7 +34,8 @@ const mockConfig = {
 const hookData = jest.mock('../../hooks/useProductActionHook', () => ({
   useProductActionHook: () => mockConfig
 }))*/
-
+jest.mock('axios')
+const mockedAxios = axios as jest.Mocked<typeof axios>
 describe('Product action hook', () => {
   const url = 'https://fakestoreapi.com/products'
   beforeAll(() => {})
@@ -46,14 +48,18 @@ describe('Product action hook', () => {
   afterAll(() => {})
 
   test('fetch products from api: 200', async () => {
-    const mockResponse = {
-      json: () => Promise.resolve(mockedProducts),
+    const mAxiosResponse = {
+      data: mockedProducts,
       status: 200,
-      ok: true
+      headers: {
+        'content-type': 'application/json; charset=utf-8'
+      },
+      statusText: '',
+      config: {
+        url: 'https://fakestoreapi.com/products'
+      }
     }
-    const fetchMock = jest
-      .spyOn(global, 'fetch')
-      .mockImplementation(() => Promise.resolve(mockResponse as any))
+    mockedAxios.get.mockResolvedValueOnce(mAxiosResponse)
 
     const ReduxProvider = ({
       children,
@@ -72,11 +78,80 @@ describe('Product action hook', () => {
       },
       { wrapper }
     )
-    expect(fetchMock).toHaveBeenCalledWith(url)
-    expect(fetchMock).toHaveBeenCalledTimes(1)
+    await expect(mockedAxios.get).toHaveBeenCalledWith(url)
+    await expect(mockedAxios.get).toHaveBeenCalledTimes(1)
   })
 
-  /*test('failed to fetch products from api: 404', async () => {
+  test('failed to fetch products from api: 404', async () => {
+    mockedAxios.get.mockRejectedValue(
+      new NotFoundError('failed to fetch product from api')
+    )
+
+    const ReduxProvider = ({
+      children,
+      reduxStore
+    }: {
+      children: any
+      reduxStore: any
+    }) => <Provider store={mockedStore()}>{children}</Provider>
+
+    const wrapper = ({ children }: { children: any }) => (
+      <ReduxProvider reduxStore={mockedStore()}>{children}</ReduxProvider>
+    )
+    renderHook(
+      () => {
+        useProductActionHook()
+      },
+      { wrapper }
+    )
+    await expect(mockedAxios.get).toHaveBeenCalledWith(url)
+    await expect(mockedAxios.get).toHaveBeenCalledTimes(1)
+    await expect(mockedAxios.get).rejects.toThrow(
+      new NotFoundError('failed to fetch product from api')
+    )
+    await waitFor(() =>
+      expect(mockedAxios.get).rejects.toThrowError(
+        'failed to fetch product from api'
+      )
+    )
+  })
+
+  test('failed to fetch products from api => mockImplementation: 404', async () => {
+    mockedAxios.get.mockImplementation(() =>
+      Promise.reject(new NotFoundError('failed to fetch product from api'))
+    )
+
+    const ReduxProvider = ({
+      children,
+      reduxStore
+    }: {
+      children: any
+      reduxStore: any
+    }) => <Provider store={mockedStore()}>{children}</Provider>
+
+    const wrapper = ({ children }: { children: any }) => (
+      <ReduxProvider reduxStore={mockedStore()}>{children}</ReduxProvider>
+    )
+    renderHook(
+      () => {
+        useProductActionHook()
+      },
+      { wrapper }
+    )
+    await expect(mockedAxios.get).toHaveBeenCalledWith(url)
+    await expect(mockedAxios.get).toHaveBeenCalledTimes(1)
+    await expect(mockedAxios.get).rejects.toThrow(
+      new NotFoundError('failed to fetch product from api')
+    )
+    await waitFor(() =>
+      expect(mockedAxios.get).rejects.toThrowError(
+        'failed to fetch product from api'
+      )
+    )
+  })
+})
+
+/*test('failed to fetch products from api: 404', async () => {
     const errorMessage = 'Invalid client request url'
     const mockResponse = {
       json: () => Promise.resolve(new NotFoundError(errorMessage)),
@@ -110,8 +185,8 @@ describe('Product action hook', () => {
     //await expect(fetchMock).resolves.toThrowError(errorMessage)
   })*/
 
-  // with mocking hook rendering
-  /*test.skip('fetch products from api: 200', async () => {
+// with mocking hook rendering
+/*test.skip('fetch products from api: 200', async () => {
     const mockResponse = {
       json: () => Promise.resolve(mockedProducts),
       status: 200,
@@ -151,8 +226,8 @@ describe('Product action hook', () => {
     expect(fetchMock).rejects.toThrowError(errorMessage)
   })*/
 
-  // with custom hook rendering
-  /*test.skip('fetch products from api: 200', async () => {
+// with custom hook rendering
+/*test.skip('fetch products from api: 200', async () => {
     const mockResponse = {
       json: () => Promise.resolve(mockedProducts),
       status: 200,
@@ -254,4 +329,3 @@ describe('Product action hook', () => {
       expect(fetchMock).rejects.toThrowError('failed to fetch product from api')
     )
   })*/
-})
