@@ -7,39 +7,15 @@ import {
   BadResponseError
 } from './error-handler'
 
-export const get = async ({ url }: { url: string }) => {
+export const fetchGet = async ({ url }: { url: string }) => {
   //console.log(url)
-  try {
-    const response = await fetch(url)
-    if (response.ok) {
-      /*const json = response.json()
-      return json*/
-      return response
-    }
-  } catch (error: any) {
-    //console.log(error)
-    throwError({ status: error.response.status })
+  const response = await fetch(url)
+  //console.log(response)
+  if (!response.ok) {
+    //console.log('inside !response.ok')
+    throwError({ status: response.status })
   }
-
-  //console.log(url)
-  /*try {
-    const response = await fetch(url)
-    if (response.ok) {
-      const json = response.json()
-      return json
-    }
-  } catch (error: any) {
-    throwError({ status: error.response.status })
-  }*
-  /*const response = await fetch(url);
- console.log("response generated");
- console.log(response);
- if (!response.ok) {
-  throwError({ status: response.status });
- } else {
-  const json = response.json();
-  return json;
- }*/
+  return response.json()
 }
 
 export const throwError = ({ status }: { status: number }) => {
