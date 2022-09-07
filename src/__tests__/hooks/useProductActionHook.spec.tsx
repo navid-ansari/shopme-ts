@@ -121,7 +121,7 @@ describe('Product action hook', () => {
     const fetchMock = await jest
       .spyOn(global, 'fetch')
       .mockImplementation(() =>
-        Promise.reject({ response: new NotFoundError(errorMessage) })
+        Promise.reject({ response: new Error(errorMessage) })
       )
 
     const ReduxProvider = ({
@@ -154,7 +154,7 @@ describe('Product action hook', () => {
     const fetchMock = jest.spyOn(global, 'fetch')
 
     mocked(fetchMock).mockRejectedValue({
-      response: new NotFoundError('failed to fetch product from api')
+      response: new Error('failed to fetch product from api')
     })
 
     const ReduxProvider = ({
