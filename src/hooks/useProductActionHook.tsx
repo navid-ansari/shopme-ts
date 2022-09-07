@@ -12,7 +12,8 @@ import { cartAction } from '../redux/actions/cartAction'
 import { NotFoundError } from '../utils/error-handler'
 
 //import { get, throwError } from '../utils/rest-client'
-import { fetchGet, throwError } from '../utils/fetch-client'
+//import { fetchGet, throwError } from '../utils/fetch-client'
+import { axiosGet, throwError } from '../utils/axios-rest-client'
 import { IStore } from '../types/Store'
 import { IProduct } from '../types/Product'
 import parseResponse from '../utils/parse-response'
@@ -66,35 +67,37 @@ const useProductActionHook = () => {
     }
   }
 
-  const getProducts = async () => {
+  const getProducts = () => {
     const url = 'https://fakestoreapi.com/products'
-    //const response = await get({ url })
-    //const data = await parseResponse(response)
-    try {
-      const response = await fetchGet({ url })
-      const modifiedProducts = response.map((product: IProduct) => {
-        return {
-          ...product,
-          isAddedToCart: false,
-          isFavorite: false
-        }
+    //const response = await fetchGet({ url }).then(())
+    axiosGet(url)
+      .then((response: any) => {
+        //console.log(response)
+        const { data } = response
+        const modifiedProducts = data.map((product: IProduct) => {
+          return {
+            ...product,
+            isAddedToCart: false,
+            isFavorite: false
+          }
+        })
+        // dispatch data to store
+        dispatch(setProducts(modifiedProducts))
+        return modifiedProducts
       })
-
-      // dispatch data to store
-      dispatch(setProducts(modifiedProducts))
-      return modifiedProducts
-    } catch (error: any) {
-      //console.log(error)
-      throwError({ status: error.status })
-    }
+      .catch((error: any) => {
+        //console.log(error)
+        throwError({ status: error.status })
+      })
   }
 
   useEffect(() => {
-    ;(async () => {
+    /*;(async () => {
       if (products.length === 0) {
         await getProducts()
       }
-    })()
+    })()*/
+    getProducts()
   }, [])
 
   return {
