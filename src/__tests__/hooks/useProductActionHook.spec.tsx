@@ -82,7 +82,7 @@ describe('Product action hook', () => {
     await expect(mockedAxios.get).toHaveBeenCalledTimes(1)
   })
 
-  test('failed to fetch products from api: 404', async () => {
+  test.skip('failed to fetch products from api: 404', async () => {
     mockedAxios.get.mockRejectedValue(
       new NotFoundError('failed to fetch product from api')
     )
@@ -116,7 +116,7 @@ describe('Product action hook', () => {
     )
   })
 
-  test('failed to fetch products from api => mockImplementation: 404', async () => {
+  test.skip('failed to fetch products from api => mockImplementation: 404', async () => {
     mockedAxios.get.mockImplementation(() =>
       Promise.reject(new NotFoundError('failed to fetch product from api'))
     )
