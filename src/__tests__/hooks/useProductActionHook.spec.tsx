@@ -116,7 +116,7 @@ describe('Product action hook', () => {
     expect(fetchMock).toHaveBeenCalledWith(url)
     expect(fetchMock).toHaveBeenCalledTimes(1)
   })
-  /*test('failed to fetch products from api: 404', async () => {
+  test('failed to fetch products from api: 404', async () => {
     const errorMessage = 'Invalid client request url'
     const fetchMock = await jest
       .spyOn(global, 'fetch')
@@ -145,17 +145,17 @@ describe('Product action hook', () => {
 
     expect(fetchMock).toBeCalledWith(url)
     expect(fetchMock).toBeCalledTimes(1)
-    await expect(fetchMock).rejects.toThrow(new NotFoundError(errorMessage))
-    await expect(fetchMock).rejects.toThrowError(errorMessage)
-  })*/
+    /*await expect(fetchMock).rejects.toThrow(new NotFoundError(errorMessage))
+    await expect(fetchMock).rejects.toThrowError(errorMessage)*/
+  })
 
-  /*test('failed to fetch products from api - mockRejectedValue: 404', async () => {
+  test('failed to fetch products from api - mockRejectedValue: 404', async () => {
     const mocked = jest.mocked
     const fetchMock = jest.spyOn(global, 'fetch')
 
-    mocked(fetchMock).mockRejectedValue(
-      new Error('failed to fetch product from api')
-    )
+    mocked(fetchMock).mockRejectedValue({
+      response: new NotFoundError('failed to fetch product from api')
+    })
 
     const ReduxProvider = ({
       children,
@@ -178,13 +178,14 @@ describe('Product action hook', () => {
 
     await waitFor(() => expect(fetchMock).toBeCalledWith(url))
     await waitFor(() => expect(fetchMock).toBeCalledTimes(1))
-    await waitFor(() =>
+
+    /*await waitFor(() =>
       expect(fetchMock).rejects.toThrow(
         new NotFoundError('failed to fetch product from api')
       )
     )
     await waitFor(() =>
       expect(fetchMock).rejects.toThrowError('failed to fetch product from api')
-    )
-  })*/
+    )*/
+  })
 })
