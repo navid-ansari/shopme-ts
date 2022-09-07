@@ -25,6 +25,7 @@
     "react-redux": "8.0.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "serve": "^14.0.1",
     "supertest": "^6.2.4",
     "typescript": "^4.8.0",
     "typescript-axios": "^1.0.0",
@@ -41,7 +42,8 @@
     ]
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
     "build": "CI=false && react-scripts build",
     "test": "react-scripts test --verbose",
     "test:integration": "react-scripts test __tests__/integration --verbose",
@@ -49,7 +51,8 @@
     "format:fix": "npx prettier --write .",
     "lint:check": "eslint .",
     "lint:fix": "eslint --fix .",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
     "extends": [

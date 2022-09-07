@@ -32,5 +32,3 @@ jobs:
       - run: npm run build -- --profile
       # prod build local server
       - run: npm install -g serve
-      # serve production build
-      - run: serve -s build
