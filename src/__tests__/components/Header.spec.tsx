@@ -1,8 +1,6 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
 
-
-
 import Header from '../../components/Header'
 
 import { MemoryRouter } from 'react-router-dom'

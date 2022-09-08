@@ -7,8 +7,6 @@ import { useDispatch } from 'react-redux'
 // router
 import { Link } from 'react-router-dom'
 
-
-
 const Product = (props: any) => {
   const {
     category,

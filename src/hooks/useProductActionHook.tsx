@@ -9,7 +9,6 @@ import { cartAction } from '../redux/actions/cartAction'
 // axios
 //import axios from "axios";
 
-
 //import { get, throwError } from '../utils/rest-client'
 //import { fetchGet, throwError } from '../utils/fetch-client'
 import { axiosGet, throwError } from '../utils/axios-rest-client'
