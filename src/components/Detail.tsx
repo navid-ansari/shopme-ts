@@ -4,8 +4,7 @@ import React from 'react'
 import Stars from '../components/Stars'
 
 export const Detail = (props: any) => {
-  const { category, description, id, image, price, rating, title } =
-    props.product
+  const { category, description, id, image, price, rating, title } = props.product
 
   const { rate, count } = rating || {}
 

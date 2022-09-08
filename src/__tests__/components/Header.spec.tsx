@@ -27,8 +27,6 @@ describe('Header component', () => {
         <Header />
       </MemoryRouter>
     )
-    expect(screen.getByTestId('header')).toHaveStyle(
-      `background-color: #eb3b65)`
-    )
+    expect(screen.getByTestId('header')).toHaveStyle(`background-color: #eb3b65)`)
   })
 })

@@ -61,13 +61,9 @@ describe('Product action hook', () => {
     }
     mockedAxios.get.mockResolvedValueOnce(mAxiosResponse)
 
-    const ReduxProvider = ({
-      children,
-      reduxStore
-    }: {
-      children: any
-      reduxStore: any
-    }) => <Provider store={mockedStore()}>{children}</Provider>
+    const ReduxProvider = ({ children, reduxStore }: { children: any; reduxStore: any }) => (
+      <Provider store={mockedStore()}>{children}</Provider>
+    )
 
     const wrapper = ({ children }: { children: any }) => (
       <ReduxProvider reduxStore={mockedStore()}>{children}</ReduxProvider>
@@ -83,17 +79,11 @@ describe('Product action hook', () => {
   })
 
   test.skip('failed to fetch products from api: 404', async () => {
-    mockedAxios.get.mockRejectedValue(
-      new NotFoundError('failed to fetch product from api')
-    )
+    mockedAxios.get.mockRejectedValue(new NotFoundError('failed to fetch product from api'))
 
-    const ReduxProvider = ({
-      children,
-      reduxStore
-    }: {
-      children: any
-      reduxStore: any
-    }) => <Provider store={mockedStore()}>{children}</Provider>
+    const ReduxProvider = ({ children, reduxStore }: { children: any; reduxStore: any }) => (
+      <Provider store={mockedStore()}>{children}</Provider>
+    )
 
     const wrapper = ({ children }: { children: any }) => (
       <ReduxProvider reduxStore={mockedStore()}>{children}</ReduxProvider>
@@ -110,9 +100,7 @@ describe('Product action hook', () => {
       new NotFoundError('failed to fetch product from api')
     )
     await waitFor(() =>
-      expect(mockedAxios.get).rejects.toThrowError(
-        'failed to fetch product from api'
-      )
+      expect(mockedAxios.get).rejects.toThrowError('failed to fetch product from api')
     )
   })
 
@@ -121,13 +109,9 @@ describe('Product action hook', () => {
       Promise.reject(new NotFoundError('failed to fetch product from api'))
     )
 
-    const ReduxProvider = ({
-      children,
-      reduxStore
-    }: {
-      children: any
-      reduxStore: any
-    }) => <Provider store={mockedStore()}>{children}</Provider>
+    const ReduxProvider = ({ children, reduxStore }: { children: any; reduxStore: any }) => (
+      <Provider store={mockedStore()}>{children}</Provider>
+    )
 
     const wrapper = ({ children }: { children: any }) => (
       <ReduxProvider reduxStore={mockedStore()}>{children}</ReduxProvider>
@@ -144,9 +128,7 @@ describe('Product action hook', () => {
       new NotFoundError('failed to fetch product from api')
     )
     await waitFor(() =>
-      expect(mockedAxios.get).rejects.toThrowError(
-        'failed to fetch product from api'
-      )
+      expect(mockedAxios.get).rejects.toThrowError('failed to fetch product from api')
     )
   })
 })

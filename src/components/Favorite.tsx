@@ -5,8 +5,7 @@ import PropTypes from 'prop-types'
 import Detail from './Detail'
 
 const Favorite = (props: any) => {
-  const { category, description, id, image, price, rating, title } =
-    props.favorite
+  const { category, description, id, image, price, rating, title } = props.favorite
   const { rate, count } = rating || {}
 
   return <Detail product={props.favorite} />

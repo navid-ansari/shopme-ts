@@ -5,10 +5,7 @@ import { useParams, useLocation } from 'react-router-dom'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
-import {
-  selectedProduct,
-  clearSelectedProduct
-} from '../redux/actions/productAction'
+import { selectedProduct, clearSelectedProduct } from '../redux/actions/productAction'
 
 // component
 import Detail from '../components/Detail'

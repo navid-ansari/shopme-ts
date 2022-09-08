@@ -62,12 +62,7 @@ const Product = (props: any) => {
         {getFavoriteIcon()}
       </div>
       <Link to={`/product/${id}`}>
-        <img
-          src={image}
-          style={{ height: '200px' }}
-          alt=""
-          data-testid="product-image"
-        />
+        <img src={image} style={{ height: '200px' }} alt="" data-testid="product-image" />
         <h3 data-testid="product-title">{title}</h3>
         <p data-testid="product-description">{description}</p>
         <h6 data-testid="product-price">
