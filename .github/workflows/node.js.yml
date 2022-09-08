@@ -29,6 +29,4 @@ jobs:
       # run unit test
       - run: npm test
       # run production build
-      - run: npm run build -- --profile
-      # prod build local server
-      - run: npm install -g serve
+      - run: CI='' npm run build -- --profile
