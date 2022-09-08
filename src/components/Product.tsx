@@ -7,10 +7,7 @@ import { useDispatch } from 'react-redux'
 // router
 import { Link } from 'react-router-dom'
 
-import { toggleFavoriteProduct } from '../redux/actions/favoriteProductsAction'
 
-import { cartAction } from '../redux/actions/cartAction'
-import { useState } from 'react'
 
 const Product = (props: any) => {
   const {

@@ -1,14 +1,10 @@
-import { render, screen, waitFor, act, cleanup } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import userEvent from '@testing-library/user-event'
-import { createMemoryHistory } from 'history'
-import { MemoryRouter, BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
+import { MemoryRouter, Routes, Route } from 'react-router-dom'
 
 import { renderComponent } from '../test-utils/component-renderer'
 
 import ProductDetail from '../../pages/Product-Detail'
-import ProductList from '../../pages/Product-List'
-import Detail from '../../components/Detail'
 
 // mocks
 import mockedproduct from '../mocks/product'

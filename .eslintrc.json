@@ -15,8 +15,21 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "unused-imports"],
   "rules": {
-    "react/react-in-jsx-scope": "off" //disable import React at the top of the file
+    "react/react-in-jsx-scope": "off", //disable import React at the top of the file
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "off", // allow blank arrow function
+    "no-unused-vars": "off", // remove unused imports
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ]
   }
 }

@@ -1,9 +1,7 @@
 import { createStore, compose } from 'redux'
 //import { reducers } from "./reducers";
 import { rootReducer } from './reducers'
-import { useDispatch } from 'react-redux'
 import { resetStoreAction } from './actions/resetStoreAction'
-import { composeWithDevTools } from 'redux-devtools-extension'
 
 export const composeEnhancers = window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 

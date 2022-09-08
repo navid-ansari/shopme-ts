@@ -2,8 +2,7 @@ import { renderHook, waitFor } from '@testing-library/react'
 //import axios from "axios";
 import { Provider } from 'react-redux'
 //import createStore from "redux-mock-store";
-import { MemoryRouter } from 'react-router-dom'
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 
 // mocks
 import MockedProducts from '../mocks/products'
@@ -18,9 +17,6 @@ import { NotFoundError } from '../../utils/error-handler'
 import { mockedStore } from '../test-utils/reset-store'
 import { IProduct } from '../types/Product'
 
-import { get } from '../../utils/rest-client'
-import { renderComponent } from '../test-utils/component-renderer'
-import ProductList from '../../pages/Product-List'
 
 let mockedProducts = [] as IProduct[]
 /*

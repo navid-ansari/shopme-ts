@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 // router
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
-import { selectedProduct, clearSelectedProduct } from '../redux/actions/productAction'
+import { selectedProduct } from '../redux/actions/productAction'
 
 // component
 import Detail from '../components/Detail'
 
-import { get } from '../utils/rest-client'
 import { axiosGet } from '../utils/axios-rest-client'
 import { IStore } from '../types/Store'
-import parseResponse from '../utils/parse-response'
 
 const ProductDetail = () => {
   const { productId } = useParams()

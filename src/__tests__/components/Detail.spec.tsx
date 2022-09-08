@@ -1,14 +1,13 @@
-import { render as rtlRender, screen, waitFor } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 
 import { renderComponent } from '../test-utils/component-renderer'
 
-import ProductDetail from '../../pages/Product-Detail'
 import Detail from '../../components/Detail'
 
 // mocks
 import mockedproduct from '../mocks/product'
-import { IProduct, IRating } from '../types/Product'
+import { IProduct } from '../types/Product'
 
 describe('Detail component', () => {
   let mockedProduct = {} as IProduct

@@ -9,14 +9,12 @@ import { cartAction } from '../redux/actions/cartAction'
 // axios
 //import axios from "axios";
 
-import { NotFoundError } from '../utils/error-handler'
 
 //import { get, throwError } from '../utils/rest-client'
 //import { fetchGet, throwError } from '../utils/fetch-client'
 import { axiosGet, throwError } from '../utils/axios-rest-client'
 import { IStore } from '../types/Store'
 import { IProduct } from '../types/Product'
-import parseResponse from '../utils/parse-response'
 
 const useProductActionHook = () => {
   const products = useSelector((state: IStore) => state.products)

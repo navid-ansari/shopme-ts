@@ -1,6 +1,6 @@
 import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
-import { screen, fireEvent } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 
 import { renderComponent } from '../test-utils/component-renderer'
 

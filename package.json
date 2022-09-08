@@ -78,6 +78,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.7",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "jest-watch-typeahead": "^0.6.5",
     "prettier": "^2.7.1",
     "redux-devtools-extension": "^2.13.9",
