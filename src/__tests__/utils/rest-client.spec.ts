@@ -54,9 +54,7 @@ describe('Rest client', () => {
       // with tyr...catch
       const fetchMock = jest
         .spyOn(global, 'fetch')
-        .mockImplementation(() =>
-          Promise.reject({ response: new InputError(errorMessage) })
-        )
+        .mockImplementation(() => Promise.reject({ response: new InputError(errorMessage) }))
       await expect(get({ url })).rejects.toThrow(errorMessage)
       expect(fetchMock).toHaveBeenCalledWith(url)
       expect(fetchMock).toHaveBeenCalledTimes(1)
@@ -82,9 +80,7 @@ describe('Rest client', () => {
 
       const fetchMock = jest
         .spyOn(global, 'fetch')
-        .mockImplementation(() =>
-          Promise.reject({ response: new ForbiddenError(errorMessage) })
-        )
+        .mockImplementation(() => Promise.reject({ response: new ForbiddenError(errorMessage) }))
       await expect(get({ url })).rejects.toThrow(errorMessage)
       expect(fetchMock).toHaveBeenCalledWith(url)
       expect(fetchMock).toHaveBeenCalledTimes(1)
@@ -96,9 +92,7 @@ describe('Rest client', () => {
 
       const fetchMock = jest
         .spyOn(global, 'fetch')
-        .mockImplementation(() =>
-          Promise.reject({ response: new NotFoundError(errorMessage) })
-        )
+        .mockImplementation(() => Promise.reject({ response: new NotFoundError(errorMessage) }))
       await expect(get({ url })).rejects.toThrow(errorMessage)
       expect(fetchMock).toHaveBeenCalledWith(url)
       expect(fetchMock).toHaveBeenCalledTimes(1)
@@ -124,9 +118,7 @@ describe('Rest client', () => {
 
       const fetchMock = jest
         .spyOn(global, 'fetch')
-        .mockImplementation(() =>
-          Promise.reject({ response: new BadResponseError(errorMessage) })
-        )
+        .mockImplementation(() => Promise.reject({ response: new BadResponseError(errorMessage) }))
       await expect(get({ url })).rejects.toThrow(errorMessage)
       expect(fetchMock).toHaveBeenCalledWith(url)
       expect(fetchMock).toHaveBeenCalledTimes(1)

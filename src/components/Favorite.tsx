@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 // component
 import Detail from './Detail'
 
 const Favorite = (props: any) => {
-  const { category, description, id, image, price, rating, title } =
-    props.favorite
+  const { category, description, id, image, price, rating, title } = props.favorite
   const { rate, count } = rating || {}
 
   return <Detail product={props.favorite} />

@@ -1,14 +1,13 @@
-import { render as rtlRender, screen, waitFor } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 
 import { renderComponent } from '../test-utils/component-renderer'
 
-import ProductDetail from '../../pages/Product-Detail'
 import Detail from '../../components/Detail'
 
 // mocks
 import mockedproduct from '../mocks/product'
-import { IProduct, IRating } from '../types/Product'
+import { IProduct } from '../types/Product'
 
 describe('Detail component', () => {
   let mockedProduct = {} as IProduct
@@ -61,9 +60,7 @@ describe('Detail component', () => {
     const reviewsTitle = screen.getByTestId('reviews-title')
     expect(reviewsTitle).toHaveTextContent('Reviews:')
     const reviewsTCount = screen.getByTestId('reviews-count')
-    expect(reviewsTCount).toHaveTextContent(
-      mockedProduct.rating.count.toString()
-    )
+    expect(reviewsTCount).toHaveTextContent(mockedProduct.rating.count.toString())
 
     // price
     const priceTitle = screen.getByTestId('price-title')

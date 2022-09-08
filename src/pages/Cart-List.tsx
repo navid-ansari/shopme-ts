@@ -12,9 +12,7 @@ import { IStore } from '../types/Store'
 const CartList = () => {
   const cart = useSelector((state: IStore) => state.cart)
 
-  const cartElem = cart.map((product: IProduct) => (
-    <Cart key={product.id} product={product} />
-  ))
+  const cartElem = cart.map((product: IProduct) => <Cart key={product.id} product={product} />)
 
   return (
     <div className="cart-page" data-testid="cart-page">

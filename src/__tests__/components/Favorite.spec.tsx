@@ -1,4 +1,4 @@
-import { render as rtlRender, screen, waitFor } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { MemoryRouter as Router } from 'react-router-dom'
 
 import { renderComponent } from '../test-utils/component-renderer'
@@ -58,9 +58,7 @@ describe('Favorite component', () => {
     const reviewsTitle = screen.getByTestId('reviews-title')
     expect(reviewsTitle).toHaveTextContent('Reviews:')
     const reviewsTCount = screen.getByTestId('reviews-count')
-    expect(reviewsTCount).toHaveTextContent(
-      mockedFavorite.rating.count.toString()
-    )
+    expect(reviewsTCount).toHaveTextContent(mockedFavorite.rating.count.toString())
 
     // price
     const priceTitle = screen.getByTestId('price-title')

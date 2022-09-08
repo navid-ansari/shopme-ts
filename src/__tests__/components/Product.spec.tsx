@@ -65,16 +65,11 @@ describe('Product component', () => {
 
     // image assertion
     const image = screen.getByRole('img')
-    expect(image).toHaveAttribute(
-      'src',
-      'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
-    )
+    expect(image).toHaveAttribute('src', 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg')
 
     // product heading
     const heading = screen.getByTestId('product-title')
-    expect(heading).toHaveTextContent(
-      'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops'
-    )
+    expect(heading).toHaveTextContent('Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops')
 
     // product description
     const description = screen.getByTestId('product-description')
@@ -95,11 +90,7 @@ describe('Product component', () => {
     // before click
     const { rerender } = renderComponent(
       <MemoryRouter>
-        <Product
-          product={mockedProduct}
-          toggleCart={mockOnClick}
-          toggleFavorite={mockOnClick}
-        />
+        <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </MemoryRouter>
     )
 
@@ -113,11 +104,7 @@ describe('Product component', () => {
     }
     const component = (
       <MemoryRouter>
-        <Product
-          product={mockedProduct}
-          toggleCart={mockOnClick}
-          toggleFavorite={mockOnClick}
-        />
+        <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </MemoryRouter>
     )
 
@@ -149,11 +136,7 @@ describe('Product component', () => {
 
     const component = (
       <MemoryRouter>
-        <Product
-          product={mockedProduct}
-          toggleCart={mockOnClick}
-          toggleFavorite={mockOnClick}
-        />
+        <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </MemoryRouter>
     )
 
@@ -184,11 +167,7 @@ describe('Product component', () => {
 
     const component = (
       <MemoryRouter>
-        <Product
-          product={mockedProduct}
-          toggleCart={mockOnClick}
-          toggleFavorite={mockOnClick}
-        />
+        <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </MemoryRouter>
     )
 
@@ -224,11 +203,7 @@ describe('Product component', () => {
     // after click
     const component = (
       <MemoryRouter>
-        <Product
-          product={mockedProduct}
-          toggleCart={mockOnClick}
-          toggleFavorite={mockOnClick}
-        />
+        <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </MemoryRouter>
     )
 

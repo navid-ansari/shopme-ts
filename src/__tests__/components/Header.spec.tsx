@@ -1,9 +1,7 @@
 import React from 'react'
-import { render as rtlRender, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 
-import { Provider } from 'react-redux'
 
-import { mockStore } from '../../redux/store'
 
 import Header from '../../components/Header'
 
@@ -27,8 +25,6 @@ describe('Header component', () => {
         <Header />
       </MemoryRouter>
     )
-    expect(screen.getByTestId('header')).toHaveStyle(
-      `background-color: #eb3b65)`
-    )
+    expect(screen.getByTestId('header')).toHaveStyle(`background-color: #eb3b65)`)
   })
 })

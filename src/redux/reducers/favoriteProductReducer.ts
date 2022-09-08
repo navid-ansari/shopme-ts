@@ -6,9 +6,7 @@ const defaultItem = (favorites: IProduct[], payload: IProduct) => {
 }
 
 const findItem = (favorites: IProduct[], payload: IProduct) => {
-  const idx = favorites.findIndex(
-    (favorite: IProduct) => favorite.id === payload.id
-  )
+  const idx = favorites.findIndex((favorite: IProduct) => favorite.id === payload.id)
   if (idx !== -1) {
     return favorites.filter((favorite: IProduct) => favorite.id !== payload.id)
   } else {
@@ -22,9 +20,7 @@ export const toggleFavoriteReducer = (
 ) => {
   switch (type) {
     case ActionTypes.FAVOURITE_PRODUCTS:
-      return state.length === 0
-        ? defaultItem(state, payload)
-        : findItem(state, payload)
+      return state.length === 0 ? defaultItem(state, payload) : findItem(state, payload)
     default:
       return state
   }

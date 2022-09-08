@@ -1,4 +1,3 @@
-import { AnyPtrRecord } from 'dns'
 import React from 'react'
 
 // redux

@@ -14,15 +14,10 @@ const toggleCart = (cartItems: IProduct[], payload: IProduct) => {
   }
 }
 
-export const cartReducer = (
-  state = [],
-  { type, payload }: { type: string; payload: IProduct }
-) => {
+export const cartReducer = (state = [], { type, payload }: { type: string; payload: IProduct }) => {
   switch (type) {
     case ActionTypes.CART:
-      return state.length === 0
-        ? defaultCart(state, payload)
-        : toggleCart(state, payload)
+      return state.length === 0 ? defaultCart(state, payload) : toggleCart(state, payload)
     default:
       return state
   }

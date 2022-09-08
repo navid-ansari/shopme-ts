@@ -1,9 +1,7 @@
 import nock from 'nock'
-import { IProduct } from '../../../types/Product'
 import MockedProducts from '../../mocks/products'
 import { get } from '../../../utils/rest-client'
 import nocked from '../../test-utils/nocked'
-import { NotFoundError } from '../../../utils/error-handler'
 
 type NockResponse = {
   status?: number

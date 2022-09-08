@@ -1,9 +1,5 @@
 import nock from 'nock'
-import { IProduct } from '../../../types/Product'
-import MockedProduct from '../../mocks/product'
-import { get } from '../../../utils/rest-client'
 import nocked from '../../test-utils/nocked'
-import { NotFoundError } from '../../../utils/error-handler'
 import { axiosGet } from '../../../utils/axios-rest-client'
 import ProductData from '../../mocks/data/Product'
 

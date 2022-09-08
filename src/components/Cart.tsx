@@ -5,8 +5,7 @@ import PropTypes from 'prop-types'
 import Detail from './Detail'
 
 const Cart = (props: any) => {
-  const { category, description, id, image, price, rating, title } =
-    props.product
+  const { category, description, id, image, price, rating, title } = props.product
   const { rate, count } = rating || {}
   return <Detail product={props.product} />
 }

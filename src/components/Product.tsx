@@ -7,10 +7,7 @@ import { useDispatch } from 'react-redux'
 // router
 import { Link } from 'react-router-dom'
 
-import { toggleFavoriteProduct } from '../redux/actions/favoriteProductsAction'
 
-import { cartAction } from '../redux/actions/cartAction'
-import { useState } from 'react'
 
 const Product = (props: any) => {
   const {
@@ -62,12 +59,7 @@ const Product = (props: any) => {
         {getFavoriteIcon()}
       </div>
       <Link to={`/product/${id}`}>
-        <img
-          src={image}
-          style={{ height: '200px' }}
-          alt=""
-          data-testid="product-image"
-        />
+        <img src={image} style={{ height: '200px' }} alt="" data-testid="product-image" />
         <h3 data-testid="product-title">{title}</h3>
         <p data-testid="product-description">{description}</p>
         <h6 data-testid="product-price">

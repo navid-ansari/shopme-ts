@@ -59,9 +59,7 @@ describe('Cart component', () => {
     const reviewsTitle = screen.getByTestId('reviews-title')
     expect(reviewsTitle).toHaveTextContent('Reviews:')
     const reviewsTCount = screen.getByTestId('reviews-count')
-    expect(reviewsTCount).toHaveTextContent(
-      mockedProduct.rating.count.toString()
-    )
+    expect(reviewsTCount).toHaveTextContent(mockedProduct.rating.count.toString())
 
     // price
     const priceTitle = screen.getByTestId('price-title')
