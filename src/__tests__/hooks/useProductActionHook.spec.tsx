@@ -17,7 +17,6 @@ import { NotFoundError } from '../../utils/error-handler'
 import { mockedStore } from '../test-utils/reset-store'
 import { IProduct } from '../types/Product'
 
-
 let mockedProducts = [] as IProduct[]
 /*
 // mock config

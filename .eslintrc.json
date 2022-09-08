@@ -30,6 +30,9 @@
         "args": "after-used",
         "argsIgnorePattern": "^_"
       }
-    ]
+    ],
+    "prefer-const": "error",
+    "@typescript-eslint/prefer-as-const": "error", // use const instead of let
+    "@typescript-eslint/no-explicit-any": ["off"] // turn off 'Unexpected any. Specify a different type' warning
   }
 }
