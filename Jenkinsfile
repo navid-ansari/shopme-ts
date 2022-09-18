@@ -5,7 +5,7 @@ pipeline{
 		stage('Build') {
 			steps {
 				git branch: 'main', url: 'https://github.com/navid-ansari/shopme-ts.git'
-				sh 'npm install'
+				bat 'npm install'
 			}
 		}
 	}
