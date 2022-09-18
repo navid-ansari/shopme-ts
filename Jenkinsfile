@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment {
+        CI = false
+    }
     tools {nodejs "node"}
     stages {
         stage('Build') {
