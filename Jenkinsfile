@@ -13,5 +13,15 @@ pipeline{
                 bat 'npm test'
             }
         }
+        stage('Format check') {
+            steps {
+                bat 'npm run format:check'
+            }
+        }
+        stage('Lint check') {
+            steps {
+                bat 'npm run lint:check'
+            }
+        }
     }
 }
