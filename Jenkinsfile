@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment {
-        CI = false
+        CI = 'false'
     }
     tools {nodejs "node"}
     stages {
@@ -14,6 +14,11 @@ pipeline{
         stage('Test') {
             steps {
                 bat 'npm test'
+            }
+        }
+        stage('Format check') {
+            steps {
+                bat 'npm run format:check'
             }
         }
         stage('Lint check') {
