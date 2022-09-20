@@ -26,6 +26,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm ci
+      # install dependencies
+      - run: npm install
       # check code formatting - prettier
       - run: npm run format:check
       # check code syntax - lint(ignore warning)
