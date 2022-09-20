@@ -58,7 +58,7 @@ const Header = () => {
               {/* <i className="logout__welcome">Welcome</i>{' '} */}
               <i className="logout__username">{user?.name}</i>
             </span>
-            <i className="ri-shield-user-line ri-2x"></i>
+            <i className="ri-shut-down-line ri-2x"></i>
           </div>
         )}
       </div>
