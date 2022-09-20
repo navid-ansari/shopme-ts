@@ -1,3 +1,4 @@
+/build
 .eslintrc.json
 .github/workflows/node.js.yml
 .prettierrc.json

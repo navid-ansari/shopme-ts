@@ -62,7 +62,8 @@ body {
   display: flex;
   align-items: center;
 }
-.checkout-section > div {
+.checkout-section > .favorite,
+.checkout-section > .cart {
   margin: 0px 10px;
   font-size: 0.8em;
   cursor: pointer;
@@ -305,6 +306,26 @@ button {
   font-size: 12px;
   font-weight: 300;
   margin-bottom: 3px;
+}
+.login,
+.logout {
+  margin: 0px 10px;
+  font-size: 0.9em;
+  cursor: pointer;
+  position: relative;
+}
+.logout {
+  display: flex;
+  align-items: center;
+  flex-direction: column-reverse;
+}
+.logout__welcome {
+  font-size: 0.6rem;
+}
+.logout__username {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 /* Small devices (portrait phones, 320px and up) */
