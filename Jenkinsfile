@@ -5,28 +5,28 @@ pipeline{
     }
     tools {nodejs "node"}
     stages {
-        stage('pull dependencies') {
+        stage('Dependencies') {
             steps {
                 git branch: 'main', url: 'https://github.com/navid-ansari/shopme-ts.git'
                 bat 'npm install'
             }
         }
-        stage('run test cases') {
+        stage('Test') {
             steps {
                 bat 'npm test'
             }
         }
-        /*stage('check file formatting') {
+        /*stage('Format') {
             steps {
                 bat 'npm run format:check'
             }
         }*/
-        stage('check code linting') {
+        stage('Lint') {
             steps {
                 bat 'npm run lint:check'
             }
         }
-        stage('generate prod build') {
+        stage('Build') {
             steps {
                 bat 'npm run build -- --profile'
             }
