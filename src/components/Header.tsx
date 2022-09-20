@@ -7,9 +7,12 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { IStore } from '../types/Store'
 
+import { useAuth0 } from '@auth0/auth0-react'
+
 const Header = () => {
   const favorites = useSelector((state: IStore) => state.favorites)
   const cart = useSelector((state: IStore) => state.cart)
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0()
 
   const getFavoriteIcon = () => {
     if (favorites.length > 0) {
@@ -44,6 +47,20 @@ const Header = () => {
           <span className="cart-count"> {cart.length}</span>
           <Link to="/cart">{getCartIcon()}</Link>
         </div>
+        {!isAuthenticated && (
+          <div className="login" onClick={() => loginWithRedirect()}>
+            <i className="ri-lock-line ri-2x"></i>
+          </div>
+        )}
+        {isAuthenticated && (
+          <div className="logout" onClick={() => logout({ returnTo: window.location.origin })}>
+            <span>
+              {/* <i className="logout__welcome">Welcome</i>{' '} */}
+              <i className="logout__username">{user?.name}</i>
+            </span>
+            <i className="ri-shield-user-line ri-2x"></i>
+          </div>
+        )}
       </div>
     </div>
   )
