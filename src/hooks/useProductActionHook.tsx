@@ -84,13 +84,50 @@ const useProductActionHook = () => {
       })
   }
 
+  const getProductData = async () => {
+    return new Promise((resolve, reject) => {
+      const url = 'https://fakestoreapi.com/products'
+      axiosGet(url)
+        .then((response: any) => {
+          //console.log('getProducts .then')
+          resolve(response)
+        })
+        .catch((error: any) => {
+          //console.log('getProductsData catch')
+          //console.log(error)
+          reject(error)
+        })
+    })
+    /*const url = 'https://fakestoreapi.com/products'
+    try {
+      const response = await axiosGet(url)
+      return response
+    } catch (error: any) {
+      throwError({ status: error.status })
+    }*/
+  }
+
   useEffect(() => {
-    /*;(async () => {
-      if (products.length === 0) {
-        await getProducts()
-      }
-    })()*/
-    getProducts()
+    //getProducts()
+    getProductData()
+      .then((response: any) => {
+        const { data } = response
+        const modifiedProducts = data.map((product: IProduct) => {
+          return {
+            ...product,
+            isAddedToCart: false,
+            isFavorite: false
+          }
+        })
+        // dispatch data to store
+        dispatch(setProducts(modifiedProducts))
+        //return modifiedProducts
+      })
+      .catch((error: any) => {
+        //console.log('useeffect catch: ')
+        //console.log(error) // show error on alert box on UI
+        //throwError({ status: error.status })
+      })
   }, [])
 
   return {

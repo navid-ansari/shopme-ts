@@ -18,19 +18,27 @@ const ProductDetail = () => {
   const product = useSelector((state: IStore) => state.product)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    const getProductDetail = async () => {
+  const getProductDetail = async () => {
+    return new Promise((resolve, reject) => {
       const url = `https://fakestoreapi.com/products/${productId}`
-      const response: any = await axiosGet(url)
-      //console.log(response.data)
-      //const data = await parseResponse(await get({ url }))
-      //const data = await parseResponse(response)
-      dispatch(selectedProduct(response.data))
-      return response
-    }
-    //if (productId && productId !== '') {
+      axiosGet(url)
+        .then((response: any) => {
+          resolve(response)
+        })
+        .catch((error: any) => {
+          reject(error)
+        })
+    })
+  }
+
+  useEffect(() => {
     getProductDetail()
-    //}
+      .then((response: any) => {
+        dispatch(selectedProduct(response.data))
+      })
+      .catch((error: any) => {
+        //console.log(error)
+      })
 
     // clear product when component destroys
     /*return () => {
