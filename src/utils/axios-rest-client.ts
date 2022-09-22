@@ -11,7 +11,8 @@ import {
 
 export const axiosGet = async (url: string) => {
   try {
-    return await axios.get<any>(url)
+    const response = await axios.get<any>(url)
+    return response
   } catch (error: any) {
     throwError({ status: error?.status })
   }

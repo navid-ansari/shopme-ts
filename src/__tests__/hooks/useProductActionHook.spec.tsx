@@ -73,7 +73,7 @@ describe('Product action hook', () => {
     await expect(mockedAxios.get).toHaveBeenCalledTimes(1)
   })
 
-  test.skip('failed to fetch products from api: 404', async () => {
+  test('failed to fetch products from api: 404', async () => {
     mockedAxios.get.mockRejectedValue(new NotFoundError('failed to fetch product from api'))
 
     const ReduxProvider = ({ children, reduxStore }: { children: any; reduxStore: any }) => (
@@ -89,17 +89,15 @@ describe('Product action hook', () => {
       },
       { wrapper }
     )
-    await expect(mockedAxios.get).toHaveBeenCalledWith(url)
-    await expect(mockedAxios.get).toHaveBeenCalledTimes(1)
+    expect(mockedAxios.get).toHaveBeenCalledWith(url)
+    expect(mockedAxios.get).toHaveBeenCalledTimes(1)
     await expect(mockedAxios.get).rejects.toThrow(
       new NotFoundError('failed to fetch product from api')
     )
-    await waitFor(() =>
-      expect(mockedAxios.get).rejects.toThrowError('failed to fetch product from api')
-    )
+    await expect(mockedAxios.get).rejects.toThrowError('failed to fetch product from api')
   })
 
-  test.skip('failed to fetch products from api => mockImplementation: 404', async () => {
+  test('failed to fetch products from api => mockImplementation: 404', async () => {
     mockedAxios.get.mockImplementation(() =>
       Promise.reject(new NotFoundError('failed to fetch product from api'))
     )
