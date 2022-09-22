@@ -1,4 +1,4 @@
-import { screen, waitFor, act } from '@testing-library/react'
+import { screen, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { MemoryRouter, Routes, Route } from 'react-router-dom'
 
