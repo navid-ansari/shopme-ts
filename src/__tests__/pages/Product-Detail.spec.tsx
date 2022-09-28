@@ -20,24 +20,13 @@ describe('Product detail page', () => {
   beforeAll(() => {})
   beforeEach(() => {
     mockedProduct = mockedproduct()
+    jest.clearAllMocks()
+    jest.resetAllMocks()
   })
   afterEach(() => {})
   afterAll(() => {})
 
-  /*const renderWithRouter = (ui, { route = "/" } = {}) => {
-  window.history.pushState({}, "Test page", route);
-
-  return {
-   user: userEvent.setup(),
-   ...render(ui, { wrapper: BrowserRouter }),
-  };
- };
-
- renderWithRouter(renderComponent(<ProductDetail></ProductDetail>), {
-  route: "/product/:productId",
- });*/
-
-  test('Check if Product detail page is rendered', async () => {
+  /*test.skip('Check if Product detail page is rendered', async () => {
     const productId = 123
     mockedAxios.get.mockImplementationOnce(() => Promise.resolve(mockedProduct))
     await act(() => {
@@ -54,7 +43,7 @@ describe('Product detail page', () => {
     expect(page).toHaveLength(1)
   })
 
-  test('Check if Product detail is fetched from api', async () => {
+  test.skip('Check if Product detail is fetched from api', async () => {
     const productId = 123
     mockedAxios.get.mockImplementationOnce(() => Promise.resolve(mockedProduct))
 
@@ -72,16 +61,15 @@ describe('Product detail page', () => {
       `https://fakestoreapi.com/products/${productId}`
     )
     await expect(mockedAxios.get).toHaveBeenCalledTimes(1)
-  })
+  })*/
 
-  test('Check if Product detail failed to fetch from api: 400', async () => {
+  test('Check if Product detail failed to fetch from api: 4040', async () => {
     const productId = 123
-    /* mockedAxios.get.mockImplementationOnce(() =>
-      Promise.reject(new NotFoundError('failed to fetch product from api'))
-    )*/
-    mockedAxios.get.mockRejectedValue(new NotFoundError('failed to fetch product from api'))
 
-    await act(() => {
+    mockedAxios.get.mockRejectedValue({
+      response: new NotFoundError('failed to fetch product from api')
+    })
+    const response = await act(() => {
       renderComponent(
         <MemoryRouter initialEntries={[`/product/${productId}`]}>
           <Routes>
@@ -93,9 +81,6 @@ describe('Product detail page', () => {
 
     expect(mockedAxios.get).toHaveBeenCalledWith(`https://fakestoreapi.com/products/${productId}`)
     expect(mockedAxios.get).toHaveBeenCalledTimes(1)
-    await expect(mockedAxios.get).rejects.toThrow(
-      new NotFoundError('failed to fetch product from api')
-    )
-    await expect(mockedAxios.get).rejects.toThrowError('failed to fetch product from api')
+    expect(await screen.findByText('Error Message')).toBeInTheDocument()
   })
 })

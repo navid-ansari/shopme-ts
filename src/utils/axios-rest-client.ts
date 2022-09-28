@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 import {
   InputError,
@@ -14,7 +14,8 @@ export const axiosGet = async (url: string) => {
     const response = await axios.get<any>(url)
     return response
   } catch (error: any) {
-    throwError({ status: error?.status })
+    const err = error as AxiosError
+    throwError({ status: err?.response?.status || 404 })
   }
 }
 

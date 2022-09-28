@@ -1,7 +1,10 @@
 import nock from 'nock'
+import { MemoryRouter as Router } from 'react-router-dom'
 import MockedProducts from '../../mocks/products'
-import { get } from '../../../utils/rest-client'
-import nocked from '../../test-utils/nocked'
+import { renderComponent } from '../../test-utils/component-renderer'
+import ProductList from '../../../pages/Product-List'
+
+nock.disableNetConnect()
 
 type NockResponse = {
   status?: number
@@ -16,17 +19,56 @@ const url = 'http://fakestoreapi.com/products'
 describe('Product list page: Integration', () => {
   beforeEach(() => {
     nock.cleanAll()
+    nock.restore()
   })
   test('Fetch all products: 200', async () => {
+    const fakeResponse = MockedProducts()
+    nock(url)
+      .defaultReplyHeaders({
+        'access-control-allow-origin': '*',
+        'Content-Type': 'application/json',
+        'access-control-allow-credentials': 'true'
+      })
+      .get('')
+      .reply(200, fakeResponse)
+    const wrapper = renderComponent(
+      <Router>
+        <ProductList />
+      </Router>
+    )
+    // assertion pending
+    wrapper.unmount()
+  })
+
+  test('Failed to fetch all products: 404', async () => {
+    nock(url)
+      .defaultReplyHeaders({
+        'access-control-allow-origin': '*',
+        'Content-Type': 'application/json',
+        'access-control-allow-credentials': 'true'
+      })
+      .get('')
+      .reply(404)
+
+    const wrapper = renderComponent(
+      <Router>
+        <ProductList />
+      </Router>
+    )
+    // assertion pending
+    wrapper.unmount()
+  })
+
+  /*test('Fetch all products: 200', async () => {
     const partialUrl = '/products'
     const fakeResponse = MockedProducts()
     nocked('GET', 200, baseApiUrl, fakeResponse, partialUrl)
     const response = (await get({ url })) as any
-    //console.log(response)
+    console.log(response)
     //console.log(nocked)
     //expect(response.body.length).toEqual(fakeResponse.length)
     expect(response.status).toEqual(200)
-  })
+  })*/
   /*test.skip('Failed to fetch all products: 404', async () => {
     const partialUrl = '/products'
     const errorResponse = {
