@@ -37,7 +37,7 @@ describe('Product list page: Integration', () => {
       </Router>
     )
     // assertion pending
-    wrapper.unmount()
+    await wrapper.unmount()
   })
 
   test('Failed to fetch all products: 404', async () => {
@@ -56,7 +56,7 @@ describe('Product list page: Integration', () => {
       </Router>
     )
     // assertion pending
-    wrapper.unmount()
+    await wrapper.unmount()
   })
 
   /*test('Fetch all products: 200', async () => {
