@@ -16,7 +16,7 @@ const url = 'https://fakestoreapi.com/products/123'
 const productId = 123
 
 //const mock = new MockAdapter(axios)
-describe.skip('Product detail page: Integration', () => {
+describe('Product detail page: Integration', () => {
   beforeEach(() => {
     nock.cleanAll()
     //nock.restore()
