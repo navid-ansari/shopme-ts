@@ -31,7 +31,7 @@ describe('Product list page: Integration', () => {
       })
       .get('')
       .reply(200, fakeResponse)
-    const wrapper = renderComponent(
+    const wrapper = await renderComponent(
       <Router>
         <ProductList />
       </Router>
@@ -50,7 +50,7 @@ describe('Product list page: Integration', () => {
       .get('')
       .reply(404)
 
-    const wrapper = renderComponent(
+    const wrapper = await renderComponent(
       <Router>
         <ProductList />
       </Router>
