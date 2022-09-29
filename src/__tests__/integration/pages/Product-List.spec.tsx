@@ -16,7 +16,7 @@ type NockResponse = {
 const baseApiUrl = 'http://fakestoreapi.com'
 const url = 'http://fakestoreapi.com/products'
 
-describe.skip('Product list page: Integration', () => {
+describe('Product list page: Integration', () => {
   beforeEach(() => {
     nock.cleanAll()
     nock.restore()
