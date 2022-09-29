@@ -43,7 +43,7 @@
     "dev": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",
-    "test": "react-scripts test --verbose --watchAll",
+    "test": "react-scripts test --verbose",
     "format:check": "npx prettier --check .",
     "format:fix": "npx prettier --write .",
     "lint:check": "eslint .",
