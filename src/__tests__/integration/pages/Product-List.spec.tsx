@@ -19,7 +19,7 @@ const url = 'http://fakestoreapi.com/products'
 describe('Product list page: Integration', () => {
   beforeEach(() => {
     nock.cleanAll()
-    nock.restore()
+    //nock.restore()
   })
   test('Fetch all products: 200', async () => {
     const fakeResponse = MockedProducts()
