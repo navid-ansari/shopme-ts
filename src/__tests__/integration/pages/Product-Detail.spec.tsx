@@ -6,6 +6,8 @@ import { renderComponent } from '../../test-utils/component-renderer'
 import ProductDetail from '../../../pages/Product-Detail'
 import { screen } from '@testing-library/react'
 
+nock.disableNetConnect()
+
 //import { NotFoundError } from '../../../utils/error-handler'
 
 //import MockAdapter from 'axios-mock-adapter'

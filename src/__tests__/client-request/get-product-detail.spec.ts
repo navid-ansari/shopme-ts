@@ -24,9 +24,7 @@ describe('Product detail page helper', () => {
     let axiosError
     try {
       const response = await getProductDetail('123')
-      console.log(response)
     } catch (error: any) {
-      console.log(error)
       axiosError = error
     }
     expect(mockedAxios.get).toHaveBeenCalledWith(`https://fakestoreapi.com/products/${productId}`)
