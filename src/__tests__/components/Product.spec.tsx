@@ -1,5 +1,8 @@
 import { screen, fireEvent } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
+//import { userEvent } from '@testing-library/user-event'
+import '@testing-library/jest-dom'
+import { MemoryRouter, unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 
 import { renderComponent } from '../test-utils/component-renderer'
 import { reRenderComponent } from '../test-utils/component-renderer'
@@ -16,13 +19,8 @@ describe('Product component', () => {
   let mockedProduct = {} as IProduct
   beforeAll(() => {})
   beforeEach(() => {
+    jest.clearAllMocks()
     mockedProduct = MockedProduct()
-    /*const renderWithRouter = (ui, { route = "/" } = {}) => {
-   window.history.pushState({}, "Test page", route);
-
-   return render(ui, { wrapper: BrowserRouter });
-  };
-  renderWithRouter(<Product />);*/
   })
   afterEach(() => {})
   afterAll(() => {})
@@ -213,5 +211,34 @@ describe('Product component', () => {
     expect(mockOnClick).toHaveBeenCalledTimes(1)
     const heartIconLine = screen.getByTestId('toggle-favorite-line')
     expect(heartIconLine).toHaveClass('ri-heart-line')
+  })
+
+  test('check router redirect to product detail on product click', async () => {
+    const history = createMemoryHistory()
+    history.push = jest.fn()
+    let actualProduct = {}
+    const mockOnClick = (mockedProduct: IProduct) => {
+      actualProduct = mockedProduct
+    }
+    const wrapper = await renderComponent(
+      /*<Router location={history.location} navigator={history}>
+        <Product product={mockedProduct} toggleCart={mockOnClick} />
+      </Router>*/
+      <HistoryRouter history={history}>
+        <Product product={mockedProduct} toggleCart={mockOnClick} />
+      </HistoryRouter>
+    )
+    const { getByRole } = wrapper
+    fireEvent.click(getByRole('link'))
+    expect(screen.getByRole('link')).toHaveAttribute('href', `/product/1`)
+    expect(history.push).toHaveBeenCalledWith(
+      {
+        hash: '',
+        pathname: '/product/1',
+        search: ''
+      },
+      undefined
+    )
+    await wrapper.unmount()
   })
 })
