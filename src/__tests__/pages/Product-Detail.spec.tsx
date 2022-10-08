@@ -26,7 +26,7 @@ describe('Product detail page', () => {
   afterEach(() => {})
   afterAll(() => {})
 
-  /*test.skip('Check if Product detail page is rendered', async () => {
+  test('Check if Product detail page is rendered', async () => {
     const productId = 123
     mockedAxios.get.mockImplementationOnce(() => Promise.resolve(mockedProduct))
     await act(() => {
@@ -43,7 +43,7 @@ describe('Product detail page', () => {
     expect(page).toHaveLength(1)
   })
 
-  test.skip('Check if Product detail is fetched from api', async () => {
+  test('Check if Product detail is fetched from api', async () => {
     const productId = 123
     mockedAxios.get.mockImplementationOnce(() => Promise.resolve(mockedProduct))
 
@@ -61,7 +61,7 @@ describe('Product detail page', () => {
       `https://fakestoreapi.com/products/${productId}`
     )
     await expect(mockedAxios.get).toHaveBeenCalledTimes(1)
-  })*/
+  })
 
   test('Check if Product detail failed to fetch from api: 4040', async () => {
     const productId = 123
