@@ -3,10 +3,9 @@ import { screen, fireEvent } from '@testing-library/react'
 
 import Header from '../../components/Header'
 
-import { MemoryRouter, unstable_HistoryRouter as HistoryRouter, Router } from 'react-router-dom'
+import { MemoryRouter, unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 import { renderComponent } from '../test-utils/component-renderer'
-import { wrap } from 'module'
 
 describe('Header component', () => {
   beforeAll(() => {})
