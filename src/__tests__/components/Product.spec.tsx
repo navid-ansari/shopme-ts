@@ -84,9 +84,9 @@ describe('Product component', () => {
     expect(button).toHaveTextContent('Add To Cart')
   })
 
-  test('add to cart button', () => {
+  test('add to cart button', async () => {
     // before click
-    const { rerender } = renderComponent(
+    const { rerender } = await renderComponent(
       <MemoryRouter>
         <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </MemoryRouter>
@@ -106,7 +106,7 @@ describe('Product component', () => {
       </MemoryRouter>
     )
 
-    reRenderComponent({ component, rerender })
+    await reRenderComponent({ component, rerender })
 
     const addToCartBtnClick = screen.getByTestId('add-to-cart-btn')
     fireEvent.click(addToCartBtnClick)
@@ -114,10 +114,10 @@ describe('Product component', () => {
     expect(addToCartBtnClick).toHaveTextContent('Remove From Cart')
   })
 
-  test('remove from cart button', () => {
+  test('remove from cart button', async () => {
     mockedProduct = MockedProduct({ isAddedToCart: true })
     // before click
-    const { rerender } = renderComponent(
+    const { rerender } = await renderComponent(
       <MemoryRouter>
         <Product product={mockedProduct} toggleCart={mockOnClick} />
       </MemoryRouter>
@@ -138,7 +138,7 @@ describe('Product component', () => {
       </MemoryRouter>
     )
 
-    reRenderComponent({ component, rerender })
+    await reRenderComponent({ component, rerender })
 
     const removeFromCartBtnClick = screen.getByTestId('add-to-cart-btn')
     fireEvent.click(removeFromCartBtnClick)
@@ -146,9 +146,9 @@ describe('Product component', () => {
     expect(removeFromCartBtnClick).toHaveTextContent('Add To Cart')
   })
 
-  test('add to favorite button', () => {
+  test('add to favorite button', async () => {
     // before click
-    const { rerender } = renderComponent(
+    const { rerender } = await renderComponent(
       <MemoryRouter>
         <Product product={mockedProduct} toggleFavorite={mockOnClick} />
       </MemoryRouter>
@@ -169,7 +169,7 @@ describe('Product component', () => {
       </MemoryRouter>
     )
 
-    reRenderComponent({ component, rerender })
+    await reRenderComponent({ component, rerender })
     const toggleFavoriteBtnClick = screen.getByTestId('add-to-cart-btn')
     fireEvent.click(toggleFavoriteBtnClick)
     expect(mockOnClick).toHaveBeenCalledTimes(1)
@@ -177,14 +177,14 @@ describe('Product component', () => {
     expect(heartIconFill).toHaveClass('ri-heart-fill')
   })
 
-  test('remove from favorite button', () => {
+  test('remove from favorite button', async () => {
     mockedProduct = {
       ...MockedProduct(),
       isFavorite: true
     }
 
     // before click
-    const { rerender } = renderComponent(
+    const { rerender } = await renderComponent(
       <MemoryRouter>
         <Product product={mockedProduct} toggleFavorite={mockOnClick} />
       </MemoryRouter>
@@ -205,7 +205,7 @@ describe('Product component', () => {
       </MemoryRouter>
     )
 
-    reRenderComponent({ component, rerender })
+    await reRenderComponent({ component, rerender })
     const toggleFavoriteBtnClick = screen.getByTestId('add-to-cart-btn')
     fireEvent.click(toggleFavoriteBtnClick)
     expect(mockOnClick).toHaveBeenCalledTimes(1)
