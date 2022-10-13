@@ -67,22 +67,24 @@ const useProductActionHook = () => {
   }
 
   useEffect(() => {
-    getProducts()
-      .then((response: any) => {
-        const { data } = response
-        const modifiedProducts = data.map((product: IProduct) => {
-          return {
-            ...product,
-            isAddedToCart: false,
-            isFavorite: false
-          }
+    if (products.length == 0) {
+      getProducts()
+        .then((response: any) => {
+          const { data } = response
+          const modifiedProducts = data.map((product: IProduct) => {
+            return {
+              ...product,
+              isAddedToCart: false,
+              isFavorite: false
+            }
+          })
+          // dispatch data to store
+          dispatch(setProducts(modifiedProducts))
         })
-        // dispatch data to store
-        dispatch(setProducts(modifiedProducts))
-      })
-      .catch((error: any) => {
-        //console.log(error) // show error on alert box on UI
-      })
+        .catch((error: any) => {
+          //console.log(error) // show error on alert box on UI
+        })
+    }
   }, [])
 
   return {

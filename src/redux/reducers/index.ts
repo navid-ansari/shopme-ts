@@ -6,12 +6,12 @@ import { toggleFavoriteReducer } from './favoriteProductReducer'
 
 import { cartReducer } from './cartReducer'
 
-/*const reducers = combineReducers({
- allProducts: productReducer,
- product: selectedProductReducer,
- favorites: toggleFavoriteProductReducer,
- cart: cartReducer,
-});*/
+const reducers = combineReducers({
+  products: productReducer,
+  product: selectedProductReducer,
+  favorites: toggleFavoriteReducer,
+  cart: cartReducer
+})
 
 const appReducer = combineReducers({
   /* your app’s top-level reducers */
@@ -29,5 +29,4 @@ const rootReducer = (state: any, action: any) => {
   return appReducer(state, action)
 }
 
-//export { reducers };
-export { rootReducer }
+export { rootReducer, reducers }
