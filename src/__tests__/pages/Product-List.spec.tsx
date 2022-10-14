@@ -9,7 +9,6 @@ import Product from '../../components/Product'
 // mocks
 import MockedProducts from '../mocks/products'
 import { IProduct } from '../types/Product'
-import { wrap } from 'module'
 
 describe('Product List page', () => {
   let mockedProducts = [] as IProduct[]
