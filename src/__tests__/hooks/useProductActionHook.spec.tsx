@@ -16,11 +16,10 @@ import { NotFoundError } from '../../utils/error-handler'
 
 //import { mockedStore } from '../test-utils/reset-store'
 import { IProduct } from '../types/Product'
-import { ActionTypes } from '../../redux/constants/action-types'
 //import mockedInitialState from '../test-utils/redux/mocked-initial-state'
-import mockStore from '../test-utils/redux/mock-store'
 
 import { setProducts } from '../../redux/actions/productAction'
+import testStore from '../test-utils/redux/test-store'
 
 jest.mock('axios')
 
@@ -35,11 +34,9 @@ describe('Product action hook', () => {
     jest.clearAllMocks()
     jest.resetAllMocks()
     mockedProducts = MockedProducts()
-    store = mockStore()
+    store = testStore()
   })
-  afterEach(() => {
-    store.clearActions()
-  })
+  afterEach(() => {})
   afterAll(() => {})
 
   test('fetch products from if products are not present in store: 200', async () => {
@@ -56,12 +53,6 @@ describe('Product action hook', () => {
     }
     mockedAxios.get.mockResolvedValueOnce(mAxiosResponse)
 
-    store = mockStore()
-    const action = {
-      type: ActionTypes.SET_PRODUCTS,
-      payload: mockedProducts
-    }
-    await store.dispatch(setProducts(mockedProducts))
     const wrapper = ({ children }: { children: any }) => (
       <Provider store={store}>{children}</Provider>
     )
@@ -71,11 +62,15 @@ describe('Product action hook', () => {
       },
       { wrapper }
     )
-    const actions = store.getActions()
+
     expect(mockedAxios.get).toHaveBeenCalledWith(url)
     expect(mockedAxios.get).toHaveBeenCalledTimes(1)
-    expect(actions).toEqual([action])
-    //expect(store.getState()['products'].length).toBe(3)
+
+    const unsubscribe = store.subscribe(() => {
+      expect(store.getState()['products'].length).toBe(3)
+    })
+
+    unsubscribe()
     await hook.unmount()
   })
 
@@ -93,7 +88,7 @@ describe('Product action hook', () => {
     }
     mockedAxios.get.mockResolvedValueOnce(mAxiosResponse)
 
-    store = mockStore({ products: mockedProducts })
+    await store.dispatch(setProducts(mockedProducts))
 
     const wrapper = ({ children }: { children: any }) => (
       <Provider store={store}>{children}</Provider>
@@ -108,6 +103,12 @@ describe('Product action hook', () => {
     expect(mockedAxios.get).not.toHaveBeenCalledWith(url)
     expect(mockedAxios.get).toHaveBeenCalledTimes(0)
 
+    const unsubscribe = store.subscribe(() => {
+      expect(store.getState()['products'].length).toBeGreaterThan(0)
+      expect(store.getState()['products']).toBe(mockedProducts)
+    })
+
+    unsubscribe()
     await hook.unmount()
   })
 
