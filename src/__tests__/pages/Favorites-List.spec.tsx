@@ -18,22 +18,26 @@ describe('Product List page', () => {
   })
   afterEach(() => {})
   afterAll(() => {})
-  test('Check if page is rendered', () => {
-    renderComponent(
+  test('Check if page is rendered', async () => {
+    const wrapper = renderComponent(
       <Router>
         <FavoritesList />
       </Router>
     )
     expect(screen.getByTestId('favorites-page')).not.toBeNull()
+
+    await wrapper.unmount()
   })
 
-  test('Check if favorites list is rendered', () => {
+  test('Check if favorites list is rendered', async () => {
     const favoritesElem = mockedFavorites.map(favorite => (
       <Favorite key={favorite.id} favorite={favorite} />
     ))
-    renderComponent(<Router>{favoritesElem}</Router>)
+    const wrapper = await renderComponent(<Router>{favoritesElem}</Router>)
 
     const favoriteItems = screen.getAllByTestId('product')
     expect(favoriteItems).toHaveLength(2)
+
+    await wrapper.unmount()
   })
 })

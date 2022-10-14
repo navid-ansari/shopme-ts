@@ -9,6 +9,7 @@ import Product from '../../components/Product'
 // mocks
 import MockedProducts from '../mocks/products'
 import { IProduct } from '../types/Product'
+import { wrap } from 'module'
 
 describe('Product List page', () => {
   let mockedProducts = [] as IProduct[]
@@ -24,16 +25,18 @@ describe('Product List page', () => {
   })
   afterEach(() => {})
   afterAll(() => {})
-  test('Check if Product List page is rendered', () => {
-    renderComponent(
+  test('Check if Product List page is rendered', async () => {
+    const wrapper = await renderComponent(
       <Router>
         <ProductList />
       </Router>
     )
     expect(screen.getByTestId('gallery')).not.toBeNull()
+
+    await wrapper.unmount()
   })
 
-  test('Check if product list is rendered', () => {
+  test('Check if product list is rendered', async () => {
     const mockOnClick = jest.fn()
     const productsElem = mockedProducts.map(product => (
       <Product
@@ -43,11 +46,13 @@ describe('Product List page', () => {
         toggleCart={mockOnClick}
       />
     ))
-    renderComponent(<Router>{productsElem}</Router>)
+    const wrapper = await renderComponent(<Router>{productsElem}</Router>)
     //const content = screen.queryAllByTestId("content");
     //expect(content).toHaveLength(3);
 
     const productItems = screen.getAllByTestId('content')
     expect(productItems).toHaveLength(3)
+
+    await wrapper.unmount()
   })
 })

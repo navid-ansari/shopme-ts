@@ -24,8 +24,8 @@ describe('Detail component', () => {
   afterEach(() => {})
   afterAll(() => {})
 
-  test('Check if Detail component is rendered', () => {
-    renderComponent(
+  test('Check if Detail component is rendered', async () => {
+    const wrapper = await renderComponent(
       <MemoryRouter>
         <Detail product={mockedProduct} />
       </MemoryRouter>
@@ -33,10 +33,12 @@ describe('Detail component', () => {
     expect(screen.getByTestId('product')).not.toBeNull()
     const product = screen.queryAllByTestId('product')
     expect(product).toHaveLength(1)
+
+    await wrapper.unmount()
   })
 
   test('Check Detail component values', async () => {
-    await renderComponent(
+    const wrapper = await renderComponent(
       <MemoryRouter>
         <Detail product={mockedProduct} />
       </MemoryRouter>
@@ -67,5 +69,7 @@ describe('Detail component', () => {
     expect(priceTitle).toHaveTextContent('Price:')
     const priceValue = screen.getByTestId('price-value')
     expect(priceValue).toHaveTextContent(mockedProduct.price.toString())
+
+    await wrapper.unmount()
   })
 })

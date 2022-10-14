@@ -19,8 +19,8 @@ describe('Cart component', () => {
   afterEach(() => {})
   afterAll(() => {})
 
-  test('Check if component is rendered', () => {
-    renderComponent(
+  test('Check if component is rendered', async () => {
+    const wrapper = await renderComponent(
       <Router>
         <Cart product={mockedProduct} />
       </Router>
@@ -28,10 +28,12 @@ describe('Cart component', () => {
     expect(screen.getByTestId('product')).not.toBeNull()
     const product = screen.queryAllByTestId('product')
     expect(product).toHaveLength(1)
+
+    await wrapper.unmount()
   })
 
   test('Check cart component values', async () => {
-    await renderComponent(
+    const wrapper = await renderComponent(
       <Router>
         <Cart product={mockedProduct} />
       </Router>
@@ -66,5 +68,7 @@ describe('Cart component', () => {
     expect(priceTitle).toHaveTextContent('Price:')
     const priceValue = screen.getByTestId('price-value')
     expect(priceValue).toHaveTextContent(mockedProduct.price.toString())
+
+    await wrapper.unmount()
   })
 })

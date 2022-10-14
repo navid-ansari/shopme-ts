@@ -12,16 +12,18 @@ describe('Star component', () => {
   afterAll(() => {})
 
   test('Check if Star component is rendered', async () => {
-    renderComponent(
+    const wrapper = await renderComponent(
       <MemoryRouter>
         <Star />
       </MemoryRouter>
     )
     await expect(screen.getByTestId('star')).not.toBeNull()
+
+    await wrapper.unmount()
   })
 
   test('Check if Star icon is rendered', async () => {
-    renderComponent(
+    const wrapper = await renderComponent(
       <MemoryRouter>
         <Star />
       </MemoryRouter>
@@ -29,5 +31,7 @@ describe('Star component', () => {
     await expect(screen.getByTestId('ri-star-fill')).not.toBeNull()
     const star = screen.queryAllByTestId('ri-star-fill')
     await expect(star).toHaveLength(1)
+
+    await wrapper.unmount()
   })
 })
