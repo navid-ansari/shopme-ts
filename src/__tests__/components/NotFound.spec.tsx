@@ -11,17 +11,19 @@ describe('Not Found component', () => {
   afterEach(() => {})
   afterAll(() => {})
 
-  test('Check if component is rendered', () => {
-    renderComponent(
+  test('Check if component is rendered', async () => {
+    const wrapper = await renderComponent(
       <MemoryRouter>
         <NotFound />
       </MemoryRouter>
     )
     expect(screen.getByTestId('notfound-page')).not.toBeNull()
+
+    await wrapper.unmount()
   })
 
-  test('Check if heading is rendered', () => {
-    renderComponent(
+  test('Check if heading is rendered', async () => {
+    const wrapper = await renderComponent(
       <MemoryRouter>
         <NotFound />
       </MemoryRouter>
@@ -30,5 +32,7 @@ describe('Not Found component', () => {
     const heading = screen.getByTestId('page-notfound')
     expect(heading).not.toBeNull()
     expect(heading).toHaveTextContent('404 - Url Not Found')
+
+    await wrapper.unmount()
   })
 })

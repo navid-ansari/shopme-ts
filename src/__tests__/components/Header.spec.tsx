@@ -14,22 +14,26 @@ describe('Header component', () => {
   })
   afterEach(() => {})
   afterAll(() => {})
-  test('Render brand name in header', () => {
-    renderComponent(
+  test('Render brand name in header', async () => {
+    const wrapper = await renderComponent(
       <MemoryRouter>
         <Header />
       </MemoryRouter>
     )
     expect(screen.getByText('Shop Me')).toBeInTheDocument()
+
+    await wrapper.unmount()
   })
 
-  test('background color should be #eb3b65', () => {
-    renderComponent(
+  test('background color should be #eb3b65', async () => {
+    const wrapper = await renderComponent(
       <MemoryRouter>
         <Header />
       </MemoryRouter>
     )
     expect(screen.getByTestId('header')).toHaveStyle(`background-color: #eb3b65)`)
+
+    await wrapper.unmount()
   })
 
   test('check if click on bag icon is redirects to home route', async () => {
@@ -44,6 +48,7 @@ describe('Header component', () => {
     expect(getAllByRole('link')[0]).toHaveAttribute('href', `/`)
     fireEvent.click(getAllByRole('link')[0])
     expect(history.location.pathname).toBe('/')
+
     await wrapper.unmount()
   })
 
@@ -56,6 +61,7 @@ describe('Header component', () => {
     const { container } = wrapper
     expect(container.getElementsByClassName('ri-heart-line ri-2x').length).toBe(1)
     expect(container.getElementsByClassName('ri-heart-fill ri-2x').length).toBe(0)
+
     await wrapper.unmount()
   })
 
@@ -90,6 +96,7 @@ describe('Header component', () => {
     const { container } = wrapper
     expect(container.getElementsByClassName('ri-shopping-cart-line ri-2x').length).toBe(1)
     expect(container.getElementsByClassName('ri-shopping-cart-fill ri-2x').length).toBe(0)
+
     await wrapper.unmount()
   })
 
@@ -112,6 +119,7 @@ describe('Header component', () => {
       },
       undefined
     )
+
     await wrapper.unmount()
   })
 })

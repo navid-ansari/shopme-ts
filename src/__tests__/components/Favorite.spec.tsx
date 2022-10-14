@@ -18,8 +18,8 @@ describe('Favorite component', () => {
   afterEach(() => {})
   afterAll(() => {})
 
-  test('Check if component is rendered', () => {
-    renderComponent(
+  test('Check if component is rendered', async () => {
+    const wrapper = await renderComponent(
       <Router>
         <Favorite favorite={mockedFavorite} />
       </Router>
@@ -27,10 +27,12 @@ describe('Favorite component', () => {
     expect(screen.getByTestId('product')).not.toBeNull()
     const product = screen.queryAllByTestId('product')
     expect(product).toHaveLength(1)
+
+    await wrapper.unmount()
   })
 
-  test('Check cart component values', () => {
-    renderComponent(
+  test('Check cart component values', async () => {
+    const wrapper = await renderComponent(
       <Router>
         <Favorite favorite={mockedFavorite} />
       </Router>
@@ -65,5 +67,7 @@ describe('Favorite component', () => {
     expect(priceTitle).toHaveTextContent('Price:')
     const priceValue = screen.getByTestId('price-value')
     expect(priceValue).toHaveTextContent(mockedFavorite.price.toString())
+
+    await wrapper.unmount()
   })
 })

@@ -29,58 +29,56 @@ describe('Product detail page', () => {
   test('Check if Product detail page is rendered', async () => {
     const productId = 123
     mockedAxios.get.mockImplementationOnce(() => Promise.resolve(mockedProduct))
-    await act(() => {
-      renderComponent(
-        <MemoryRouter initialEntries={[`/product/${productId}`]}>
-          <Routes>
-            <Route path="/product/:productId" element={<ProductDetail />}></Route>
-          </Routes>
-        </MemoryRouter>
-      )
-    })
+    const wrapper = await renderComponent(
+      <MemoryRouter initialEntries={[`/product/${productId}`]}>
+        <Routes>
+          <Route path="/product/:productId" element={<ProductDetail />}></Route>
+        </Routes>
+      </MemoryRouter>
+    )
     expect(screen.getByTestId('detail-page')).not.toBeNull()
     const page = screen.queryAllByTestId('detail-page')
     expect(page).toHaveLength(1)
+
+    await wrapper.unmount()
   })
 
   test('Check if Product detail is fetched from api', async () => {
     const productId = 123
     mockedAxios.get.mockImplementationOnce(() => Promise.resolve(mockedProduct))
 
-    await act(() => {
-      renderComponent(
-        <MemoryRouter initialEntries={[`/product/${productId}`]}>
-          <Routes>
-            <Route path="/product/:productId" element={<ProductDetail />}></Route>
-          </Routes>
-        </MemoryRouter>
-      )
-    })
-
-    await expect(mockedAxios.get).toHaveBeenCalledWith(
-      `https://fakestoreapi.com/products/${productId}`
+    const wrapper = await renderComponent(
+      <MemoryRouter initialEntries={[`/product/${productId}`]}>
+        <Routes>
+          <Route path="/product/:productId" element={<ProductDetail />}></Route>
+        </Routes>
+      </MemoryRouter>
     )
-    await expect(mockedAxios.get).toHaveBeenCalledTimes(1)
+
+    expect(mockedAxios.get).toHaveBeenCalledWith(`https://fakestoreapi.com/products/${productId}`)
+    expect(mockedAxios.get).toHaveBeenCalledTimes(1)
+
+    await wrapper.unmount()
   })
 
-  test('Check if Product detail failed to fetch from api: 4040', async () => {
+  test('Check if Product detail failed to fetch from api: 404', async () => {
     const productId = 123
 
     mockedAxios.get.mockRejectedValue({
       response: new NotFoundError('failed to fetch product from api')
     })
-    const response = await act(() => {
-      renderComponent(
-        <MemoryRouter initialEntries={[`/product/${productId}`]}>
-          <Routes>
-            <Route path="/product/:productId" element={<ProductDetail />}></Route>
-          </Routes>
-        </MemoryRouter>
-      )
-    })
+    const wrapper = await renderComponent(
+      <MemoryRouter initialEntries={[`/product/${productId}`]}>
+        <Routes>
+          <Route path="/product/:productId" element={<ProductDetail />}></Route>
+        </Routes>
+      </MemoryRouter>
+    )
 
     expect(mockedAxios.get).toHaveBeenCalledWith(`https://fakestoreapi.com/products/${productId}`)
     expect(mockedAxios.get).toHaveBeenCalledTimes(1)
     expect(await screen.findByText('Error Message')).toBeInTheDocument()
+
+    await wrapper.unmount()
   })
 })

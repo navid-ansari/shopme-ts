@@ -18,22 +18,26 @@ describe('Cart List page', () => {
   })
   afterEach(() => {})
   afterAll(() => {})
-  test('Check if page is rendered', () => {
-    renderComponent(
+  test('Check if page is rendered', async () => {
+    const wrapper = await renderComponent(
       <Router>
         <CartList />
       </Router>
     )
     expect(screen.getByTestId('cart-page')).not.toBeNull()
+
+    await wrapper.unmount()
   })
 
-  test('Check if cart list is rendered', () => {
+  test('Check if cart list is rendered', async () => {
     const cartsElem = mockedCart.map((product: IProduct) => (
       <Cart key={product.id} product={product} />
     ))
-    renderComponent(<Router>{cartsElem}</Router>)
+    const wrapper = await renderComponent(<Router>{cartsElem}</Router>)
 
     const favoriteItems = screen.getAllByTestId('product')
     expect(favoriteItems).toHaveLength(2)
+
+    await wrapper.unmount()
   })
 })
