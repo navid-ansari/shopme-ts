@@ -6,11 +6,19 @@ import Header from '../../components/Header'
 import { MemoryRouter, unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 import { renderComponent } from '../test-utils/component-renderer'
+import testStore from '../test-utils/redux/test-store'
+import { toggleFavoriteProduct } from '../../redux/actions/favoriteProductsAction'
+import { Provider } from 'react-redux'
+import ProductData from '../mocks/data/Product'
+import { cartAction } from '../../redux/actions/cartAction'
 
 describe('Header component', () => {
+  let store: any
   beforeAll(() => {})
   beforeEach(() => {
     jest.clearAllMocks()
+    jest.resetAllMocks()
+    store = testStore()
   })
   afterEach(() => {})
   afterAll(() => {})
@@ -65,6 +73,28 @@ describe('Header component', () => {
     await wrapper.unmount()
   })
 
+  test('check fill heart icon is rendered if product is added to favorite', async () => {
+    const component = (
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    )
+
+    const wrapper = await renderComponent(component)
+    const { container, rerender } = wrapper
+    expect(container.getElementsByClassName('ri-heart-line ri-2x').length).toBe(1)
+    expect(container.getElementsByClassName('ri-heart-fill ri-2x').length).toBe(0)
+
+    await store.dispatch(toggleFavoriteProduct(ProductData()))
+
+    const wrapperRerender = await rerender(<Provider store={store}>{component}</Provider>)
+
+    expect(screen.getByTestId('heart-fill-icon')).toHaveClass('ri-heart-fill ri-2x')
+    expect(screen.getByTestId('heart-fill-icon')).not.toHaveClass('ri-heart-line ri-2x')
+
+    await wrapper.unmount()
+  })
+
   test('check if click on line heart icon is redirects to favorite route', async () => {
     const history = createMemoryHistory()
     history.push = jest.fn()
@@ -96,6 +126,28 @@ describe('Header component', () => {
     const { container } = wrapper
     expect(container.getElementsByClassName('ri-shopping-cart-line ri-2x').length).toBe(1)
     expect(container.getElementsByClassName('ri-shopping-cart-fill ri-2x').length).toBe(0)
+
+    await wrapper.unmount()
+  })
+
+  test('check fill cart icon is rendered if product is added to cart', async () => {
+    const component = (
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    )
+
+    const wrapper = await renderComponent(component)
+    const { container, rerender } = wrapper
+    expect(container.getElementsByClassName('ri-shopping-cart-line ri-2x').length).toBe(1)
+    expect(container.getElementsByClassName('ri-shopping-cart-fill ri-2x').length).toBe(0)
+
+    await store.dispatch(cartAction(ProductData()))
+
+    const wrapperRerender = await rerender(<Provider store={store}>{component}</Provider>)
+
+    expect(screen.getByTestId('cart-fill-icon')).toHaveClass('ri-shopping-cart-fill ri-2x')
+    expect(screen.getByTestId('cart-fill-icon')).not.toHaveClass('ri-shopping-cart-line ri-2x')
 
     await wrapper.unmount()
   })
