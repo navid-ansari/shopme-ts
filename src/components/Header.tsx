@@ -16,17 +16,17 @@ const Header = () => {
 
   const getFavoriteIcon = () => {
     if (favorites.length > 0) {
-      return <i className="ri-heart-fill ri-2x"></i>
+      return <i className="ri-heart-fill ri-2x" data-testid="heart-fill-icon"></i>
     } else {
-      return <i className="ri-heart-line ri-2x"></i>
+      return <i className="ri-heart-line ri-2x" data-testid="heart-line-icon"></i>
     }
   }
 
   const getCartIcon = () => {
     if (cart.length > 0) {
-      return <i className="ri-shopping-cart-fill ri-2x"></i>
+      return <i className="ri-shopping-cart-fill ri-2x" data-testid="cart-fill-icon"></i>
     } else {
-      return <i className="ri-shopping-cart-line ri-2x"></i>
+      return <i className="ri-shopping-cart-line ri-2x" data-testid="cart-line-icon"></i>
     }
   }
 
