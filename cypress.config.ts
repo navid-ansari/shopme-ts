@@ -8,6 +8,6 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    excludeSpecPattern: process.env.CI ? ['cypress/e2e/play.cy.js'] : [] // exclude play.cy.ts in CI
+    excludeSpecPattern: process.env.CI ? ['cypress/e2e/play.cy.ts'] : [] // exclude play.cy.ts in CI
   }
 })
