@@ -11,11 +11,11 @@ pipeline{
                 bat 'npm install'
             }
         }
-        /*stage('Format') {
+        stage('File Format') {
             steps {
                 bat 'npm run format:check'
             }
-        }*/
+        }
         stage('Lint Errors') {
             steps {
                 bat 'npm run lint:check'
