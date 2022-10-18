@@ -5,7 +5,7 @@ pipeline{
     }
     tools {nodejs "node"}
     stages {
-        stage('Dependencies') {
+        stage('Install dependencies') {
             steps {
                 git branch: 'main', url: 'https://github.com/navid-ansari/shopme-ts.git'
                 bat 'npm install'
@@ -16,27 +16,27 @@ pipeline{
                 bat 'npm run format:check'
             }
         }*/
-        stage('Lint') {
+        stage('Check lint errors') {
             steps {
                 bat 'npm run lint:check'
             }
         }
-        stage('Unit Test') {
+        stage('Run unit and integration test') {
             steps {
                 bat 'npm test'
             }
         }
-        stage('Build') {
+        stage('Create production build') {
             steps {
                 bat 'npm run build -- --profile'
             }
         }
-        stage('Start') {
+        stage('Start server') {
             steps {
                 bat 'START /B npm start'
             }
         }
-        stage('E2E Test') {
+        stage('Run E2E test') {
             steps {
                 bat 'npx cypress run'
             }
