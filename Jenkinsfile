@@ -16,27 +16,27 @@ pipeline{
                 bat 'npm run format:check'
             }
         }*/
-        stage('Check lint errors') {
+        stage('Lint Errors') {
             steps {
                 bat 'npm run lint:check'
             }
         }
-        stage('Run unit and integration test') {
+        stage('Unit & Integration Test') {
             steps {
                 bat 'npm test'
             }
         }
-        stage('Create production build') {
+        stage('Production Build') {
             steps {
                 bat 'npm run build -- --profile'
             }
         }
-        stage('Start server') {
+        stage('Start Server') {
             steps {
                 bat 'START /B npm start'
             }
         }
-        stage('Run E2E test') {
+        stage('E2E Test') {
             steps {
                 bat 'npx cypress run'
             }
