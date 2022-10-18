@@ -33,7 +33,7 @@ pipeline{
         }
         stage('Start') {
             steps {
-                bat 'npm start'
+                bat 'START /B npm start'
             }
         }
         stage('E2E Test') {
