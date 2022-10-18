@@ -25,7 +25,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-          browser: chrome
       - run: npm ci
       # install dependencies
       - run: npm install
@@ -35,7 +34,12 @@ jobs:
       - run: npm run lint:check
       # run unit and integration test - jest and rtl
       - run: npm test
-      # run e2e test - cypress
-      - run: npm run test:e2e
       # run production build
       - run: CI='' npm run build -- --profile
+
+      - name: Cypress.io 
+        uses: cypress-io/github-action@v4
+        with:
+          browser: chrome
+          # run e2e test - cypress
+      - run: npm run test:e2e
