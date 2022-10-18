@@ -11,11 +11,6 @@ pipeline{
                 bat 'npm install'
             }
         }
-        stage('Test') {
-            steps {
-                bat 'npm test'
-            }
-        }
         /*stage('Format') {
             steps {
                 bat 'npm run format:check'
@@ -24,6 +19,16 @@ pipeline{
         stage('Lint') {
             steps {
                 bat 'npm run lint:check'
+            }
+        }
+        stage('Unit Test') {
+            steps {
+                bat 'npm test'
+            }
+        }
+        stage('E2E Test') {
+            steps {
+                bat 'npm run test:e2e'
             }
         }
         stage('Build') {
