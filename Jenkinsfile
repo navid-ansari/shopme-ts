@@ -38,7 +38,7 @@ pipeline{
         }
         stage('E2E Test') {
             steps {
-                bat 'npm run test:e2e'
+                bat 'npx cypress run'
             }
         }
     }
