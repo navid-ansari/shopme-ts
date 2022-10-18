@@ -26,16 +26,26 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm ci
-      # install dependencies
+      
+        # install dependencies
       - run: npm install
+        name: Install Packages
+
       # check code formatting - prettier
       - run: npm run format:check
+        name: Check File Formatting
+
       # check code syntax - lint(ignore warning)
       - run: npm run lint:check
+        name: Check Lint Errors
+
       # run unit and integration test - jest and rtl
       - run: npm test
+        name: Unit and Integration Tests
+
       # run production build
       - run: CI='' npm run build -- --profile
+        name: Create Production Build
 
    # run e2e test - cypress
       - name: E2E Test 

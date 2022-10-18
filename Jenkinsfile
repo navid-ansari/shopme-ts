@@ -26,14 +26,19 @@ pipeline{
                 bat 'npm test'
             }
         }
-        stage('E2E Test') {
-            steps {
-                bat 'npm run test:e2e'
-            }
-        }
         stage('Build') {
             steps {
                 bat 'npm run build -- --profile'
+            }
+        }
+        stage('Start') {
+            steps {
+                bat 'npm start'
+            }
+        }
+        stage('E2E Test') {
+            steps {
+                bat 'npx cypress run'
             }
         }
     }
