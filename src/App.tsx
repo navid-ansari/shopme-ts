@@ -12,7 +12,7 @@ import FavoritesList from './pages/Favorites-List'
 
 // components
 import Header from './components/Header'
-import Footer from './components/Footer'
+//import Footer from './components/Footer'
 import NotFound from './components/NotFound'
 import CartList from './pages/Cart-List'
 
@@ -30,7 +30,7 @@ function App() {
             404 Not Found
           </Route>
         </Routes>
-        <Footer />
+        {/* <Footer />*/}
       </Router>
     </div>
   )
