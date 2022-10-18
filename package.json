@@ -44,6 +44,7 @@
     "start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test --verbose",
+    "test:e2e": "cypress open",
     "coverage": "react-scripts test --env=jsdom --watchAll=false --coverage",
     "format:check": "npx prettier --check .",
     "format:fix": "npx prettier --write .",
