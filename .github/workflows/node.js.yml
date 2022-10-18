@@ -36,12 +36,11 @@ jobs:
       - run: npm test
       # run production build
       - run: CI='' npm run build -- --profile
-      # run server from production build
-      - run: npm start
 
    # run e2e test - cypress
       - name: E2E Test 
         uses: cypress-io/github-action@v4
         with:
+          start: npm start # run server from production build
           browser: chrome
           
