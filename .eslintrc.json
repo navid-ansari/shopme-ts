@@ -58,11 +58,6 @@
       "error",
       "never"
     ],
-    "no-console": "off",
-    "react/jsx-filename-extension": [
-      "error",
-      { "extensions": [".tsx"] }
-    ]
-    //"import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+    "no-console": "off"
   }
 }

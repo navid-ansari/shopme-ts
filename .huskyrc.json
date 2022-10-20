@@ -1,5 +1,0 @@
-{
-  "hooks": {
-     "pre-commit": "eslint . && npm run test -- --watchAll=false && npx cypress run"
-  }
-}
