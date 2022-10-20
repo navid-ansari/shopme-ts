@@ -31,11 +31,7 @@ jobs:
       - run: npm install
         name: Install Packages
 
-      # check code formatting - prettier
-      - run: npm run format:check
-        name: Check File Formatting
-
-      # check code syntax - lint(ignore warning)
+      # check file format & code syntax - elint(ignore warning)
       - run: npm run lint:check
         name: Check Lint Errors
 

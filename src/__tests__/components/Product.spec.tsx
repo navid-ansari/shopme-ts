@@ -246,7 +246,7 @@ describe('Product component', () => {
     )
     const { getByRole } = wrapper
     fireEvent.click(getByRole('link'))
-    expect(screen.getByRole('link')).toHaveAttribute('href', `/product/1`)
+    expect(screen.getByRole('link')).toHaveAttribute('href', '/product/1')
     expect(history.push).toHaveBeenCalledWith(
       {
         hash: '',

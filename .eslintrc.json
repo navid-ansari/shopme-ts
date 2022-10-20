@@ -2,7 +2,7 @@
   "env": {
     "browser": true,
     "es2021": true,
-    "jest": true // for jest testing
+    "jest": true
   },
   "extends": [
     "eslint:recommended",
@@ -15,7 +15,11 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "unused-imports"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "unused-imports"
+  ],
   "rules": {
     "react/react-in-jsx-scope": "off", //disable import React at the top of the file
     "no-empty-function": "off",
@@ -33,6 +37,27 @@
     ],
     "prefer-const": "error",
     "@typescript-eslint/prefer-as-const": "error", // use const instead of let
-    "@typescript-eslint/no-explicit-any": ["off"] // turn off 'Unexpected any. Specify a different type' warning
+    "@typescript-eslint/no-explicit-any": [
+      "off"
+    ], // turn off 'Unexpected any. Specify a different type' warning
+    "max-len": [
+      "warn",
+      {
+        "code": 100
+      }
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "no-console": "off"
   }
 }

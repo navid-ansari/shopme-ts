@@ -39,7 +39,7 @@ describe('Header component', () => {
         <Header />
       </MemoryRouter>
     )
-    expect(screen.getByTestId('header')).toHaveStyle(`background-color: #eb3b65)`)
+    expect(screen.getByTestId('header')).toHaveStyle('background-color: #eb3b65)')
 
     await wrapper.unmount()
   })
@@ -53,7 +53,7 @@ describe('Header component', () => {
       </HistoryRouter>
     )
     const { getAllByRole } = wrapper
-    expect(getAllByRole('link')[0]).toHaveAttribute('href', `/`)
+    expect(getAllByRole('link')[0]).toHaveAttribute('href', '/')
     fireEvent.click(getAllByRole('link')[0])
     expect(history.location.pathname).toBe('/')
 
@@ -105,7 +105,7 @@ describe('Header component', () => {
     )
     const { getAllByRole } = wrapper
     fireEvent.click(getAllByRole('link')[1])
-    expect(getAllByRole('link')[1]).toHaveAttribute('href', `/favorite`)
+    expect(getAllByRole('link')[1]).toHaveAttribute('href', '/favorite')
     expect(history.push).toHaveBeenCalledWith(
       {
         hash: '',
@@ -162,7 +162,7 @@ describe('Header component', () => {
     )
     const { getAllByRole } = wrapper
     fireEvent.click(getAllByRole('link')[2])
-    expect(getAllByRole('link')[2]).toHaveAttribute('href', `/cart`)
+    expect(getAllByRole('link')[2]).toHaveAttribute('href', '/cart')
     expect(history.push).toHaveBeenCalledWith(
       {
         hash: '',
