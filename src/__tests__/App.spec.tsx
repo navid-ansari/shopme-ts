@@ -102,7 +102,7 @@ describe('App component', () => {
 
   test('check if product favorite route is rendered', async () => {
     const wrapper = await renderComponent(
-      <MemoryRouter initialEntries={[`/favorite`]}>
+      <MemoryRouter initialEntries={['/favorite']}>
         <Routes>
           <Route path="/favorite" element={<FavoritesList />}></Route>
         </Routes>
@@ -119,7 +119,7 @@ describe('App component', () => {
 
   test('check if product cart route is rendered', async () => {
     const wrapper = await renderComponent(
-      <MemoryRouter initialEntries={[`/cart`]}>
+      <MemoryRouter initialEntries={['/cart']}>
         <Routes>
           <Route path="/cart" element={<CartList />}></Route>
         </Routes>
@@ -135,7 +135,7 @@ describe('App component', () => {
 
   test('check if product not found route is rendered', async () => {
     const wrapper = await renderComponent(
-      <MemoryRouter initialEntries={[`/invalid-route`]}>
+      <MemoryRouter initialEntries={['/invalid-route']}>
         <Routes>
           <Route path="/*" element={<NotFound />}></Route>
         </Routes>

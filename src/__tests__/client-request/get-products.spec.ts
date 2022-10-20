@@ -26,7 +26,7 @@ describe('Client request: get products', () => {
     } catch (error: any) {
       axiosError = error
     }
-    expect(mockedAxios.get).toHaveBeenCalledWith(`https://fakestoreapi.com/products`)
+    expect(mockedAxios.get).toHaveBeenCalledWith('https://fakestoreapi.com/products')
     expect(mockedAxios.get).toHaveBeenCalledTimes(1)
     expect(axiosError.status).toBe(404)
     expect(axiosError.message).toContain('Invalid client request url')

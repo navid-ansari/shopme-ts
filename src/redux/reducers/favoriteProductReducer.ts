@@ -19,9 +19,9 @@ export const toggleFavoriteReducer = (
   { type, payload }: { type: string; payload: IProduct }
 ) => {
   switch (type) {
-    case ActionTypes.FAVOURITE_PRODUCTS:
-      return state.length === 0 ? defaultItem(state, payload) : findItem(state, payload)
-    default:
-      return state
+  case ActionTypes.FAVOURITE_PRODUCTS:
+    return state.length === 0 ? defaultItem(state, payload) : findItem(state, payload)
+  default:
+    return state
   }
 }
