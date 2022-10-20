@@ -40,6 +40,7 @@
     ]
   },
   "scripts": {
+    "prepare": "husky install",
     "dev": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",
@@ -77,6 +78,7 @@
     "eslint-plugin-promise": "^6.1.0",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^8.0.1",
     "jest-watch-typeahead": "^0.6.5",
     "redux-devtools-extension": "^2.13.9",
     "redux-mock-store": "^1.5.4",

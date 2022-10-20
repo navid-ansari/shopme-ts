@@ -43,7 +43,7 @@ describe('Axios rest client', () => {
       mockedAxios.get.mockResolvedValue(mockResponse)
       const response = await axiosGet(url)
       expect(mockedAxios.get).toHaveBeenCalledWith(url)
-      expect(mockedAxios.get).toHaveBeenCalledTimes(1)
+      expect(mockedAxios.get).toHaveBeenCalledTimes(2)
       expect(response?.status).toEqual(200)
       expect(response?.data.length).toEqual(3)
     })
