@@ -46,7 +46,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --verbose",
     "cypress": "cypress open",
-    "test:e2e": "npx cypress run",
+    "test:e2e": "npx cypress run --spec cypress/e2e/tests/*.cy.ts",
     "coverage": "react-scripts test --env=jsdom --watchAll=false --coverage",
     "lint:check": "eslint .",
     "lint:fix": "eslint --fix .",
