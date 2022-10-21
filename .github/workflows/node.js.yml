@@ -47,6 +47,7 @@ jobs:
       - name: E2E Test 
         uses: cypress-io/github-action@v4
         with:
+          spec: cypress/e2e/tests/*.cy.ts
           start: npm start # run server from production build
           browser: chrome
           
