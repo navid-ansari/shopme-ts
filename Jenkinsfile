@@ -23,7 +23,7 @@ pipeline{
         }
         stage('Unit & Integration Test') {
             steps {
-                bat 'npm test'
+                bat encoding: 'UTF-8', script: 'npm test'
             }
         }
         stage('Production Build') {
@@ -38,7 +38,7 @@ pipeline{
         }
         stage('E2E Test') {
             steps {
-                bat 'npx cypress run'
+                bat encoding: 'UTF-8', script: 'npx cypress run'
             }
         }
     }
