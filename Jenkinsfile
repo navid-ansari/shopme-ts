@@ -38,7 +38,7 @@ pipeline{
         }
         stage('E2E Test') {
             steps {
-                bat encoding: 'UTF-8', script: 'npx cypress run'
+                bat encoding: 'UTF-8', script: 'npx cypress run --spec cypress/e2e/tests/*.cy.ts'
             }
         }
     }
