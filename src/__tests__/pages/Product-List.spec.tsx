@@ -37,13 +37,8 @@ describe('Product List page', () => {
 
   test('Check if product list is rendered', async () => {
     const mockOnClick = jest.fn()
-    const productsElem = mockedProducts.map(product => (
-      <Product
-        key={product.id}
-        product={product}
-        toggleFavorite={mockOnClick}
-        toggleCart={mockOnClick}
-      />
+    const productsElem = mockedProducts.map((product) => (
+      <Product key={product.id} product={product} toggleFavorite={mockOnClick} toggleCart={mockOnClick} />
     ))
     const wrapper = await renderComponent(<Router>{productsElem}</Router>)
     //const content = screen.queryAllByTestId("content");

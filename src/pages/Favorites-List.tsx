@@ -10,9 +10,7 @@ import { IStore } from '../types/Store'
 
 const FavoritesList = () => {
   const favorites = useSelector((state: IStore) => state.favorites)
-  const favroriteElem = favorites.map((favorite: IProduct) => (
-    <Favorite key={favorite.id} favorite={favorite} />
-  ))
+  const favroriteElem = favorites.map((favorite: IProduct) => <Favorite key={favorite.id} favorite={favorite} />)
   return (
     <div className="favorites-page" data-testid="favorites-page">
       <div className="container">{favroriteElem}</div>

@@ -23,7 +23,7 @@ const Stars = (props: Props) => {
     setStarCount([...totalStars])
   }, [props.rating])
 
-  const starElem = starCount.map(star => <Star key={star} />)
+  const starElem = starCount.map((star) => <Star key={star} />)
 
   return (
     <span className="stars" data-testid="stars">

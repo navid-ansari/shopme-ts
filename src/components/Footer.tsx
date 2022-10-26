@@ -30,8 +30,8 @@ export const Footer = () => {
           <i className="ri-copyright-line"></i> Copyright
         </h4>
         <p>
-          <i className="ri-copyright-line"></i>2022 All rights reserved. &apos;SHOP ME&apos; &#39;
-          &apos;SHOP ME&apos; logo are trademark of Shop Me Inc.
+          <i className="ri-copyright-line"></i>2022 All rights reserved. &apos;SHOP ME&apos; &#39; &apos;SHOP ME&apos;
+          logo are trademark of Shop Me Inc.
         </p>
       </div>
     </div>

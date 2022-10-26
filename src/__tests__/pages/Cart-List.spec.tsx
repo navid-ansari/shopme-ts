@@ -30,9 +30,7 @@ describe('Cart List page', () => {
   })
 
   test('Check if cart list is rendered', async () => {
-    const cartsElem = mockedCart.map((product: IProduct) => (
-      <Cart key={product.id} product={product} />
-    ))
+    const cartsElem = mockedCart.map((product: IProduct) => <Cart key={product.id} product={product} />)
     const wrapper = await renderComponent(<Router>{cartsElem}</Router>)
 
     const favoriteItems = screen.getAllByTestId('product')

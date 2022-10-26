@@ -30,9 +30,7 @@ describe('Product List page', () => {
   })
 
   test('Check if favorites list is rendered', async () => {
-    const favoritesElem = mockedFavorites.map(favorite => (
-      <Favorite key={favorite.id} favorite={favorite} />
-    ))
+    const favoritesElem = mockedFavorites.map((favorite) => <Favorite key={favorite.id} favorite={favorite} />)
     const wrapper = await renderComponent(<Router>{favoritesElem}</Router>)
 
     const favoriteItems = screen.getAllByTestId('product')

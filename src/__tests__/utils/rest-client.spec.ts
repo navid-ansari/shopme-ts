@@ -34,9 +34,7 @@ describe('Rest client', () => {
         ok: true
       }
 
-      const fetchMock = jest
-        .spyOn(global, 'fetch')
-        .mockImplementation(() => Promise.resolve(mockResponse as Response))
+      const fetchMock = jest.spyOn(global, 'fetch').mockImplementation(() => Promise.resolve(mockResponse as Response))
       const response = await get({ url })
       const data = await response?.json()
       expect(fetchMock).toHaveBeenCalledWith(url)
@@ -66,9 +64,7 @@ describe('Rest client', () => {
       const status = 401
       const fetchMock = jest
         .spyOn(global, 'fetch')
-        .mockImplementation(() =>
-          Promise.reject({ response: new AuthenticationError(errorMessage) })
-        )
+        .mockImplementation(() => Promise.reject({ response: new AuthenticationError(errorMessage) }))
       await expect(get({ url })).rejects.toThrow(errorMessage)
       expect(fetchMock).toHaveBeenCalledWith(url)
       expect(fetchMock).toHaveBeenCalledTimes(1)
@@ -104,9 +100,7 @@ describe('Rest client', () => {
 
       const fetchMock = jest
         .spyOn(global, 'fetch')
-        .mockImplementation(() =>
-          Promise.reject({ response: new InternalServerError(errorMessage) })
-        )
+        .mockImplementation(() => Promise.reject({ response: new InternalServerError(errorMessage) }))
       await expect(get({ url })).rejects.toThrow(errorMessage)
       expect(fetchMock).toHaveBeenCalledWith(url)
       expect(fetchMock).toHaveBeenCalledTimes(1)
