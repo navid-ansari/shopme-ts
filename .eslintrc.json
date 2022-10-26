@@ -7,7 +7,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -18,7 +19,8 @@
   "plugins": [
     "react",
     "@typescript-eslint",
-    "unused-imports"
+    "unused-imports",
+    "prettier"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off", //disable import React at the top of the file
@@ -59,5 +61,10 @@
       "never"
     ],
     "no-console": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
   }
 }
