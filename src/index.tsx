@@ -27,7 +27,7 @@ axios.interceptors.response.use(
     // Add configurations here
     document.body.classList.remove('spinner')
     if (res.status === 201) {
-      console.log('POST Response => '+res)
+      console.log('POST Response => ' + res)
     }
     return res
   },

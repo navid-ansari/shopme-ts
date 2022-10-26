@@ -331,13 +331,13 @@ button.remove-from-cart {
 }
 .spinner:before {
   content: '';
-    background: #000000cc;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+  background: #000000cc;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 .spinner:after {
   content: url('./spinner.gif');
@@ -351,8 +351,12 @@ button.remove-from-cart {
   animation: spin 2s linear infinite;
 }
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Small devices (portrait phones, 320px and up) */

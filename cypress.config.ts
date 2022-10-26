@@ -14,7 +14,7 @@ export default defineConfig({
       //config.excludeSpecPattern = ['cypress/e2e/tests/*.cy.ts']
       //config.ignoreTestFiles
       // implement node event listeners here
-    },
+    }
     //excludeSpecPattern: ['cypress/e2e/tests']
   }
 })

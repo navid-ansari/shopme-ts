@@ -1,12 +1,6 @@
 import nock from 'nock'
 
-const nocked = (
-  method: string,
-  status: number,
-  baseApiUrl: string,
-  responseBody?: any,
-  partialUrl?: string
-) => {
+const nocked = (method: string, status: number, baseApiUrl: string, responseBody?: any, partialUrl?: string) => {
   if (method === 'GET') {
     if (status === 200) {
       //console.log('nocked 200')

@@ -26,7 +26,7 @@ describe('Stars component', () => {
 
   test('should render stars', async () => {
     const starsArray = [0, 1, 2, 3]
-    const starsElem = starsArray.map(star => <Star key={star} />)
+    const starsElem = starsArray.map((star) => <Star key={star} />)
     const wrapper = await renderComponent(<MemoryRouter>{starsElem}</MemoryRouter>)
     const stars = screen.queryAllByTestId('star')
     await expect(stars).toHaveLength(4)
