@@ -6,6 +6,35 @@ import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 import { Auth0Provider } from '@auth0/auth0-react'
+import axios from 'axios'
+
+// For GET requests
+axios.interceptors.request.use(
+  (req) => {
+    // Add configurations here
+    console.log(req)
+    document.body.classList.add('spinner')
+    return req
+  },
+  (err) => {
+    return Promise.reject(err)
+  }
+)
+
+// For POST requests
+axios.interceptors.response.use(
+  (res) => {
+    // Add configurations here
+    document.body.classList.remove('spinner')
+    if (res.status === 201) {
+      console.log('POST Response => '+res)
+    }
+    return res
+  },
+  (err) => {
+    return Promise.reject(err)
+  }
+)
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
