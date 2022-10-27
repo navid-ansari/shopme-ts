@@ -26,7 +26,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm ci
-      
+
         # install dependencies
       - run: npm install
         name: Install Packages
@@ -47,11 +47,10 @@ jobs:
       - run: CI='' npm run build -- --profile
         name: Create Production Build
 
-   # run e2e test - cypress
-      - name: E2E Test 
+      # run e2e test - cypress
+      - name: E2E Test
         uses: cypress-io/github-action@v4
         with:
           spec: cypress/e2e/tests/*.cy.ts
           start: npm start # run server from production build
           browser: chrome
-          
