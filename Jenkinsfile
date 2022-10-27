@@ -11,14 +11,24 @@ pipeline{
         bat 'npm install'
       }
     }
-    /*stage('Format') {
+    stage('Check Format') {
       steps {
         bat 'npm run format:check'
       }
-    }*/
+    }
+    stage('Fix Format') {
+      steps {
+        bat 'npm run format:fix'
+      }
+    }
     stage('Lint Check') {
       steps {
         bat 'npm run lint:check'
+      }
+    }
+    stage('Lint Fix') {
+      steps {
+        bat 'npm run lint:fix'
       }
     }
     stage('Unit & Integration Test') {
