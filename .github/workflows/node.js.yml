@@ -35,8 +35,16 @@ jobs:
       - run: npm run format:check
         name: Check File Format Errors
 
+      # fix file format - prettier(ignore warning)
+      - run: npm run format:fix
+        name: Fix File Format Errors
+
       # check file format & code syntax - elint(ignore warning)
       - run: npm run lint:check
+        name: Check Lint Errors
+
+      # fix code tyle & syntax - elint(ignore warning)
+      - run: npm run lint:fix
         name: Check Lint Errors
 
       # run unit and integration test - jest and rtl
