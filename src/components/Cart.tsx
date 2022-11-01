@@ -3,11 +3,10 @@ import PropTypes from 'prop-types'
 
 // component
 import Detail from './Detail'
+import { IProduct } from '../types/Product'
 
-const Cart = (props: any) => {
-  const { category, description, id, image, price, rating, title } = props.product
-  const { rate, count } = rating || {}
-  return <Detail product={props.product} />
+const Cart = ({ product }: { product: IProduct }) => {
+  return <Detail {...product} />
 }
 
 export default Cart
@@ -25,8 +24,6 @@ Cart.prototype = {
     }),
     title: PropTypes.string,
     isFavorite: PropTypes.bool,
-    isAddedToCart: PropTypes.bool,
-    toggleFavorite: PropTypes.func,
-    toggleCart: PropTypes.func
+    isAddedToCart: PropTypes.bool
   })
 }

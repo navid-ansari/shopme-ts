@@ -3,12 +3,10 @@ import PropTypes from 'prop-types'
 
 // component
 import Detail from './Detail'
+import { IProduct } from '../types/Product'
 
-const Favorite = (props: any) => {
-  const { category, description, id, image, price, rating, title } = props.favorite
-  const { rate, count } = rating || {}
-
-  return <Detail product={props.favorite} />
+const Favorite = ({ favorite }: { favorite: IProduct }) => {
+  return <Detail {...favorite} />
 }
 
 export default Favorite
@@ -26,8 +24,6 @@ Favorite.prototype = {
     }),
     title: PropTypes.string,
     isFavorite: PropTypes.bool,
-    isAddedToCart: PropTypes.bool,
-    toggleFavorite: PropTypes.func,
-    toggleCart: PropTypes.func
+    isAddedToCart: PropTypes.bool
   })
 }

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 import Star from './Star'
 
-const Stars = (props: Props) => {
+const Stars = ({ rating }: { rating: number }) => {
   const [starCount, setStarCount] = useState<number[]>([])
 
   const generateStars = (rating: number) => {
@@ -15,13 +16,9 @@ const Stars = (props: Props) => {
   }
 
   useEffect(() => {
-    /*;(async () => {
-      const totalStars: number[] = await generateStars(props.rating)
-      setStarCount([...totalStars])
-    })()*/
-    const totalStars = generateStars(props.rating)
+    const totalStars = generateStars(rating)
     setStarCount([...totalStars])
-  }, [props.rating])
+  }, [rating])
 
   const starElem = starCount.map((star) => <Star key={star} />)
 
@@ -34,6 +31,6 @@ const Stars = (props: Props) => {
 
 export default Stars
 
-type Props = {
-  rating: number
+Stars.prototype = {
+  rating: PropTypes.number
 }

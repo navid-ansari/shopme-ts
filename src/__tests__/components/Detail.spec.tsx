@@ -27,7 +27,7 @@ describe('Detail component', () => {
   test('Check if Detail component is rendered', async () => {
     const wrapper = await renderComponent(
       <MemoryRouter>
-        <Detail product={mockedProduct} />
+        <Detail {...mockedProduct} />
       </MemoryRouter>
     )
     expect(screen.getByTestId('product')).not.toBeNull()
@@ -40,7 +40,7 @@ describe('Detail component', () => {
   test('Check Detail component values', async () => {
     const wrapper = await renderComponent(
       <MemoryRouter>
-        <Detail product={mockedProduct} />
+        <Detail {...mockedProduct} />
       </MemoryRouter>
     )
 
