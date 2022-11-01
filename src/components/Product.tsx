@@ -1,27 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// redux
-import { useDispatch } from 'react-redux'
-
 // router
 import { Link } from 'react-router-dom'
+import { ProductProps } from '../types/Product-Props'
 
-const Product = (props: any) => {
-  const {
-    category,
-    description,
-    id,
-    image,
-    price,
-    rating,
-    title,
-    isFavorite,
-    isAddedToCart,
-    toggleFavorite,
-    toggleCart
-  } = props.product
-  const dispatch = useDispatch()
+/*interface IProduct {
+  category: string
+  description: string
+  id: number
+  image: string
+  price: number
+  rating: {
+    rate: number
+    count: number
+  }
+  title: string
+  isFavorite: boolean
+  isAddedToCart: boolean
+}
+
+interface ProductProps {
+  product: IProduct
+  toggleFavorite(product: IProduct): void
+  toggleCart(product: IProduct): void
+}*/
+
+const Product = ({ product, toggleFavorite, toggleCart }: ProductProps) => {
+  const { category, description, id, image, price, rating, title, isFavorite, isAddedToCart } = product
 
   const getFavoriteIcon = () => {
     if (isFavorite) {
@@ -29,7 +35,7 @@ const Product = (props: any) => {
         <i
           className="ri-heart-fill ri-fw ri-2x"
           data-testid="toggle-favorite-fill"
-          onClick={() => props.toggleFavorite(props.product)}
+          onClick={() => toggleFavorite(product)}
         ></i>
       )
     } else {
@@ -37,7 +43,7 @@ const Product = (props: any) => {
         <i
           className="ri-heart-line ri-fw ri-2x"
           data-testid="toggle-favorite-line"
-          onClick={() => props.toggleFavorite(props.product)}
+          onClick={() => toggleFavorite(product)}
         ></i>
       )
     }
@@ -68,7 +74,7 @@ const Product = (props: any) => {
       <button
         className={isAddedToCart ? 'remove-from-cart' : 'add-to-cart'}
         data-testid="add-to-cart-btn"
-        onClick={() => props.toggleCart(props.product)}
+        onClick={() => toggleCart(product)}
       >
         {getButtonText()}
       </button>

@@ -13,22 +13,22 @@ pipeline{
     }
     stage('Check Format') {
       steps {
-        bat 'npm run format:check'
+        bat encoding: 'UTF-8', script: 'npm run format:check'
       }
     }
     stage('Fix Format') {
       steps {
-        bat 'npm run format:fix'
+        bat encoding: 'UTF-8', script: 'npm run format:fix'
       }
     }
     stage('Lint Check') {
       steps {
-        bat 'npm run lint:check'
+        bat encoding: 'UTF-8', script: 'npm run lint:check'
       }
     }
     stage('Lint Fix') {
       steps {
-        bat 'npm run lint:fix'
+       bat encoding: 'UTF-8', script: 'npm run lint:fix'
       }
     }
     stage('Unit & Integration Test') {

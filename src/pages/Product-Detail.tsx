@@ -57,7 +57,7 @@ const ProductDetail = () => {
     <div className="detail-page" data-testid="detail-page">
       <ToastContainer className="foo" data-testid="toast-message" />
       <div className="container">
-        <Detail product={product} />
+        <Detail {...product} />
       </div>
     </div>
   )

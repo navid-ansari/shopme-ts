@@ -1,11 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // component
 import Stars from '../components/Stars'
+import { IProduct } from '../types/Product'
 
-export const Detail = (props: any) => {
-  const { category, description, id, image, price, rating, title } = props.product
-
+export const Detail = ({ category, description, id, image, price, rating, title }: IProduct) => {
   const { rate, count } = rating || {}
 
   return (
@@ -57,3 +57,16 @@ export const Detail = (props: any) => {
 }
 
 export default Detail
+
+Detail.prototype = {
+  category: PropTypes.string,
+  description: PropTypes.string,
+  id: PropTypes.number,
+  image: PropTypes.string,
+  price: PropTypes.number,
+  rating: PropTypes.shape({
+    rate: PropTypes.number,
+    count: PropTypes.number
+  }),
+  title: PropTypes.string
+}
