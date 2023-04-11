@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 // component
 import Stars from '../components/Stars'
 import { IProduct } from '../types/Product'
+import CartButton from './CartButton'
 
 export const Detail = ({ category, description, id, image, price, rating, title }: IProduct) => {
   const { rate, count } = rating || {}
@@ -51,6 +52,18 @@ export const Detail = ({ category, description, id, image, price, rating, title 
             &#x20b9; {price}
           </span>
         </div>
+      </div>
+      <div className="action-column">
+        <div className="quantity-box">
+          <button className="decrease-quantity">
+            <i className="ri-subtract-line"></i>
+          </button>
+          <div className="quantity-count">5</div>
+          <button className="increase-quantity">
+            <i className="ri-add-line"></i>
+          </button>
+        </div>
+        <CartButton></CartButton>
       </div>
     </div>
   )

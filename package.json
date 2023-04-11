@@ -48,6 +48,7 @@
     "cypress": "cypress open",
     "test:e2e": "npx cypress run --spec cypress/e2e/tests/*.cy.ts",
     "coverage": "react-scripts test --env=jsdom --watchAll=false --coverage",
+    "coverage:full": "jest --verbose --coverage --coverageReporters='text-summary'",
     "format:check": "npx prettier --check .",
     "format:fix": "npx prettier --write .",
     "lint:check": "eslint .",
