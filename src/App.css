@@ -359,6 +359,16 @@ button.remove-from-cart {
   }
 }
 
+.quantity-box {
+  display: flex;
+  border: 1px solid gray;
+  justify-content: space-between;
+  border: 1px solid #ededed;
+}
+.quantity-count {
+  border: 1px lightgray;
+  padding: 5px;
+}
 /* Small devices (portrait phones, 320px and up) */
 @media (min-width: 360px) {
   .header {

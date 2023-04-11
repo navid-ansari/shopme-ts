@@ -15,6 +15,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import NotFound from './components/NotFound'
 import CartList from './pages/Cart-List'
+import ServiceData from './pages/Service-Data'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/product/:productId" element={<ProductDetail />}></Route>
           <Route path="/favorite" element={<FavoritesList />}></Route>
           <Route path="/cart" element={<CartList />}></Route>
+          <Route path="/service-data" element={<ServiceData />}></Route>
           <Route path="*" element={<NotFound />}>
             404 Not Found
           </Route>
