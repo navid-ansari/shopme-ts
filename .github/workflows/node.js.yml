@@ -63,12 +63,13 @@ jobs:
           start: npm start # run server from production build
           browser: chrome
 
+      # build and push docker image
       - name: Build & push Docker image
-      uses: mr-smithers-excellent/docker-build-push@v5
-      with:
-        image: navidansari/shopme-ts
-        tags: latest
-        registry: docker.io
-        dockerfile: Dockerfile
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}    
+        uses: mr-smithers-excellent/docker-build-push@v5
+        with:
+          image: navidansari/shopme-ts
+          tags: latest
+          registry: docker.io
+          dockerfile: Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}    
