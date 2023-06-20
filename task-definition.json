@@ -53,7 +53,7 @@
   "memory": "128",
   "taskRoleArn": null,
   "compatibilities": ["EXTERNAL", "EC2"],
-  "taskDefinitionArn": "arn:aws:ecs:eu-north-1:822295642183:task-definition/shopme-ts-task-def:3",
+  "taskDefinitionArn": "arn:aws:ecs:eu-north-1:822295642183:task-definition/shopme-ts-task-def:6",
   "family": "shopme-ts-task-def",
   "requiresAttributes": [
     {
@@ -68,7 +68,7 @@
   "networkMode": null,
   "runtimePlatform": null,
   "cpu": "1024",
-  "revision": 3,
+  "revision": 6,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
