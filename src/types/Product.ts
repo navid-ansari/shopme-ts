@@ -3,7 +3,7 @@
 import { rating } from './Rating'
 
 export type IProduct = {
-  id: number
+  id: string
   title: string
   price: number
   description: string

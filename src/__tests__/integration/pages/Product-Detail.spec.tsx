@@ -12,7 +12,8 @@ nock.disableNetConnect()
 
 //import MockAdapter from 'axios-mock-adapter'
 
-const url = 'https://fakestoreapi.com/products/123'
+//const url = 'https://fakestoreapi.com/products/123'
+const url = `${process.env.REACT_APP_BASE_URL}/api/productDetails/123`
 const productId = 123
 
 //const mock = new MockAdapter(axios)

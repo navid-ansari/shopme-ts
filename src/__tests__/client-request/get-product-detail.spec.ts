@@ -27,7 +27,7 @@ describe('Product detail page helper', () => {
     } catch (error: any) {
       axiosError = error
     }
-    expect(mockedAxios.get).toHaveBeenCalledWith(`https://fakestoreapi.com/products/${productId}`)
+    expect(mockedAxios.get).toHaveBeenCalledWith(`${process.env.REACT_APP_BASE_URL}/api/productDetails/${productId}`)
     expect(mockedAxios.get).toHaveBeenCalledTimes(1)
     expect(axiosError.status).toBe(404)
     expect(axiosError.message).toContain('Invalid client request url')

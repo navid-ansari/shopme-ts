@@ -22,7 +22,7 @@ export const Detail = ({
 }: IProduct) => {
   const { rate, count } = rating || {}
   const location = useLocation()
-  const { toggleFavorite, toggleCart, getProducts } = useProductActionHook()
+  const { toggleFavorite, toggleCart } = useProductActionHook()
   const product: IProduct = {
     category,
     description,

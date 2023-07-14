@@ -1,0 +1,7 @@
+Project name: SHOPME
+Cluster name: SHOPME-CLUSTER
+Database name: SHOPME_DB
+Collection name: 
+  SHOPME_ALL_PRODUCTS
+Username: shopmeuser
+Password: shopmeuser

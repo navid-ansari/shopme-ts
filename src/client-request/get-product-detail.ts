@@ -2,7 +2,9 @@ import { axiosGet } from '../utils/axios-rest-client'
 
 const getProductDetail = async (productId: string) => {
   return new Promise((resolve, reject) => {
-    const url = `https://fakestoreapi.com/products/${productId}`
+    //const url = `https://fakestoreapi.com/products/${productId}`
+    //const url = `http://localhost:5001/api/productDetails/${productId}`
+    const url = `${process.env.REACT_APP_BASE_URL}/api/productDetails/${productId}`
     //console.log('before api call')
     axiosGet(url)
       .then((response: any) => {

@@ -17,6 +17,7 @@ const mockOnClick = jest.fn()
 
 describe('Product component', () => {
   let mockedProduct = {} as IProduct
+  //let mockedProduct: IProduct
   beforeAll(() => {})
   beforeEach(() => {
     jest.clearAllMocks()
@@ -27,7 +28,7 @@ describe('Product component', () => {
   test('Should render component', async () => {
     const wrapper = await renderComponent(
       <MemoryRouter>
-        <Product product={mockedProduct} />
+        <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </MemoryRouter>
     )
     expect(screen.getByTestId('content')).not.toBeNull()
@@ -44,7 +45,7 @@ describe('Product component', () => {
 
     const wrapper = await renderComponent(
       <MemoryRouter>
-        <Product product={mockedProduct} toggleCart={mockOnClick} />
+        <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </MemoryRouter>
     )
 
@@ -61,7 +62,7 @@ describe('Product component', () => {
   test('check rendered product values', async () => {
     const wrapper = await renderComponent(
       <MemoryRouter>
-        <Product product={mockedProduct} />
+        <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </MemoryRouter>
     )
 
@@ -127,7 +128,7 @@ describe('Product component', () => {
     // before click
     const wrapper = await renderComponent(
       <MemoryRouter>
-        <Product product={mockedProduct} toggleCart={mockOnClick} />
+        <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </MemoryRouter>
     )
 
@@ -161,7 +162,7 @@ describe('Product component', () => {
     // before click
     const wrapper = await renderComponent(
       <MemoryRouter>
-        <Product product={mockedProduct} toggleFavorite={mockOnClick} />
+        <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </MemoryRouter>
     )
 
@@ -200,7 +201,7 @@ describe('Product component', () => {
     // before click
     const wrapper = await renderComponent(
       <MemoryRouter>
-        <Product product={mockedProduct} toggleFavorite={mockOnClick} />
+        <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </MemoryRouter>
     )
 
@@ -241,7 +242,7 @@ describe('Product component', () => {
         <Product product={mockedProduct} toggleCart={mockOnClick} />
       </Router>*/
       <HistoryRouter history={history}>
-        <Product product={mockedProduct} toggleCart={mockOnClick} />
+        <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </HistoryRouter>
     )
     const { getByRole } = wrapper
