@@ -1,6 +1,6 @@
 const MockedProducts = () => [
   {
-    id: 1,
+    id: '1',
     title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
     price: 109.95,
     description:
@@ -12,7 +12,7 @@ const MockedProducts = () => [
     isFavorite: false
   },
   {
-    id: 2,
+    id: '2',
     title: 'Mens Casual Premium Slim Fit T-Shirts ',
     price: 22.3,
     description:
@@ -24,7 +24,7 @@ const MockedProducts = () => [
     isFavorite: false
   },
   {
-    id: 3,
+    id: '3',
     title: 'Mens Cotton Jacket',
     price: 55.99,
     description:

@@ -17,6 +17,7 @@ const mockedAxios = axios as jest.Mocked<typeof axios>
 
 describe('Product detail page', () => {
   let mockedProduct = {}
+  const url = `${process.env.REACT_APP_BASE_URL}/api/productDetails/`
   beforeAll(() => {})
   beforeEach(() => {
     mockedProduct = mockedproduct()
@@ -55,7 +56,7 @@ describe('Product detail page', () => {
       </MemoryRouter>
     )
 
-    expect(mockedAxios.get).toHaveBeenCalledWith(`https://fakestoreapi.com/products/${productId}`)
+    expect(mockedAxios.get).toHaveBeenCalledWith(`${url}${productId}`)
     //expect(mockedAxios.get).toHaveBeenCalledTimes(1)
 
     await wrapper.unmount()
@@ -75,7 +76,7 @@ describe('Product detail page', () => {
       </MemoryRouter>
     )
 
-    expect(mockedAxios.get).toHaveBeenCalledWith(`https://fakestoreapi.com/products/${productId}`)
+    expect(mockedAxios.get).toHaveBeenCalledWith(`${url}${productId}`)
     //expect(mockedAxios.get).toHaveBeenCalledTimes(1)
     //expect(await screen.findByText('Error Message')).toBeInTheDocument()
 

@@ -88,7 +88,7 @@ Product.propTypes = {
   product: PropTypes.shape({
     category: PropTypes.string,
     description: PropTypes.string,
-    id: PropTypes.number,
+    id: PropTypes.string,
     image: PropTypes.string,
     price: PropTypes.number,
     rating: PropTypes.shape({
@@ -97,9 +97,9 @@ Product.propTypes = {
     }),
     title: PropTypes.string,
     isFavorite: PropTypes.bool,
-    isAddedToCart: PropTypes.bool,
-    toggleFavorite: PropTypes.func,
-    toggleCart: PropTypes.func
+    isAddedToCart: PropTypes.bool
+    //toggleFavorite: PropTypes.func,
+    //toggleCart: PropTypes.func
   }),
   toggleFavorite: PropTypes.func,
   toggleCart: PropTypes.func

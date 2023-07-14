@@ -50,7 +50,7 @@ describe('App component', () => {
       },
       statusText: '',
       config: {
-        url: 'https://fakestoreapi.com/products'
+        url: `${process.env.REACT_APP_BASE_URL}/api/allproducts`
       }
     }
     mockedAxios.get.mockResolvedValueOnce(mAxiosResponse)
@@ -80,7 +80,7 @@ describe('App component', () => {
       },
       statusText: '',
       config: {
-        url: `https://fakestoreapi.com/products/${productId}`
+        url: `${process.env.REACT_APP_BASE_URL}/api/productDetails/${productId}`
       }
     }
     mockedAxios.get.mockResolvedValueOnce(mAxiosResponse)

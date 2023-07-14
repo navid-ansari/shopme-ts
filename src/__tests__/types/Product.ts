@@ -1,5 +1,5 @@
 export interface IProduct {
-  id: number
+  id: string
   title: string
   price: number
   description: string
@@ -8,6 +8,8 @@ export interface IProduct {
   rating: IRating
   isFavorite: boolean
   isAddedToCart: boolean
+  //toggleFavorite: any
+  //toggleCart: any
 }
 
 export interface IRating {
