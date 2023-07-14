@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run format:check && npm run lint:check && npm run test -- --watchAll=false && npm run test:e2e
+npm run format:check && npm run lint:check && npm run test:dev -- --watchAll=false && npm run test:e2e
