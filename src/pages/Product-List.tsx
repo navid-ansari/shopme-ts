@@ -31,7 +31,7 @@ const ProductList = () => {
           setAllProducts(modifiedProducts)
         })
         .catch((error: any) => {
-          //console.log(error) // show error on alert box on UI
+          console.log(error) // show error on alert box on UI
         })
     }
   }, [])
