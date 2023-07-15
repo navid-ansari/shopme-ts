@@ -36,7 +36,7 @@ jobs:
       - run: npm ci
 
         # install dependencies
-      - run: yarn install
+      - run: npm install
         name: Install Packages
 
       # check file format - prettier(ignore warning)
