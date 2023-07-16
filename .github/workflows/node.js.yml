@@ -60,8 +60,8 @@ jobs:
         name: Unit and Integration Tests
 
       # run production build
-      - run: CI='' npm run start:prod -- --profile
-        name: Create Production Build
+      #- run: CI='' npm run start:prod -- --profile
+      #  name: Create Production Build
 
       # run e2e test - cypress
       - name: E2E Test
@@ -69,7 +69,7 @@ jobs:
         with:
           spec: cypress/e2e/tests/*.cy.ts
           #build: npm run build # create production build
-          start: npm run start:dev # run server from production build
+          start: npm run start:prod # run server from production build
           browser: chrome
 
       # build and push docker image
