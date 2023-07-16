@@ -46,6 +46,7 @@
     "start:dev": "env-cmd -f .env.development npm start",
     "start:prod": "env-cmd -f .env.production npm run build",
     "build": "react-scripts build",
+    "serve": "serve -s build",
     "test:dev": "env-cmd -f .env.development react-scripts test --verbose",
     "test:prod": "env-cmd -f .env.production react-scripts test --verbose",
     "cypress": "cypress open",
