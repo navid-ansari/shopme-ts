@@ -68,8 +68,8 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           spec: cypress/e2e/tests/*.cy.ts
-          #build: npm run build # create production build
-          start: npm run serve # run server from production build
+          build: npm run start:e2e # create production build
+          start: npm run serve:e2e # run server from production build
           browser: chrome
 
       # build and push docker image
