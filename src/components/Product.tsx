@@ -97,9 +97,9 @@ Product.propTypes = {
     }),
     title: PropTypes.string,
     isFavorite: PropTypes.bool,
-    isAddedToCart: PropTypes.bool
-    //toggleFavorite: PropTypes.func,
-    //toggleCart: PropTypes.func
+    isAddedToCart: PropTypes.bool,
+    toggleFavorite: PropTypes.func,
+    toggleCart: PropTypes.func
   }),
   toggleFavorite: PropTypes.func,
   toggleCart: PropTypes.func
