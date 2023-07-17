@@ -48,6 +48,7 @@
     "start:e2e": "env-cmd -f .env.production npm run build",
     "start:prod": "env-cmd -f .env.production npm run build",
     "serve:e2e": "serve -s build",
+    "test": "env-cmd -f .env.development react-scripts test --verbose",
     "test:dev": "env-cmd -f .env.development react-scripts test --verbose",
     "test:prod": "env-cmd -f .env.production react-scripts test --verbose",
     "cypress": "cypress open",

@@ -11,13 +11,16 @@ import mockedproduct from '../mocks/product'
 
 import axios from 'axios'
 import { NotFoundError } from '../../utils/error-handler'
+import { getApiUrl } from '../../utils/get-api-url'
 
 jest.mock('axios')
 const mockedAxios = axios as jest.Mocked<typeof axios>
 
 describe('Product detail page', () => {
   let mockedProduct = {}
-  const url = `${process.env.REACT_APP_BASE_URL}/api/productDetails/`
+  //const url = `${process.env.REACT_APP_BASE_URL}/api/productDetails/`
+  const productId = 123
+  const url = `${getApiUrl('productDetails')}/${productId}`
   beforeAll(() => {})
   beforeEach(() => {
     mockedProduct = mockedproduct()
@@ -28,7 +31,7 @@ describe('Product detail page', () => {
   afterAll(() => {})
 
   test('Check if Product detail page is rendered', async () => {
-    const productId = 123
+    //const productId = 123
     mockedAxios.get.mockImplementationOnce(() => Promise.resolve(mockedProduct))
     const wrapper = await renderComponent(
       <MemoryRouter initialEntries={[`/product/${productId}`]}>
@@ -45,7 +48,7 @@ describe('Product detail page', () => {
   })
 
   test('Check if Product detail is fetched from api', async () => {
-    const productId = 123
+    //const productId = 123
     mockedAxios.get.mockImplementationOnce(() => Promise.resolve(mockedProduct))
 
     const wrapper = await renderComponent(
@@ -56,14 +59,14 @@ describe('Product detail page', () => {
       </MemoryRouter>
     )
 
-    expect(mockedAxios.get).toHaveBeenCalledWith(`${url}${productId}`)
+    expect(mockedAxios.get).toHaveBeenCalledWith(url)
     //expect(mockedAxios.get).toHaveBeenCalledTimes(1)
 
     await wrapper.unmount()
   })
 
   test('Check if Product detail failed to fetch from api: 404', async () => {
-    const productId = 123
+    //const productId = 123
 
     mockedAxios.get.mockRejectedValue({
       response: new NotFoundError('failed to fetch product from api')
@@ -76,7 +79,7 @@ describe('Product detail page', () => {
       </MemoryRouter>
     )
 
-    expect(mockedAxios.get).toHaveBeenCalledWith(`${url}${productId}`)
+    expect(mockedAxios.get).toHaveBeenCalledWith(url)
     //expect(mockedAxios.get).toHaveBeenCalledTimes(1)
     //expect(await screen.findByText('Error Message')).toBeInTheDocument()
 

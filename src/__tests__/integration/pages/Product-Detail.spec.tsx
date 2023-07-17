@@ -5,6 +5,7 @@ import { renderComponent } from '../../test-utils/component-renderer'
 
 import ProductDetail from '../../../pages/Product-Detail'
 import { screen } from '@testing-library/react'
+import { getApiUrl } from '../../../utils/get-api-url'
 
 nock.disableNetConnect()
 
@@ -13,8 +14,11 @@ nock.disableNetConnect()
 //import MockAdapter from 'axios-mock-adapter'
 
 //const url = 'https://fakestoreapi.com/products/123'
-const url = `${process.env.REACT_APP_BASE_URL}/api/productDetails/123`
+//const url = `${process.env.REACT_APP_BASE_URL}/api/productDetails/123`
+//const productId = 123
+
 const productId = 123
+const url = `${getApiUrl('productDetails')}/${productId}`
 
 //const mock = new MockAdapter(axios)
 describe('Product detail page: Integration', () => {

@@ -3,11 +3,15 @@ import '@testing-library/jest-dom'
 import axios from 'axios'
 import { NotFoundError } from '../../utils/error-handler'
 import getProducts from '../../client-request/get-products'
+import { getApiUrl } from '../../utils/get-api-url'
 
 jest.mock('axios')
 const mockedAxios = axios as jest.Mocked<typeof axios>
 
 describe('Client request: get products', () => {
+  const productId = 123
+  const url = `${getApiUrl('products')}`
+
   beforeAll(() => {})
   beforeEach(() => {
     jest.clearAllMocks()
@@ -26,7 +30,7 @@ describe('Client request: get products', () => {
     } catch (error: any) {
       axiosError = error
     }
-    expect(mockedAxios.get).toHaveBeenCalledWith(`${process.env.REACT_APP_BASE_URL}/api/allproducts`)
+    expect(mockedAxios.get).toHaveBeenCalledWith(url)
     expect(mockedAxios.get).toHaveBeenCalledTimes(1)
     expect(axiosError.status).toBe(404)
     expect(axiosError.message).toContain('Invalid client request url')
