@@ -33,12 +33,12 @@ pipeline{
     }
     stage('Unit & Integration Test') {
       steps {
-        bat encoding: 'UTF-8', script: 'npm test'
+        bat encoding: 'UTF-8', script: 'npm run test:prod'
       }
     }
     stage('Production Build') {
       steps {
-        bat 'npm run build -- --profile'
+        bat 'npm run start:prod -- --profile'
       }
     }
     stage('Start Server') {
