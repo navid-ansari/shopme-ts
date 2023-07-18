@@ -8,7 +8,7 @@ pipeline{
     stage('Install dependencies') {
       steps {
         git branch: 'main', url: 'https://github.com/navid-ansari/shopme-ts.git'
-        bat 'npm run rimraf'
+        bat 'rimraf node_modules'
         bat 'npm install'
       }
     }
