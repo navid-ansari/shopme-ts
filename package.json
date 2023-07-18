@@ -63,7 +63,7 @@
     "heroku-postbuild": "npm run build",
     "prepare": "husky install",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
-    "rimraf": "/node_modules/rimraf/bin.js"
+    "rimraf": "/node_modules/rimraf/dist/cjs/src/bin.js"
   },
   "browserslist": {
     "production": [
