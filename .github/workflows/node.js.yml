@@ -60,6 +60,14 @@ jobs:
         name: Unit and Integration Tests
       - uses: ArtiomTr/jest-coverage-report-action@v2
 
+      # generate unit test coverage
+      - run: npm run test:CI
+        name: Generate Unit Test Coverage
+      - uses: romeovs/lcov-reporter-action@v0.2.16
+        with:
+         lcov-file: ./coverage/lcov.info
+         github-token: ${{secrets.GITHUB_TOKEN}}
+
       # run production build
       - run: CI='' npm run start:prod -- --profile
         name: Create Production Build
