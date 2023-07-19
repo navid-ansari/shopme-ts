@@ -58,7 +58,7 @@ jobs:
       # run unit and integration test - jest and rtl
       - run: npm run test:prod
         name: Unit and Integration Tests
-      - uses: ArtiomTr/jest-coverage-report-action@v2
+      #- uses: ArtiomTr/jest-coverage-report-action@v2
 
       # generate unit test coverage
       - run: npm run test:CI
