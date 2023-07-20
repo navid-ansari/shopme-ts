@@ -57,7 +57,7 @@
     "test:e2e": "npx cypress run --spec cypress/e2e/tests/*.cy.ts",
     "coverage:dev": "env-cmd -f .env.development npm run test -- --coverage --watchAll=false",
     "coverage:prod": "env-cmd -f .env.production npm run test -- --coverage --watchAll=false",
-    "coverage:dev:full": "jest --verbose --coverage --coverageReporters='text-summary'",
+    "coverage:prod:full": "cross-env CI=true env-cmd -f .env.production react-scripts test --verbose --coverage --coverageReporters='text-summary'",
     "format:check": "npx prettier --check .",
     "format:fix": "npx prettier --write .",
     "lint:check": "eslint .",
