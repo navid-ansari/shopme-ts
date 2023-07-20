@@ -64,7 +64,7 @@ jobs:
       - name: Unit Tests Coverage Report
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
-          test-script: npm run coverage:dev:full
+          test-script: npm run coverage:prod:full
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       # generate unit test coverage
