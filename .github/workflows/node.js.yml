@@ -65,6 +65,7 @@ jobs:
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
           test-script: npm run coverage:prod:full
+          annotations: none
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       # generate unit test coverage
