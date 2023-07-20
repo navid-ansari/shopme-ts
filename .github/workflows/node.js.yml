@@ -66,6 +66,8 @@ jobs:
         with:
           test-script: npm run coverage:prod:full
           annotations: none
+          # This will attach comment to a PR and generate markdown output.
+          output: comment, report-markdown
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       # generate unit test coverage
