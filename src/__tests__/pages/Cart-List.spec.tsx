@@ -32,8 +32,7 @@ describe('Cart List page', () => {
   test('Check if cart list is rendered', async () => {
     const cartsElem = mockedCart.map((product: IProduct) => <Cart key={product.id} product={product} />)
     const wrapper = await renderComponent(<Router>{cartsElem}</Router>)
-
-    const favoriteItems = screen.getAllByTestId('product')
+    const favoriteItems = screen.getAllByTestId('cart-item')
     expect(favoriteItems).toHaveLength(2)
 
     await wrapper.unmount()

@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 import Stars from '../components/Stars'
 import { IProduct } from '../types/Product'
 import { useLocation } from 'react-router-dom'
-import DeleteProductBtn from './DeleteProductBtn'
-import ProductCount from './ProductCount'
+//import DeleteProductBtn from './DeleteProductBtn'
+//import ProductCount from './ProductCount'
 import useProductActionHook from '../hooks/useProductActionHook'
 
 export const Detail = ({
@@ -35,7 +35,7 @@ export const Detail = ({
     isAddedToCart
   }
 
-  return (
+  /*return (
     <div className="product" data-testid="product">
       <div className="left-column">
         <img src={image} alt="" data-testid="product-image" />
@@ -102,6 +102,66 @@ export const Detail = ({
           }
         })()}
       </div>
+    </div>
+  )*/
+
+  return (
+    <div className="product-detail" data-testid="product-detail">
+      <div className="left-column">
+        <img src={image} alt="" data-testid="product-image" />
+      </div>
+      <div className="right-column">
+        <h2 className="product-title" data-testid="product-title">
+          {title}
+        </h2>
+        <div className="product-description">
+          <span className="decription" data-testid="decription-title">
+            Description:
+          </span>
+          <span className="description-text" data-testid="decription-text">
+            {description}
+          </span>
+        </div>
+        <div className="product-review">
+          {rate && (
+            <span className="rating-stars">
+              <Stars rating={rate} />
+            </span>
+          )}
+          {count}
+        </div>
+        <div className="product-price">
+          <span className="price" data-testid="price-title">
+            Price:
+          </span>
+          <span className="total-price" data-testid="price-value">
+            &#x20b9; {price}
+          </span>
+        </div>
+      </div>
+      {/*<div className="action-column">
+        {(() => {
+          if (location && location.pathname == '/cart') {
+            return (
+              <>
+                <ProductCount />
+                <DeleteProductBtn
+                  toggleFavorite={() => toggleFavorite(product)}
+                  toggleCart={() => toggleCart(product)}
+                />
+              </>
+            )
+          } else if (location && location.pathname == '/favorite') {
+            return (
+              <DeleteProductBtn
+                key={id}
+                toggleFavorite={() => toggleFavorite(product)}
+                toggleCart={() => toggleCart(product)}
+              />
+            )
+          }
+        })()}
+      </div>*/}
     </div>
   )
 }

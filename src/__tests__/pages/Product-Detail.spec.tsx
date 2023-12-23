@@ -40,8 +40,8 @@ describe('Product detail page', () => {
         </Routes>
       </MemoryRouter>
     )
-    expect(screen.getByTestId('detail-page')).not.toBeNull()
-    const page = screen.queryAllByTestId('detail-page')
+    expect(screen.getByTestId('product-detail-page')).not.toBeNull()
+    const page = screen.queryAllByTestId('product-detail-page')
     expect(page).toHaveLength(1)
 
     await wrapper.unmount()

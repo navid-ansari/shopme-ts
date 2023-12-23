@@ -31,7 +31,7 @@ describe('Product component', () => {
         <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </MemoryRouter>
     )
-    expect(screen.getByTestId('content')).not.toBeNull()
+    expect(screen.getByTestId('product')).not.toBeNull()
 
     await wrapper.unmount()
   })
@@ -245,9 +245,9 @@ describe('Product component', () => {
         <Product product={mockedProduct} toggleCart={mockOnClick} toggleFavorite={mockOnClick} />
       </HistoryRouter>
     )
-    const { getByRole } = wrapper
-    fireEvent.click(getByRole('link'))
-    expect(screen.getByRole('link')).toHaveAttribute('href', '/product/1')
+    const { getByTestId } = wrapper
+    fireEvent.click(getByTestId('product-link'))
+    expect(screen.getByTestId('product-link')).toHaveAttribute('href', '/product/1')
     expect(history.push).toHaveBeenCalledWith(
       {
         hash: '',

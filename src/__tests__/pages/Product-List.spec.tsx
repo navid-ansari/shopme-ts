@@ -30,7 +30,7 @@ describe('Product List page', () => {
         <ProductList />
       </Router>
     )
-    expect(screen.getByTestId('gallery')).not.toBeNull()
+    expect(screen.getByTestId('product-list-page')).not.toBeNull()
 
     await wrapper.unmount()
   })
@@ -44,7 +44,7 @@ describe('Product List page', () => {
     //const content = screen.queryAllByTestId("content");
     //expect(content).toHaveLength(3);
 
-    const productItems = screen.getAllByTestId('content')
+    const productItems = screen.getAllByTestId('product')
     expect(productItems).toHaveLength(3)
 
     await wrapper.unmount()

@@ -11,3 +11,13 @@ export const axiosGet = async (url: string) => {
     throwError({ status: err?.response?.status })
   }
 }
+
+export const axiosPost = async (url: string, body: any) => {
+  try {
+    const response = await axios.post<any>(url, body)
+    return response
+  } catch (error: any) {
+    const err: any = error as AxiosError
+    throwError({ status: err?.response?.status })
+  }
+}

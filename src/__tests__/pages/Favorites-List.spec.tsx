@@ -24,7 +24,7 @@ describe('Product List page', () => {
         <FavoritesList />
       </Router>
     )
-    expect(screen.getByTestId('favorites-page')).not.toBeNull()
+    expect(screen.getByTestId('product-list-page')).not.toBeNull()
 
     await wrapper.unmount()
   })
@@ -33,7 +33,7 @@ describe('Product List page', () => {
     const favoritesElem = mockedFavorites.map((favorite) => <Favorite key={favorite.id} favorite={favorite} />)
     const wrapper = await renderComponent(<Router>{favoritesElem}</Router>)
 
-    const favoriteItems = screen.getAllByTestId('product')
+    const favoriteItems = screen.getAllByTestId('favorite-item')
     expect(favoriteItems).toHaveLength(2)
 
     await wrapper.unmount()

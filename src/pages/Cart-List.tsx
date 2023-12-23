@@ -12,11 +12,26 @@ import { IStore } from '../types/Store'
 const CartList = () => {
   const cart = useSelector((state: IStore) => state.cart)
 
-  const cartElem = cart.map((product: IProduct) => <Cart key={product.id} product={product} />)
+  const cartElem = cart.map((product: IProduct) => {
+    return (
+      <div className="cart-product" data-testid="cart-product" key={product.id}>
+        <Cart key={product.id} product={product} />
+      </div>
+    )
+  })
 
-  return (
+  /*return (
     <div className="cart-page" data-testid="cart-page">
       <div className="container">{cartElem}</div>
+    </div>
+  )*/
+  return (
+    <div className="page-wrapper">
+      <div className="page-content">
+        <div className="cart-page" data-testid="cart-page">
+          {cartElem}
+        </div>
+      </div>
     </div>
   )
 }

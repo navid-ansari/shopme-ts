@@ -45,10 +45,19 @@ const ProductList = () => {
     />
   ))
 
-  return (
+  /*return (
     <div className="productlist-page">
       <div className="container">
         <div className="gallery" data-testid="gallery">
+          {productsElem}
+        </div>
+      </div>
+    </div>
+  )*/
+  return (
+    <div className="page-wrapper">
+      <div className="page-content">
+        <div className="product-list-page" data-testid="product-list-page">
           {productsElem}
         </div>
       </div>
