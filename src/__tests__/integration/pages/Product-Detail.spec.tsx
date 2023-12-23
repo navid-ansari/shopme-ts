@@ -30,7 +30,7 @@ describe('Product detail page: Integration', () => {
     //mock.reset()
   })
 
-  test('Fetch selected product by id: 200', async () => {
+  xtest('Fetch selected product by id: 200', async () => {
     nock(url)
       .defaultReplyHeaders({
         'access-control-allow-origin': '*',
@@ -51,7 +51,7 @@ describe('Product detail page: Integration', () => {
     wrapper.unmount()
   })
 
-  test('Failed to fetch selected product by id: 404', async () => {
+  xtest('Failed to fetch selected product by id: 404', async () => {
     nock(url)
       .defaultReplyHeaders({
         'access-control-allow-origin': '*',

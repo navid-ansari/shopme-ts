@@ -57,7 +57,7 @@ const Product = ({ product, toggleFavorite, toggleCart }: ProductProps) => {
     }
   }
 
-  return (
+  /*return (
     <div className="content" id="content" data-testid="content">
       <div className="favorite-icon" data-testid="favorite-icon">
         {getFavoriteIcon()}
@@ -78,6 +78,35 @@ const Product = ({ product, toggleFavorite, toggleCart }: ProductProps) => {
       >
         {getButtonText()}
       </button>
+    </div>
+  )*/
+  return (
+    <div className="product" id="product" data-testid="product">
+      <a href="javascript:void(0)" className="product-link-wrapper">
+        <div className="product-favorite-icon" data-testid="favorite-icon">
+          {getFavoriteIcon()}
+        </div>
+        <Link to={`/product/${id}`} className="product-link" data-testid="product-link">
+          <img className="thumbnail" src={image} alt="" data-testid="product-image" />
+          <h3 className="product-title" data-testid="product-title">
+            {title}
+          </h3>
+          <p className="product-description" data-testid="product-description">
+            {description}
+          </p>
+          <h6 className="product-price" data-testid="product-price">
+            <span>&#x20b9;</span>
+            {price}
+          </h6>
+        </Link>
+        <button
+          className={isAddedToCart ? 'remove-from-cart' : 'add-to-cart'}
+          data-testid="add-to-cart-btn"
+          onClick={() => toggleCart(product)}
+        >
+          {getButtonText()}
+        </button>
+      </a>
     </div>
   )
 }

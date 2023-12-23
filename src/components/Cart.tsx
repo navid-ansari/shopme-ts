@@ -6,7 +6,11 @@ import Detail from './Detail'
 import { IProduct } from '../types/Product'
 
 const Cart = ({ product }: { product: IProduct }) => {
-  return <Detail {...product} />
+  return (
+    <div className="cart-item" data-testid="cart-item">
+      <Detail {...product} />
+    </div>
+  )
 }
 
 export default Cart

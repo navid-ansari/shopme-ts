@@ -6,7 +6,11 @@ import Detail from './Detail'
 import { IProduct } from '../types/Product'
 
 const Favorite = ({ favorite }: { favorite: IProduct }) => {
-  return <Detail {...favorite} />
+  return (
+    <div className="favorite-item" data-testid="favorite-item">
+      <Detail {...favorite} />
+    </div>
+  )
 }
 
 export default Favorite

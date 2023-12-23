@@ -67,8 +67,8 @@ describe('Header component', () => {
       </MemoryRouter>
     )
     const { container } = wrapper
-    expect(container.getElementsByClassName('ri-heart-line ri-2x').length).toBe(1)
-    expect(container.getElementsByClassName('ri-heart-fill ri-2x').length).toBe(0)
+    expect(container.getElementsByClassName('ri-heart-line').length).toBe(1)
+    expect(container.getElementsByClassName('ri-heart-fill').length).toBe(0)
 
     await wrapper.unmount()
   })
@@ -82,15 +82,15 @@ describe('Header component', () => {
 
     const wrapper = await renderComponent(component)
     const { container, rerender } = wrapper
-    expect(container.getElementsByClassName('ri-heart-line ri-2x').length).toBe(1)
-    expect(container.getElementsByClassName('ri-heart-fill ri-2x').length).toBe(0)
+    expect(container.getElementsByClassName('ri-heart-line').length).toBe(1)
+    expect(container.getElementsByClassName('ri-heart-fill').length).toBe(0)
 
     await store.dispatch(toggleFavoriteProduct(ProductData()))
 
     const wrapperRerender = await rerender(<Provider store={store}>{component}</Provider>)
 
-    expect(screen.getByTestId('heart-fill-icon')).toHaveClass('ri-heart-fill ri-2x')
-    expect(screen.getByTestId('heart-fill-icon')).not.toHaveClass('ri-heart-line ri-2x')
+    expect(screen.getByTestId('heart-fill-icon')).toHaveClass('ri-heart-fill')
+    expect(screen.getByTestId('heart-fill-icon')).not.toHaveClass('ri-heart-line')
 
     await wrapper.unmount()
   })
@@ -124,8 +124,8 @@ describe('Header component', () => {
       </MemoryRouter>
     )
     const { container } = wrapper
-    expect(container.getElementsByClassName('ri-shopping-cart-line ri-2x').length).toBe(1)
-    expect(container.getElementsByClassName('ri-shopping-cart-fill ri-2x').length).toBe(0)
+    expect(container.getElementsByClassName('ri-shopping-cart-line').length).toBe(1)
+    expect(container.getElementsByClassName('ri-shopping-cart-fill').length).toBe(0)
 
     await wrapper.unmount()
   })
@@ -139,15 +139,15 @@ describe('Header component', () => {
 
     const wrapper = await renderComponent(component)
     const { container, rerender } = wrapper
-    expect(container.getElementsByClassName('ri-shopping-cart-line ri-2x').length).toBe(1)
-    expect(container.getElementsByClassName('ri-shopping-cart-fill ri-2x').length).toBe(0)
+    expect(container.getElementsByClassName('ri-shopping-cart-line').length).toBe(1)
+    expect(container.getElementsByClassName('ri-shopping-cart-fill').length).toBe(0)
 
     await store.dispatch(cartAction(ProductData()))
 
     const wrapperRerender = await rerender(<Provider store={store}>{component}</Provider>)
 
-    expect(screen.getByTestId('cart-fill-icon')).toHaveClass('ri-shopping-cart-fill ri-2x')
-    expect(screen.getByTestId('cart-fill-icon')).not.toHaveClass('ri-shopping-cart-line ri-2x')
+    expect(screen.getByTestId('cart-fill-icon')).toHaveClass('ri-shopping-cart-fill')
+    expect(screen.getByTestId('cart-fill-icon')).not.toHaveClass('ri-shopping-cart-line')
 
     await wrapper.unmount()
   })

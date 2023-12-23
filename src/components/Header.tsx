@@ -16,17 +16,17 @@ const Header = () => {
 
   const getFavoriteIcon = () => {
     if (favorites.length > 0) {
-      return <i className="ri-heart-fill ri-2x" data-testid="heart-fill-icon"></i>
+      return <i className="ri-heart-fill" data-testid="heart-fill-icon"></i>
     } else {
-      return <i className="ri-heart-line ri-2x" data-testid="heart-line-icon"></i>
+      return <i className="ri-heart-line" data-testid="heart-line-icon"></i>
     }
   }
 
   const getCartIcon = () => {
     if (cart.length > 0) {
-      return <i className="ri-shopping-cart-fill ri-2x" data-testid="cart-fill-icon"></i>
+      return <i className="ri-shopping-cart-fill" data-testid="cart-fill-icon"></i>
     } else {
-      return <i className="ri-shopping-cart-line ri-2x" data-testid="cart-line-icon"></i>
+      return <i className="ri-shopping-cart-line" data-testid="cart-line-icon"></i>
     }
   }
 
@@ -34,31 +34,35 @@ const Header = () => {
     <div className="header" id="header" data-testid="header">
       <div className="logo">
         <Link className="logo" to="/">
-          <i className="ri-shopping-bag-line ri-fw ri-2x brand-logo"></i>
+          <i className="ri-shopping-bag-line ri-fw brand-logo"></i>
           <span className="brand-name">Shop Me</span>
         </Link>
       </div>
       <div className="checkout-section">
-        <div className="favorite">
-          <span className="favorite-count"> {favorites.length}</span>
-          <Link to="/favorite">{getFavoriteIcon()}</Link>
+        <div className="favorite checkout-section-icon">
+          {favorites && favorites.length > 0 && <span className="favorite-count"> {favorites.length}</span>}
+          <Link to="/favorite" className="favorite-icon">
+            {getFavoriteIcon()}
+          </Link>
         </div>
-        <div className="cart">
-          <span className="cart-count"> {cart.length}</span>
-          <Link to="/cart">{getCartIcon()}</Link>
+        <div className="cart checkout-section-icon">
+          {cart && cart.length > 0 && <span className="cart-count"> {cart.length}</span>}
+          <Link to="/cart" className="cart-icon">
+            {getCartIcon()}
+          </Link>
         </div>
         {!isAuthenticated && (
-          <div className="login" onClick={() => loginWithRedirect()}>
-            <i className="ri-lock-line ri-2x"></i>
+          <div className="login checkout-section-icon" onClick={() => loginWithRedirect()}>
+            <i className="ri-lock-line login-icon"></i>
           </div>
         )}
         {isAuthenticated && (
-          <div className="logout" onClick={() => logout({ returnTo: window.location.origin })}>
+          <div className="logout checkout-section-icon" onClick={() => logout({ returnTo: window.location.origin })}>
             <span>
               {/* <i className="logout__welcome">Welcome</i>{' '} */}
               <i className="logout__username">{user?.name}</i>
             </span>
-            <i className="ri-shut-down-line ri-2x"></i>
+            <i className="ri-shut-down-line logout-icon"></i>
           </div>
         )}
       </div>

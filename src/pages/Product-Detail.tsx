@@ -12,7 +12,7 @@ import Detail from '../components/Detail'
 
 import { IStore } from '../types/Store'
 
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 import { AxiosError } from 'axios'
 import getProductDetail from '../client-request/get-product-detail'
 
@@ -54,10 +54,11 @@ const ProductDetail = () => {
   }, [productId])
 
   return (
-    <div className="detail-page" data-testid="detail-page">
-      <ToastContainer className="foo" data-testid="toast-message" />
-      <div className="container">
-        <Detail {...product} />
+    <div className="page-wrapper">
+      <div className="page-content">
+        <div className="product-detail-page" data-testid="product-detail-page">
+          <Detail {...product} />
+        </div>
       </div>
     </div>
   )

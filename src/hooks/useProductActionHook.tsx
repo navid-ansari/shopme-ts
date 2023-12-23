@@ -69,6 +69,10 @@ const useProductActionHook = () => {
     await dispatch(setProducts(products))
   }
 
+  const setUserDetails = async (user: any) => {
+    console.log(user)
+  }
+
   /*useEffect(() => {
     if (products.length == 0) {
       getProducts()
@@ -96,7 +100,8 @@ const useProductActionHook = () => {
     toggleFavorite,
     toggleCart,
     //getProducts,
-    setAllProducts
+    setAllProducts,
+    setUserDetails
   }
 }
 

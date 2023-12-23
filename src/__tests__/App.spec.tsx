@@ -62,8 +62,8 @@ describe('App component', () => {
       </MemoryRouter>
     )
     const { container } = wrapper
-    expect(container.getElementsByClassName('productlist-page').length).toBe(1)
-    expect(container.getElementsByClassName('detail-page').length).toBe(0)
+    expect(container.getElementsByClassName('product-list-page').length).toBe(1)
+    expect(container.getElementsByClassName('product-detail-page').length).toBe(0)
     expect(container.getElementsByClassName('favorites-page').length).toBe(0)
     expect(container.getElementsByClassName('cart-page').length).toBe(0)
     expect(container.getElementsByClassName('notfound-page').length).toBe(0)
@@ -92,8 +92,8 @@ describe('App component', () => {
       </MemoryRouter>
     )
     const { container } = wrapper
-    expect(container.getElementsByClassName('productlist-page').length).toBe(0)
-    expect(container.getElementsByClassName('detail-page').length).toBe(1)
+    expect(container.getElementsByClassName('product-list-page').length).toBe(0)
+    expect(container.getElementsByClassName('product-detail-page').length).toBe(1)
     expect(container.getElementsByClassName('favorites-page').length).toBe(0)
     expect(container.getElementsByClassName('cart-page').length).toBe(0)
     expect(container.getElementsByClassName('notfound-page').length).toBe(0)
@@ -109,8 +109,8 @@ describe('App component', () => {
       </MemoryRouter>
     )
     const { container } = wrapper
-    expect(container.getElementsByClassName('productlist-page').length).toBe(0)
-    expect(container.getElementsByClassName('detail-page').length).toBe(0)
+    expect(container.getElementsByClassName('product-list-page').length).toBe(0)
+    expect(container.getElementsByClassName('product-detail-page').length).toBe(0)
     expect(container.getElementsByClassName('favorites-page').length).toBe(1)
     expect(container.getElementsByClassName('cart-page').length).toBe(0)
     expect(container.getElementsByClassName('notfound-page').length).toBe(0)
@@ -126,10 +126,11 @@ describe('App component', () => {
       </MemoryRouter>
     )
     const { container } = wrapper
-    expect(container.getElementsByClassName('productlist-page').length).toBe(0)
-    expect(container.getElementsByClassName('detail-page').length).toBe(0)
+    expect(container.getElementsByClassName('product-list-page').length).toBe(0)
+    expect(container.getElementsByClassName('product-detail-page').length).toBe(0)
     expect(container.getElementsByClassName('favorites-page').length).toBe(0)
     expect(container.getElementsByClassName('cart-page').length).toBe(1)
+    expect(container.getElementsByClassName('notfound-page').length).toBe(0)
     await wrapper.unmount()
   })
 
@@ -142,8 +143,8 @@ describe('App component', () => {
       </MemoryRouter>
     )
     const { container } = wrapper
-    expect(container.getElementsByClassName('productlist-page').length).toBe(0)
-    expect(container.getElementsByClassName('detail-page').length).toBe(0)
+    expect(container.getElementsByClassName('product-list-page').length).toBe(0)
+    expect(container.getElementsByClassName('product-detail-page').length).toBe(0)
     expect(container.getElementsByClassName('favorites-page').length).toBe(0)
     expect(container.getElementsByClassName('cart-page').length).toBe(0)
     expect(container.getElementsByClassName('notfound-page').length).toBe(1)
