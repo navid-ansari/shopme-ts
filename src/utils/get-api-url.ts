@@ -23,8 +23,11 @@ const devUrlMap = (route: string) => {
 
 const prodUrlMap = (route: string) => {
   const urlMap = new Map()
-  urlMap.set('products', '/products')
-  urlMap.set('productDetails', '/products')
+  urlMap.set('products', '/api/allproducts')
+  urlMap.set('productDetails', '/api/productDetails')
+  urlMap.set('signIn', '/api/signin')
+  urlMap.set('signUp', '/api/signup')
+  urlMap.set('roles', '/api/roles')
   const url = `${process.env.REACT_APP_BASE_URL}${urlMap.get(route)}`
   return url
 }
