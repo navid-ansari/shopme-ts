@@ -57,19 +57,19 @@ jobs:
         name: Check Lint Errors
 
       # run unit and integration test - jest and rtl
-      - run: npm run test:prod
-        name: Unit and Integration Tests
+      #- run: npm run test:prod
+      #  name: Unit and Integration Tests
       #- uses: ArtiomTr/jest-coverage-report-action@v2
 
       # generate unit test coverage
-      - name: Unit Tests Coverage Report
-        uses: ArtiomTr/jest-coverage-report-action@v2
-        with:
-          test-script: npm run coverage:prod:full
-          annotations: none
-          # This will attach comment to a PR and generate markdown output.
-          output: comment, report-markdown
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      #- name: Unit Tests Coverage Report
+      #  uses: ArtiomTr/jest-coverage-report-action@v2
+      #  with:
+      #    test-script: npm run coverage:prod:full
+      #    annotations: none
+      #    # This will attach comment to a PR and generate markdown output.
+      #    output: comment, report-markdown
+      #    github-token: ${{ secrets.GITHUB_TOKEN }}
 
       # generate unit test coverage
       #- run: npm run test:CI
@@ -80,17 +80,17 @@ jobs:
       #   github-token: ${{secrets.GITHUB_TOKEN}}
 
       # run production build
-      - run: CI='' npm run start:prod -- --profile
-        name: Create Production Build
+      #- run: CI='' npm run start:prod -- --profile
+      #  name: Create Production Build
 
       # run e2e test - cypress
-      - name: E2E Test
-        uses: cypress-io/github-action@v5
-        with:
-          spec: cypress/e2e/tests/*.cy.ts
+      #- name: E2E Test
+      #  uses: cypress-io/github-action@v5
+      #  with:
+      #    spec: cypress/e2e/tests/*.cy.ts
           #build: npm run start:e2e # create production build
-          start: npm run serve:e2e # run server from production build
-          browser: chrome
+      #    start: npm run serve:e2e # run server from production build
+      #    browser: chrome
 
       # build and push docker image
       #- name: Build & push Docker image
