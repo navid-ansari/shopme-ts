@@ -57,8 +57,8 @@ jobs:
         name: Check Lint Errors
 
       # run unit and integration test - jest and rtl
-      #- run: npm run test:prod
-      #  name: Unit and Integration Tests
+      - run: npm run test
+        name: Run Unit Tests
       #- uses: ArtiomTr/jest-coverage-report-action@v2
 
       # generate unit test coverage
