@@ -3,8 +3,8 @@ export const getApiUrl = (route: string) => {
   let url: any
   if (env == 'DEV') {
     url = devUrlMap(route)
-  }
-  if (env == 'PROD') {
+  } else {
+    //(env == 'PROD')
     url = prodUrlMap(route)
   }
   return url
@@ -17,7 +17,8 @@ const devUrlMap = (route: string) => {
   urlMap.set('signIn', '/api/signin')
   urlMap.set('signUp', '/api/signup')
   urlMap.set('roles', '/api/roles')
-  const url = `${process.env.REACT_APP_BASE_URL}${urlMap.get(route)}`
+  const baseUrl = 'http://localhost:5001'
+  const url = `${baseUrl}${urlMap.get(route)}`
   return url
 }
 
@@ -28,6 +29,7 @@ const prodUrlMap = (route: string) => {
   urlMap.set('signIn', '/api/signin')
   urlMap.set('signUp', '/api/signup')
   urlMap.set('roles', '/api/roles')
-  const url = `${process.env.REACT_APP_BASE_URL}${urlMap.get(route)}`
+  const baseUrl = 'https://shopme-node-backend.onrender.com'
+  const url = `${baseUrl}${urlMap.get(route)}`
   return url
 }
