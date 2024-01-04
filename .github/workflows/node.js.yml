@@ -80,7 +80,7 @@ jobs:
       #   github-token: ${{secrets.GITHUB_TOKEN}}
 
       # run production build
-      - run: npm run build
+      - run: CI='' npm run build
         name: Create Production Build
 
       # run e2e test - cypress
