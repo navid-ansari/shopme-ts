@@ -47,6 +47,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --verbose",
     "dev": "env-cmd -f .env.development npm start",
+    "serve": "serve -s build",
     "test:dev": "env-cmd -f .env.development react-scripts test --verbose",
     "coverage": "react-scripts test --verbose --coverage --coverageReporters='text-summary'",
     "coverage:dev": "env-cmd -f .env.development npm run test -- --coverage --watchAll=false",
