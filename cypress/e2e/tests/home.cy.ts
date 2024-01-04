@@ -1,6 +1,7 @@
 describe('E2E: homepage', () => {
   beforeEach(() => {
-    cy.visit('localhost:3000')
+    const baseUrl = 'http://localhost:3000'
+    cy.visit(baseUrl)
     cy.get('#header').should('exist')
     cy.get('.product-list-page').should('exist')
     cy.get('.footer').should('exist')
