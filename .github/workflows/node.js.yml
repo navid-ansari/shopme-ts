@@ -62,14 +62,14 @@ jobs:
       #- uses: ArtiomTr/jest-coverage-report-action@v2
 
       # generate unit test coverage
-      #- name: Unit Tests Coverage Report
-      #  uses: ArtiomTr/jest-coverage-report-action@v2
-      #  with:
-      #    test-script: npm run coverage:prod:full
-      #    annotations: none
-      #    # This will attach comment to a PR and generate markdown output.
-      #    output: comment, report-markdown
-      #    github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Unit Tests Coverage Report
+        uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          test-script: npm run coverage
+          annotations: none
+          # This will attach comment to a PR and generate markdown output.
+          output: comment, report-markdown
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       # generate unit test coverage
       #- run: npm run test:CI
@@ -80,8 +80,8 @@ jobs:
       #   github-token: ${{secrets.GITHUB_TOKEN}}
 
       # run production build
-      #- run: CI='' npm run start:prod -- --profile
-      #  name: Create Production Build
+      - run: CI='' npm run build
+        name: Create Production Build
 
       # run e2e test - cypress
       #- name: E2E Test
