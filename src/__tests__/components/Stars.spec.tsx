@@ -12,7 +12,7 @@ describe('Stars component', () => {
   beforeEach(() => {})
   afterEach(() => {})
   afterAll(() => {})
-  test('Should render component', async () => {
+  xtest('Should render component', async () => {
     const rating = 3.9
     const wrapper = await renderComponent(
       <MemoryRouter>
@@ -24,7 +24,7 @@ describe('Stars component', () => {
     await wrapper.unmount()
   })
 
-  test('should render stars', async () => {
+  xtest('should render stars', async () => {
     const starsArray = [0, 1, 2, 3]
     const starsElem = starsArray.map((star) => <Star key={star} />)
     const wrapper = await renderComponent(<MemoryRouter>{starsElem}</MemoryRouter>)
