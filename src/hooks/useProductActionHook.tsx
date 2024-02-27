@@ -1,20 +1,20 @@
 // redux
 import { useSelector, useDispatch } from 'react-redux'
-import { setProducts } from '../redux/actions/productAction'
-import { toggleFavoriteProduct } from '../redux/actions/favoriteProductsAction'
-import { cartAction } from '../redux/actions/cartAction'
+import { getProducts } from '../redux/slices/productsSlice'
+import { RootState } from '../redux/store'
+import { setCart } from '../redux/slices/cartSlice'
+import { setFavorites } from '../redux/slices/favoriteSlice'
 
-//import { axiosGet } from '../utils/axios-rest-client'
-import { IStore } from '../types/Store'
+// types
 import { IProduct } from '../types/Product'
 
 const useProductActionHook = () => {
-  const products = useSelector((state: IStore) => state.products)
+  const products = useSelector((state: RootState) => state.products)
   const dispatch = useDispatch()
 
   const toggleFavorite = async (product: IProduct) => {
     const findProduct = products.find((item: IProduct) => item.id === product.id) as IProduct
-    dispatch(toggleFavoriteProduct(findProduct))
+    dispatch(setFavorites(findProduct))
 
     if (findProduct) {
       const modifiedProducts = products.map((product: IProduct) => {
@@ -27,14 +27,13 @@ const useProductActionHook = () => {
           return product
         }
       })
-      await dispatch(setProducts(modifiedProducts))
+      await dispatch(getProducts(modifiedProducts))
     }
   }
 
   const toggleCart = async (product: IProduct) => {
     const findProduct = products.find((item: IProduct) => item.id === product.id) as IProduct
-
-    await dispatch(cartAction(findProduct))
+    await dispatch(setCart(findProduct))
 
     if (findProduct) {
       const modifiedProducts = products.map((product: IProduct) => {
@@ -47,7 +46,7 @@ const useProductActionHook = () => {
           return product
         }
       })
-      await dispatch(setProducts(modifiedProducts))
+      await dispatch(getProducts(modifiedProducts))
     }
   }
 
@@ -66,7 +65,7 @@ const useProductActionHook = () => {
   }*/
 
   const setAllProducts = async (products: IProduct[]) => {
-    await dispatch(setProducts(products))
+    await dispatch(getProducts(products))
   }
 
   const setUserDetails = async (user: any) => {

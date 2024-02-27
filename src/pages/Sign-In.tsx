@@ -2,15 +2,18 @@ import React, { useEffect, useState } from 'react'
 
 // redux
 import { useSelector } from 'react-redux'
+import { RootState } from '../redux/store'
 
 // components
 import Cart from '../components/Cart'
 
+// types
 import { IProduct } from '../types/Product'
-import { IStore } from '../types/Store'
 
+// client request
 import signIn from '../client-request/sign-in'
 
+// hook
 import useProductActionHook from '../hooks/useProductActionHook'
 
 const SignIn = () => {
@@ -18,7 +21,7 @@ const SignIn = () => {
   const [formErrors, setFormErrors] = useState<any>({})
   const [isSubmit, setIsSubmit] = useState(false)
 
-  const cart = useSelector((state: IStore) => state.cart)
+  const cart = useSelector((state: RootState) => state.cart)
   const { setUserDetails } = useProductActionHook()
 
   const cartElem = cart.map((product: IProduct) => <Cart key={product.id} product={product} />)
