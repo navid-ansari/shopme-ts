@@ -1,18 +1,21 @@
 import React, { useEffect } from 'react'
 
+// redux
+import getProducts from '../client-request/get-products'
+import { useSelector } from 'react-redux'
+import { RootState } from '../redux/store'
+
 // component
 import Product from '../components/Product'
 
 // custom hook
 import useProductActionHook from '../hooks/useProductActionHook'
 
+// types
 import { IProduct } from '../types/Product'
-import getProducts from '../client-request/get-products'
-import { useSelector } from 'react-redux'
-import { IStore } from '../types/Store'
 
 const ProductList = () => {
-  const products = useSelector((state: IStore) => state.products)
+  const products = useSelector((state: RootState) => state.products)
   const { toggleFavorite, toggleCart, setAllProducts } = useProductActionHook()
 
   useEffect(() => {
