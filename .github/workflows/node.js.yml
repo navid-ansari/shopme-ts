@@ -37,8 +37,8 @@ jobs:
       - run: npm ci
 
         # install dependencies
-      - run: npm install
-        name: Install Packages
+      #- run: npm install
+      #  name: Install Packages
 
       # check file format - prettier(ignore warning)
       - run: npm run format:check
