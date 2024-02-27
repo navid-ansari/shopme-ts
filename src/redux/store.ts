@@ -1,16 +1,19 @@
-import { createStore, compose } from 'redux'
-import { reducers } from './reducers'
+import { configureStore } from '@reduxjs/toolkit'
+import productsSlice from './slices/productsSlice'
+import cartSlice from './slices/cartSlice'
+import favoriteSlice from './slices/favoriteSlice'
+import productDetailsSlice from './slices/productDetailsSlice'
 
-export const composeEnhancers = window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+const store = configureStore({
+  reducer: {
+    products: productsSlice,
+    product: productDetailsSlice,
+    cart: cartSlice,
+    favorites: favoriteSlice
+  }
+})
 
-const store = createStore(
-  reducers,
-  {},
-  (window &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
-    window &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()) ||
-    compose
-)
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
 
 export default store

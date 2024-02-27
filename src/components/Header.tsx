@@ -5,17 +5,17 @@ import { Link } from 'react-router-dom'
 
 // redux
 import { useSelector } from 'react-redux'
-import { IStore } from '../types/Store'
 
 import { useAuth0 } from '@auth0/auth0-react'
+import { RootState } from '../redux/store'
 
 const Header = () => {
-  const favorites = useSelector((state: IStore) => state.favorites)
-  const cart = useSelector((state: IStore) => state.cart)
+  const favorites = useSelector((state: RootState) => state.favorites)
+  const cart = useSelector((state: RootState) => state.cart)
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0()
 
   const getFavoriteIcon = () => {
-    if (favorites.length > 0) {
+    if (favorites && favorites.length > 0) {
       return <i className="ri-heart-fill" data-testid="heart-fill-icon"></i>
     } else {
       return <i className="ri-heart-line" data-testid="heart-line-icon"></i>
@@ -23,7 +23,7 @@ const Header = () => {
   }
 
   const getCartIcon = () => {
-    if (cart.length > 0) {
+    if (cart && cart.length > 0) {
       return <i className="ri-shopping-cart-fill" data-testid="cart-fill-icon"></i>
     } else {
       return <i className="ri-shopping-cart-line" data-testid="cart-line-icon"></i>

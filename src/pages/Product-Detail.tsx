@@ -5,26 +5,25 @@ import { useParams } from 'react-router-dom'
 
 // redux
 import { useSelector, useDispatch } from 'react-redux'
-import { selectedProduct } from '../redux/actions/productAction'
+import { AppDispatch, RootState } from '../redux/store'
+import { clearProductDetails, getProductDetailsAsync } from '../redux/slices/productDetailsSlice'
 
 // component
 import Detail from '../components/Detail'
 
-import { IStore } from '../types/Store'
-
-import { toast } from 'react-toastify'
-import { AxiosError } from 'axios'
-import getProductDetail from '../client-request/get-product-detail'
-
 const ProductDetail = () => {
-  const { productId } = useParams()
-  const product = useSelector((state: IStore) => state.product)
-  const dispatch = useDispatch()
+  const productId: string = useParams().productId || ''
+  const product = useSelector((state: RootState) => state.product)
+  const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
-    getProductDetail(productId!)
+    dispatch(getProductDetailsAsync({ productId }))
+    /*getProductDetail(productId!)
       .then((response: any) => {
-        dispatch(selectedProduct(response.data))
+        //dispatch(selectedProduct(response.data))
+        //const data: IProduct = response.data
+        //dispatch(setProductDetails(data))
+        setDetails(response.data)
         toast.success('Success Message', {
           position: 'top-right',
           autoClose: false,
@@ -45,12 +44,11 @@ const ProductDetail = () => {
           draggable: true,
           progress: undefined
         })
-      })
-
+      })*/
     // clear product when component destroys
-    /*return () => {
-      dispatch(clearSelectedProduct())
-    }*/
+    return () => {
+      dispatch(clearProductDetails())
+    }
   }, [productId])
 
   return (

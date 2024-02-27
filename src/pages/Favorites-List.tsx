@@ -2,14 +2,14 @@ import React from 'react'
 
 // redux
 import { useSelector } from 'react-redux'
+import { RootState } from '../redux/store'
 
 // components
 import Favorite from '../components/Favorite'
 import { IProduct } from '../types/Product'
-import { IStore } from '../types/Store'
 
 const FavoritesList = () => {
-  const favorites = useSelector((state: IStore) => state.favorites)
+  const favorites = useSelector((state: RootState) => state.favorites)
   const favroriteElem = favorites.map((favorite: IProduct) => {
     return (
       <div className="favorite-product" key={favorite.id}>
