@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: ['main']
     types: [opened, reopened, synchronize]
+    
+env:
+  CI: false
 
 #env:
 #  AWS_REGION: eu-north-1                                  # set this to your preferred AWS region, e.g. us-west-1
@@ -91,14 +94,15 @@ jobs:
 
       # run e2e test - cypress
       - name: E2E Test
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
           spec: cypress/e2e/tests/*.cy.ts
           #build: npm run start:e2e # create production build
           #start: npm run serve # run server from production build
           #browser: chrome
-          build: CI=false npm run build
+          build: npm run build
           start: npm start
+          browser: chrome
 
       # build and push docker image
       #- name: Build & push Docker image
