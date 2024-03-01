@@ -97,7 +97,7 @@ jobs:
           #build: npm run start:e2e # create production build
           #start: npm run serve # run server from production build
           #browser: chrome
-          build: npm run build
+          build: CI='' npm run build
           start: npm start
 
       # build and push docker image
