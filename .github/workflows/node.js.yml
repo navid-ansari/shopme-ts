@@ -34,7 +34,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+
+          
+      - run: rm -rf node_modules
+        name: Delete node_modules
+
       - run: npm ci
+        name: Install Packages  
 
         # install dependencies
       #- run: npm install
