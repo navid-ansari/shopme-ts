@@ -35,6 +35,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
+      
+      #- run: echo "CI=false" >> $GITHUB_ENV
+      #  name: Set CI to false  
           
       - run: rm -rf node_modules
         name: Delete node_modules
@@ -86,17 +89,27 @@ jobs:
       #   github-token: ${{secrets.GITHUB_TOKEN}}
 
       # run production build
-      - run: CI='' npm run build
-        name: Create Production Build
+      #- run: CI='' npm run build
+      #  name: Create Production Build
 
       # run e2e test - cypress
       - name: E2E Test
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
           spec: cypress/e2e/tests/*.cy.ts
           #build: npm run start:e2e # create production build
-          start: npm run serve # run server from production build
+          #start: npm run serve # run server from production build
+          #browser: chrome
+          build: npm run build
+          start: npm start
           browser: chrome
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-snapshots
+          path: cypress/snapshots
 
       # build and push docker image
       #- name: Build & push Docker image
