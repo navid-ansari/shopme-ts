@@ -36,8 +36,8 @@ jobs:
           cache: 'npm'
 
       
-      - run: echo "CI=false" >> $GITHUB_ENV
-        name: Set CI to false  
+      #- run: echo "CI=false" >> $GITHUB_ENV
+      #  name: Set CI to false  
           
       - run: rm -rf node_modules
         name: Delete node_modules
