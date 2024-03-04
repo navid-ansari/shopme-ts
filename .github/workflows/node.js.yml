@@ -104,6 +104,13 @@ jobs:
           start: npm start
           browser: chrome
 
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-snapshots
+          path: cypress/snapshots
+
       # build and push docker image
       #- name: Build & push Docker image
       #  uses: mr-smithers-excellent/docker-build-push@v5
