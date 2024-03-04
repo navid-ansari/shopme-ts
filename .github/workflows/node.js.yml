@@ -35,6 +35,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
+      
+      - run: echo "CI=false" >> $GITHUB_ENV
+        name: Set CI to false  
           
       - run: rm -rf node_modules
         name: Delete node_modules
@@ -97,7 +100,7 @@ jobs:
           #build: npm run start:e2e # create production build
           #start: npm run serve # run server from production build
           #browser: chrome
-          build: CI=false npm run build
+          build: npm run build
           start: npm start
           browser: chrome
 
