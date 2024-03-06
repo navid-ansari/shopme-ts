@@ -33,11 +33,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-
-      
-      #- run: echo "CI=false" >> $GITHUB_ENV
-      #  name: Set CI to false  
+          cache: 'npm' 
           
       - run: rm -rf node_modules
         name: Delete node_modules
@@ -45,7 +41,7 @@ jobs:
       - run: npm ci
         name: Install Packages  
 
-        # install dependencies
+      # install dependencies
       #- run: npm install
       #  name: Install Packages
 
@@ -54,16 +50,16 @@ jobs:
         name: Check File Format Errors
 
       # fix file format - prettier(ignore warning)
-      - run: npm run format:fix
-        name: Fix File Format Errors
+      #- run: npm run format:fix
+      #  name: Fix File Format Errors
 
       # check file format & code syntax - elint(ignore warning)
       - run: npm run lint:check
         name: Check Lint Errors
 
       # fix code tyle & syntax - elint(ignore warning)
-      - run: npm run lint:fix
-        name: Check Lint Errors
+      #- run: npm run lint:fix
+      #  name: Check Lint Errors
 
       # run unit and integration test - jest and rtl
       - run: npm run test
